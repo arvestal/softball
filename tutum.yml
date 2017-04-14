@@ -1,0 +1,5 @@
+web:
+  image: arvestal/softball
+  autorestart: always
+  ports:
+    - "80:9000"

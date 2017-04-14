@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="myApp">
+
+    <head lang="en">
+        <title>GD Softball Stats</title>
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Softball stats for GoDaddy Men's softball league at Thompson Peak park in Scottsdale, AZ">
+        <meta name="author" content="Allen Vestal">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/ng-grid.css" />
+        <link rel="stylesheet" type="text/css" href="css/style20150724.css" />
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+        <script type="text/javascript" src="scripts/ng-grid-2.0.14.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#trgame').click(function(){
+					$('#myModal').modal('toggle');
+				}); 
+			});
+		</script>
+		<style type="text/css">
+			.toggle-modal {
+				width: 200px;
+				position: absolute;
+				margin: 0 auto;
+				z-index: 9999;
+				bottom: 20px;
+				right: 0;
+				left: 0;
+			}
+		</style>
+    </head>
+
+    <body ng-controller="MyCtrl">
+	
+
+        <nav class="navbar navbar-default" role="navigation" >
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">GD Softball Stats</a>
+                </div>
+				<div>
+					<ul class="nav navbar-nav">
+						<li><a class="active" href="#/">Career</a></li>
+						<li><a href="#/postseason">Postseason</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#/summer16">Summer<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+                                <li><a href="#/summer16">2016</a></li>
+								<li><a href="#/summer15">2015</a></li>
+								<li><a href="#/summer14">2014</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#/fall16">Fall<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+                                <li><a href="#/fall16">2016</a></li>
+								<li><a href="#/fall15">2015</a></li>
+								<li><a href="#/fall14">2014</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#/winter17">Winter<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+                                <li><a href="#/winter17">2017</a></li>
+                                <li><a href="#/winter16">2016</a></li>
+								<li><a href="#/winter15">2015</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#/spring17">Spring<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+                                <li><a href="#/spring17">2017</a></
+                                <li><a href="#/spring16">2016</a></li>
+								<li><a href="#/spring15">2015</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+                <div id="navbarCollapse" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Last updated: 2017-04-13 @ 10:52</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </nav>
+		
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 blog-main">
+				
+					<p/> 
+                    <div ng-view></div>
+
+                </div>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            <p>&copy; 2017 <a href="http://allenvestal.com">allenvestal.com</a> All Rights Reserved. <a href="https://twitter.com/arvestal">@arvestal</a>.</p>
+            <p><a href="#">Back to top</a></p>
+        </footer>
+    </body>
+</html>

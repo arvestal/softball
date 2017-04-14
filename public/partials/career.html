@@ -1,0 +1,816 @@
+<div class="tbl-section">
+    <p class="tbl-section-meta">
+        Career:
+        {{ spring17.wins + winter17.wins + fall16.wins + summer16.wins + spring16.wins + winter16.wins + fall15.wins + summer15.wins + spring15.wins + winter15.wins + fall14.wins + summer14.wins + ps.wins }}
+        &minus; {{ spring17.losses + winter17.losses + fall16.losses + summer16.losses + spring16.losses + winter16.losses + fall15.losses + summer15.losses + spring15.losses + winter15.losses + fall14.losses + summer14.losses + ps.losses }}
+        &minus; {{ spring17.ties + winter17.ties + fall16.ties + summer16.ties + spring16.ties + winter16.ties + fall15.ties + summer15.ties + spring15.ties + winter15.ties + fall14.ties + summer14.ties }}
+    </p>
+    <div class="gridcareer" ng-grid="gridCareerOptions"></div>
+</div>
+
+<div class="container">
+    <div class="row ">
+        <div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+            <div>
+                <div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>Wed, June 11, 2014 @ 6:30pm</td>
+                                    <td>vs True D's</td>
+                                    <td>W 9 - 8</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 11, 2014 @ 7:30pm</td>
+                                    <td>@ True D's</td>
+                                    <td>L 12 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 18, 2014 @ 8:30pm</td>
+                                    <td>vs MMLL Stars</td>
+                                    <td>W 15 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 18, 2014 @ 9:30pm</td>
+                                    <td>@ MMLL Stars</td>
+                                    <td>W 20 - 8</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 25, 2014 @ 8:30pm</td>
+                                    <td>vs Sons of Pitches</td>
+                                    <td>T 5 - 5</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 25, 2014 @ 9:30pm</td>
+                                    <td>@ Sons of Pitches</td>
+                                    <td>W 17 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 2, 2014 @ 6:30pm</td>
+                                    <td>@ Scared Hitless</td>
+                                    <td>W 12 - 4</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 2, 2014 @ 7:30pm</td>
+                                    <td>vs Scared Hitless</td>
+                                    <td>W 20 - 3</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 9, 2014 @ 8:30pm</td>
+                                    <td>vs NOTW</td>
+                                    <td>L 4 - 25</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 9, 2014 @ 9:30pm</td>
+                                    <td>@ NOTW</td>
+                                    <td>L 7 - 15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 16, 2014 @ 8:30pm</td>
+                                    <td>@ Discount Tire</td>
+                                    <td>W 14 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 16, 2014 @ 9:30pm</td>
+                                    <td>vs Discount Tire</td>
+                                    <td>W 10 - 9</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 23, 2014 @ 6:30pm</td>
+                                    <td>@ Whiskey Tango Foxtrot</td>
+                                    <td>L 3 - 4</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 23, 2014 @ 7:30pm</td>
+                                    <td>vs Whiskey Tango Foxtrot</td>
+                                    <td>L 1 - 16</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 30, 2014 @ 7:30pm</td>
+                                    <td>@ Scared Hitless (D League Playoffs)</td>
+                                    <td>L 11 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Sept 17, 2014 @ 8:30pm</td>
+                                    <td>vs Old Dogs</td>
+                                    <td>T 10 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Sept 17, 2014 @ 9:30pm</td>
+                                    <td>@ Old Dogs</td>
+                                    <td>L 15 - 16</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Sept 24, 2014 @ 8:30pm</td>
+                                    <td>@ Who's on First</td>
+                                    <td>L 5 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Sept 24, 2014 @ 9:30pm</td>
+                                    <td>vs Who's on First</td>
+                                    <td>W 13 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 1, 2014 @ 8:30pm</td>
+                                    <td>vs Arena Sports Grill Sandsharks</td>
+                                    <td>L 12 - 15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 1, 2014 @ 9:30pm</td>
+                                    <td>@ Arena Sports Grill Sandsharks</td>
+                                    <td>W 13 - 6</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 8, 2014 @ 6:30pm</td>
+                                    <td>@ Ba Da Bing</td>
+                                    <td>W 16 - 5</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 8, 2014 @ 7:30pm</td>
+                                    <td>vs Ba Da Bing</td>
+                                    <td>L 14 - 15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 22, 2014 @ 6:30pm</td>
+                                    <td>@ Dead Presidents</td>
+                                    <td>W 11 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 22, 2014 @ 7:30pm</td>
+                                    <td>vs Dead Presidents</td>
+                                    <td>W 8 - 3</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 29, 2014 @ 6:30pm</td>
+                                    <td>vs Los Cacahuetes</td>
+                                    <td>W 16 - 6</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 29, 2014 @ 7:30pm</td>
+                                    <td>@ Los Cacahuetes</td>
+                                    <td>T 9 - 9</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Nov 5, 2014 @ 8:30pm</td>
+                                    <td>@ True D's</td>
+                                    <td>W 17 - 16</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Nov 5, 2014 @ 9:30pm</td>
+                                    <td>vs True D's</td>
+                                    <td>L 4 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 7, 2015 @ 8:30pm</td>
+                                    <td>vs AXP</td>
+                                    <td>L 9 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 7, 2015 @ 9:30pm</td>
+                                    <td>@ AXP</td>
+                                    <td>W 19 - 11</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 14, 2015 @ 8:30pm</td>
+                                    <td>vs Who's on First</td>
+                                    <td>W 8 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 14, 2015 @ 9:30pm</td>
+                                    <td>@ Who's on First</td>
+                                    <td>L 4 - 9</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 21, 2015 @ 6:30pm</td>
+                                    <td>@ Phoenix Ale Brewery</td>
+                                    <td>W 12 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 21, 2015 @ 7:30pm</td>
+                                    <td>vs Phoenix Ale Brewery</td>
+                                    <td>L 8 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 28, 2015 @ 6:30pm</td>
+                                    <td>vs Waternuts All Year Round</td>
+                                    <td>L 16 - 18</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 28, 2015 @ 7:30pm</td>
+                                    <td>@ Waternuts All Year Round</td>
+                                    <td>L 7 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 4, 2015 @ 8:30pm</td>
+                                    <td>vs The Hooks</td>
+                                    <td>L 10 - 22</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 4, 2015 @ 9:30pm</td>
+                                    <td>@ The Hooks</td>
+                                    <td>W 16 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 11, 2015 @ 6:30pm</td>
+                                    <td>vs NOTW</td>
+                                    <td>W 21 - 1</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 11, 2015 @ 7:30pm</td>
+                                    <td>@ NOTW</td>
+                                    <td>W 14 - 9</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 18, 2015 @ 6:30pm</td>
+                                    <td>vs Old Dogs</td>
+                                    <td>W 13 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 18, 2015 @ 7:30pm</td>
+                                    <td>@ Old Dogs</td>
+                                    <td>L 18 - 15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Mar 25, 2015 @ 6:30pm</td>
+                                    <td>vs Layin Lumber</td>
+                                    <td>L 4 - 15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Mar 25, 2015 @ 7:30pm</td>
+                                    <td>@ Layin Lumber</td>
+                                    <td>W 14 - 5</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 1, 2015 @ 6:30pm</td>
+                                    <td>@ Old Dogs</td>
+                                    <td>L 4 - 5</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 1, 2015 @ 7:30pm</td>
+                                    <td>vs Old Dogs</td>
+                                    <td>L 8 - 15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 8, 2015 @ 6:30pm</td>
+                                    <td>vs Naturals</td>
+                                    <td>L 10 - 17</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 8, 2015 @ 7:30pm</td>
+                                    <td>@ Naturals</td>
+                                    <td>L 9 - 15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 15, 2015 @ 8:30pm</td>
+                                    <td>vs Basically Co-Ed</td>
+                                    <td>L 12 - 14</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 15, 2015 @ 9:30pm</td>
+                                    <td>@ Basically Co-Ed</td>
+                                    <td>L 15 - 17</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 29, 2015 @ 8:30pm</td>
+                                    <td>@ Free Agents</td>
+                                    <td>L 18 - 19</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 29, 2015 @ 9:30pm</td>
+                                    <td>vs Free Agents</td>
+                                    <td>L 9 - 16</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, May 6, 2015 @ 6:30pm</td>
+                                    <td>@ Henkel</td>
+                                    <td>L 11 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, May 6, 2015 @ 7:30pm</td>
+                                    <td>vs Henkel</td>
+                                    <td>L 11 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, May 13 @ 8:30pm</td>
+                                    <td>vs Phoenix Ale Brewery</td>
+                                    <td>W 12 - 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, May 13, 2015 @ 9:30pm</td>
+                                    <td>@ Phoenix Ale Brewery</td>
+                                    <td>W 10 - 5</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 10, 2015 @ 8:30pm</td>
+                                    <td>vs Scared Hitless</td>
+                                    <td>W 19 - 9</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 10, 2015 @ 9:30pm</td>
+                                    <td>@ Scared Hitless</td>
+                                    <td>W 21 - 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 17, 2015 @ 6:30pm</td>
+                                    <td>@ True D's</td>
+                                    <td>W 17 - 14</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 17, 2015 @ 7:30pm</td>
+                                    <td>vs True D's</td>
+                                    <td>L 9 - 11</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 24, 2015 @ 8:30pm</td>
+                                    <td>@ Fat Elgerts</td>
+                                    <td>W 13 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 24, 2015 @ 9:30pm</td>
+                                    <td>vs Fat Elgerts</td>
+                                    <td>W 17 - 5</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 1, 2015 @ 8:30pm</td>
+                                    <td>@ MMLL Stars</td>
+                                    <td>L 8 - 24</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 1, 2015 @ 9:30pm</td>
+                                    <td>vs MMLL Stars</td>
+                                    <td>L 13 - 17</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 8, 2015 @ 6:30pm</td>
+                                    <td>@ Immedia</td>
+                                    <td>W 23 - 11</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 8, 2015 @ 7:30pm</td>
+                                    <td>vs Immedia</td>
+                                    <td>W 18 - 14</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 15, 2015 @ 6:30pm</td>
+                                    <td>vs Ba Da Bing</td>
+                                    <td>W 16 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 15, 2015 @ 7:30pm</td>
+                                    <td>@ Ba Da Bing</td>
+                                    <td>W 20 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 22, 2015 @ 8:30pm</td>
+                                    <td>@ Discount Tire</td>
+                                    <td>W 13 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 22, 2015 @ 9:30pm</td>
+                                    <td>vs Discount Tire</td>
+                                    <td>L 2 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Sept 21, 2015 @ 8:30pm</td>
+                                    <td>vs Pitches Be Crazy</td>
+                                    <td>W 10 - 4</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Sept 21, 2015 @ 9:30pm</td>
+                                    <td>@ Pitches Be Crazy</td>
+                                    <td>W 30 - 14</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Sept 28, 2015 @ 6:30pm</td>
+                                    <td>@ We'll Hit That</td>
+                                    <td>L 11 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Sept 28, 2015 @ 7:30pm</td>
+                                    <td>vs We'll Hit That</td>
+                                    <td>W 18 - 6</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Oct 5, 2015 @ 8:30pm</td>
+                                    <td>Zog Digital</td>
+                                    <td>W 12 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Oct 5, 2015 @ 9:30pm</td>
+                                    <td>Zog Digital</td>
+                                    <td>W 20 - 9</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Oct 12, 2015 @ 6:30pm</td>
+                                    <td>vs Tap House Kitchen</td>
+                                    <td>W 23 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Oct 12, 2015 @ 7:30pm</td>
+                                    <td>@ Tap House Kitchen</td>
+                                    <td>W 21 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Oct 19, 2015 @ 6:30pm</td>
+                                    <td>vs Team Antonio</td>
+                                    <td>W 11 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Oct 19, 2015 @ 7:30pm</td>
+                                    <td>@ Team Antonio</td>
+                                    <td>W 17 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Oct 26, 2015 @ 6:30pm</td>
+                                    <td>vs Son's of Pitches</td>
+                                    <td>W FFT</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Oct 26, 2015 @ 7:30pm</td>
+                                    <td>@ Son's of Pitches</td>
+                                    <td>W FFT</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Nov 2, 2015 @ 8:00pm</td>
+                                    <td>@ Bulleit</td>
+                                    <td>L 13 - 22</td>
+                                </tr>
+                                <tr>
+                                    <td>Mon, Nov 2, 2015 @ 9:00pm</td>
+                                    <td>vs Bulleit</td>
+                                    <td>W 13 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 13, 2016 @ 6:30pm</td>
+                                    <td>vs Bada Bing</td>
+                                    <td>T 15 - 15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 13, 2016 @ 7:30pm</td>
+                                    <td>@ Irish Car Bombs</td>
+                                    <td>W 17 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 20, 2016 @ 6:30pm</td>
+                                    <td>@ Ramrod</td>
+                                    <td>W 16 - 3</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 20, 2016 @ 7:30pm</td>
+                                    <td>vs Phoenix Ale Brewery</td>
+                                    <td>W 8 - 6</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 27, 2016 @ 8:30pm</td>
+                                    <td>@ Bada Bing</td>
+                                    <td>W 19 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 27, 2016 @ 9:30pm</td>
+                                    <td>vs Irish Car Bombs</td>
+                                    <td>W 15 - 4</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Fed 3, 2016 @ 8:30pm</td>
+                                    <td>vs Ramrod</td>
+                                    <td>L 1 - 14</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Fed 3, 2016 @ 9:30pm</td>
+                                    <td>@ Phoenix Ale Brewery</td>
+                                    <td>w 28 - 6</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Fed 10, 2016 @ 8:30pm</td>
+                                    <td>vs The Hooks</td>
+                                    <td>W 15 - 14</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Fed 10, 2016 @ 9:30pm</td>
+                                    <td>@ Cruisers</td>
+                                    <td>W 22 - 5</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Fed 17, 2016 @ 6:30pm</td>
+                                    <td>vs Basically Coed</td>
+                                    <td>W 18-17</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Fed 17, 2016 @ 7:30pm</td>
+                                    <td>@ Basically Coed</td>
+                                    <td>W 12 - 4</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Fed 24, 2016 @ 6:30pm</td>
+                                    <td>@ The Hooks</td>
+                                    <td>L 8 - 9</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Fed 24, 2016 @ 7:30pm</td>
+                                    <td>vs Cruisers</td>
+                                    <td>L 13 - 16</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Mar 23 @ 8:30pm</td>
+                                    <td>vs Tavern Americano</td>
+                                    <td>L 5 - 17</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Mar 23 @ 9:30pm</td>
+                                    <td>@ Thirsty Camels</td>
+                                    <td>L 2 - 17</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Mar 30 @ 6:30pm</td>
+                                    <td>vs One More Pitcher</td>
+                                    <td>L 4 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Mar 30 @ 7:30pm</td>
+                                    <td>@ Arena Sports Grill</td>
+                                    <td>W 15 - 3</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 6 @ 8:30pm</td>
+                                    <td>@ One More Pitcher</td>
+                                    <td>L 7 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 6 @ 9:30pm</td>
+                                    <td>vs Arena Sports Grill</td>
+                                    <td>L 1 - 17</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 13 @ 6:30pm</td>
+                                    <td>@ Tavern Americano</td>
+                                    <td>L 3 - 18</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 13 @ 7:30pm</td>
+                                    <td>vs Thirsty Camels</td>
+                                    <td>L 9 - 15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 20 @ 6:30pm</td>
+                                    <td>@ Manday</td>
+                                    <td>L 10 - 11</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 20 @ 7:30pm</td>
+                                    <td>vs Hey Cuz</td>
+                                    <td>L 4 - 21</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 27 @ 8:30pm</td>
+                                    <td>vs Manday</td>
+                                    <td>L 10 - 22</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Apr 27 @ 9:30pm</td>
+                                    <td>@ Hey Cuz</td>
+                                    <td>W 17 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, May 4 @ 6:30pm</td>
+                                    <td>vs Irish Car Bombs</td>
+                                    <td>W 12 - 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, May 4 @ 7:30pm</td>
+                                    <td>@ Irish Car Bombs</td>
+                                    <td>W 27 - 11</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 8 @ 8:30pm</td>
+                                    <td>vs Southern Wine &amp; Spirits</td>
+                                    <td>W 11 - 9</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 8 @ 9:30pm</td>
+                                    <td>@ Southern Wine &amp; Spirits</td>
+                                    <td>L 11 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 15 @ 8:30pm</td>
+                                    <td>vs Fat Elgerts</td>
+                                    <td>W 17 - 0</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 15 @ 9:30pm</td>
+                                    <td>@ Fat Elgerts</td>
+                                    <td>W 19 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 22 @ 6:30pm</td>
+                                    <td>@ Caught Looking</td>
+                                    <td>L 12 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 22 @ 7:30pm</td>
+                                    <td>vs Caught Looking</td>
+                                    <td>W 14 - 8</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 29 @ 6:30pm</td>
+                                    <td>vs Sons of Pitches Dos</td>
+                                    <td>W 21 - 10</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, June 29 @ 7:30pm</td>
+                                    <td>@ Sons of Pitches Dos</td>
+                                    <td>W 9 - 8</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 6 @ 8:30pm</td>
+                                    <td>vs Bait &amp; Pitch</td>
+                                    <td>W 14 - 3</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 6 @ 9:30pm</td>
+                                    <td>@ Bait &amp; Pitch</td>
+                                    <td>W 18 - 5</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 13 @ 6:30pm</td>
+                                    <td>vs The Big Dogs</td>
+                                    <td>L 11 - 17</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 13 @ 7:30pm</td>
+                                    <td>@ The Big Dogs</td>
+                                    <td>L 12 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 20 @ 6:30pm</td>
+                                    <td>vs 99 Problems, &amp; A Pitch Ain't One</td>
+                                    <td>L 3 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, July 20 @ 7:30pm</td>
+                                    <td>@ 99 Problems, &amp; A Pitch Ain't One</td>
+                                    <td>W 9 - 1</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Aug 3 @ 6:30pm</td>
+                                    <td>vs Grayhawk Ghetto (C League Playoffs)</td>
+                                    <td>W 11 - 9</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Aug 3 @ 8:30pm</td>
+                                    <td>vs Southern Wine &amp; Spirits (C League Playoffs)</td>
+                                    <td>L 6 - 9</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Sept 14 @ 6:30pm</td>
+                                    <td>vs Moisticles</td>
+                                    <td>W 14 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Sept 14 @ 7:30pm</td>
+                                    <td>@ Moisticles</td>
+                                    <td>L 14 - 15</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Sept 21 @ 6:30pm</td>
+                                    <td>@ The Tuff Guys </td>
+                                    <td>L 8 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Sept 21 @ 7:30pm</td>
+                                    <td>vs The Tuff Guys</td>
+                                    <td>W 17 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Sept 28 @ 8:30pm</td>
+                                    <td>vs Fighting Chucks</td>
+                                    <td>W 15 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Sept 28 @ 9:30pm</td>
+                                    <td>@ Fighting Chucks</td>
+                                    <td>L 11 - 22</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 5 @ 6:30pm</td>
+                                    <td>vs Southern Wine &amp; Spirits</td>
+                                    <td>W FFT</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 5 @ 7:30pm</td>
+                                    <td>@ Southern Wine &amp; Spirits</td>
+                                    <td>W FFT</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 12 @ 8:30pm</td>
+                                    <td>@ Son's of Pitches Do's</td>
+                                    <td>L 12 - 13</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 12 @ 9:30pm</td>
+                                    <td>vs Son's of Pitches Do's</td>
+                                    <td>L 11 - 18</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 19 @ 6:30pm</td>
+                                    <td>@ Caught Looking</td>
+                                    <td>L 9 - 14</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 19 @ 7:30pm</td>
+                                    <td>vs Caught Looking</td>
+                                    <td>W 20 - 18</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 26 @ 8:30pm</td>
+                                    <td>@ Los Cacahuetes</td>
+                                    <td>W 21 - 14</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Oct 26 @ 9:30pm</td>
+                                    <td>vs Los Cacahuetes</td>
+                                    <td>W 17 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 11 @ 6:30pm</td>
+                                    <td>vs Phoenix Ale Brewery</td>
+                                    <td>W FFT</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 11 @ 7:30pm</td>
+                                    <td>@ Phoenix Ale Brewery</td>
+                                    <td>W FFT</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 18 @ 8:30pm</td>
+                                    <td>@ Cruisers</td>
+                                    <td>W 14 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Jan 18 @ 9:30pm</td>
+                                    <td>vs Cruisers</td>
+                                    <td>L 18 - 20</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 1 @ 6:30pm</td>
+                                    <td>@ Henkel Thunderbunts</td>
+                                    <td>W 24 - 11</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 1 @ 7:30pm</td>
+                                    <td>vs Henkel Thunderbunts</td>
+                                    <td>W 17 - 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 8 @ 8:30pm</td>
+                                    <td>vs Outlaws</td>
+                                    <td>L 17 - 20</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 8 @ 9:30pm</td>
+                                    <td>@ Outlaws</td>
+                                    <td>W 20 - 8</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 15 @ 8:30pm</td>
+                                    <td>vs Caught Looking</td>
+                                    <td>W 15 - 4</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 15 @ 9:30pm</td>
+                                    <td>@ Caught Looking</td>
+                                    <td>L 12 - 17</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 22 @ 6:30pm</td>
+                                    <td>@ Knuckleballs Deep</td>
+                                    <td>W 9 - 7</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Feb 22 @ 7:30pm</td>
+                                    <td>vs Knuckleballs Deep</td>
+                                    <td>W 13 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Mar 8 @ 8:30pm</td>
+                                    <td>vs Pitched Slapped</td>
+                                    <td>L 8 - 12</td>
+                                </tr>
+                                <tr>
+                                    <td>Wed, Mar 8 @ 9:30pm</td>
+                                    <td>@ Pitched Slapped</td>
+                                    <td>L 12 - 14</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

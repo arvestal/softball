@@ -1,0 +1,187 @@
+/*style.css*/
+/*
+ * Globals
+ */
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+.blog-main {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.tbl-section-meta {
+  margin-bottom: 20px;
+  color: #999;
+}
+
+.tbl-section {
+  margin-bottom: 60px;
+}
+
+.site-footer {
+  padding: 40px 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+}
+
+.site-footer p:last-child {
+  margin-bottom: 0;
+}
+
+.gridcareer {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+    height: 1060px; 
+    
+	}
+
+.gridpostseason {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 840px; 
+    
+	}
+
+.gridplayers10 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 340px; 
+    
+	}
+
+.gridplayers11 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 370px; 
+    
+	}
+
+.gridplayers12 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 400px; 
+    
+	}
+
+.gridplayers13 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 430px; 
+    
+	}
+
+.gridplayers14 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 460px; 
+    
+	}
+
+.gridplayers15 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 490px; 
+    
+	}
+
+.gridplayers16 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 520px; 
+    
+	}
+
+.gridplayers17 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 550px; 
+    
+	}
+
+.gridplayers18 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 580px; 
+    
+	}
+
+.gridplayers19 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 610px; 
+    
+	}
+
+.gridplayers20 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 640px; 
+    
+	}
+
+.gridplayers21 {
+    
+	border: 1px solid rgb(212,212,212);
+
+	width: 1030px;
+	height: 670px; 
+    
+	}
+
+
+
+.grid-align-right {
+    text-align: right;
+}
+
