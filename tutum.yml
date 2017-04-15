@@ -1,5 +1,6 @@
 web:
-  image: arvestal/softball
-  autorestart: always
+  autoredeploy: true
+  image: 'arvestal/softball:latest'
   ports:
-    - "80:8080"
+    - '80:8080'
+  restart: always
