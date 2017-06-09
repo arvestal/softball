@@ -140,7 +140,7 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
             columnDefs: 'columnDefs'
         };
 
-        $scope.gridSpring17Options = {
+        $scope.gridSummer17Options = {
             data: 'summer17Data',
             sortInfo: { fields: ['AVG'], directions: ['desc'] },
             columnDefs: 'columnDefs'
