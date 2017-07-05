@@ -12,9 +12,9 @@ app.use(morgan('dev'));
 // routes
 
 // application
-app.get('*', function(req, res) {
-    res.sendFile(__dirname + '/public/index.html');
-});
+// app.get('*', function(req, res) {
+//     res.sendFile(__dirname + '/public/index.html');
+// });
 
 // listen (start app with node server.js) ======================================
 app.listen(8080);
