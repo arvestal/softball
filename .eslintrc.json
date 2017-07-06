@@ -9,7 +9,8 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "sourceType": "module"
+        "sourceType": "module",
+        "parser": "babel-eslint"
     },
     "rules": {
         "no-const-assign": "warn",
@@ -18,6 +19,7 @@
         "no-unreachable": "warn",
         "no-unused-vars": "warn",
         "constructor-super": "warn",
-        "valid-typeof": "warn"
+        "valid-typeof": "warn",
+        "max-len":"off"
     }
 }
