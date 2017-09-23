@@ -1,7 +1,3 @@
-// main.js
-
-// var Converter = require("csvtojson").Converter;
-
 angular.module('myApp', ['ngGrid', 'ngRoute'])
     .config(function($routeProvider, $locationProvider) {
         $routeProvider
@@ -69,6 +65,10 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
                 templateUrl: 'partials/summer14.html',
                 controller: 'MyCtrl',
             })
+            .when('/coed', {
+                templateUrl: 'partials/coed.html',
+                controller: 'MyCtrl',
+            })
             .otherwise({
                 redirectTo: '/',
             });
@@ -109,6 +109,16 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
         $scope.winter15 = {wins: 7, losses: 7, ties: 0};
         $scope.fall14 = {wins: 7, losses: 5, ties: 2};
         $scope.summer14 = {wins: 8, losses: 5, ties: 1};
+
+        $scope.coed = {wins: 2, losses: 0, ties: 0};
+
+        $http.get('/api/coed')
+        .success(function(data) {
+            $scope.coedData = data;
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
 
         $scope.columnDefs = [{field: 'id', displayName: '#', width: 35, cellClass: 'grid-align-right'}, {field: 'Lastname', displayName: 'Name', width: 150}, {field: 'GP', width: 35, cellClass: 'grid-align-right'}, {field: 'PA', width: 35, cellClass: 'grid-align-right'}, {field: 'AB', width: 35, cellClass: 'grid-align-right'}, {field: 'H', width: 35, cellClass: 'grid-align-right'}, {field: 'S', displayName: '1B', width: 35, cellClass: 'grid-align-right'}, {field: 'D', displayName: '2B', width: 35, cellClass: 'grid-align-right'}, {field: 'T', displayName: '3B', width: 35, cellClass: 'grid-align-right'}, {field: 'HR', width: 35, cellClass: 'grid-align-right'}, {field: 'RBI', width: 40, cellClass: 'grid-align-right'}, {field: 'R', width: 35, cellClass: 'grid-align-right'}, {field: 'TB', width: 35, cellClass: 'grid-align-right'}, {field: 'BB', width: 35, cellClass: 'grid-align-right'}, {field: 'SAC', width: 40, cellClass: 'grid-align-right'}, {field: 'FC', width: 35, cellClass: 'grid-align-right'}, {field: 'K', width: 35, cellClass: 'grid-align-right'}, {field: 'AVG', width: 60, cellFilter: 'number:3'}, {field: 'OBP', width: 60, cellFilter: 'number:3'}, {field: 'QAB', displayName: 'QAB%', width: 60, cellFilter: 'number:3'}, {field: 'SLG', width: 60, cellFilter: 'number:3'}, {field: 'OPS', width: 60, cellFilter: 'number:3'}];
 
@@ -206,5 +216,27 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
             data: 'summer14Data',
             sortInfo: {fields: ['AVG'], directions: ['desc']},
             columnDefs: 'columnDefs',
+        };
+
+
+        $scope.columnDefsNew = [{field: 'Number', displayName: '#', width: 35, cellClass: 'grid-align-right'},
+        {field: 'Last', displayName: 'Name', width: 150}, {field: 'GP', width: 35, cellClass: 'grid-align-right'},
+        {field: 'PA', width: 35, cellClass: 'grid-align-right'}, {field: 'AB', width: 35, cellClass: 'grid-align-right'},
+        {field: 'Hits', displayName: 'H', width: 35, cellClass: 'grid-align-right'},
+        {field: 'Singles', displayName: '1B', width: 35, cellClass: 'grid-align-right'},
+        {field: 'Doubles', displayName: '2B', width: 35, cellClass: 'grid-align-right'},
+        {field: 'Triples', displayName: '3B', width: 35, cellClass: 'grid-align-right'}, {field: 'HR', width: 35, cellClass: 'grid-align-right'},
+        {field: 'RBI', width: 40, cellClass: 'grid-align-right'}, {field: 'Runs', displayName: 'R', width: 35, cellClass: 'grid-align-right'},
+        {field: 'TB', width: 35, cellClass: 'grid-align-right'}, {field: 'BB', width: 35, cellClass: 'grid-align-right'},
+        {field: 'SAC', width: 40, cellClass: 'grid-align-right'}, {field: 'FC', width: 35, cellClass: 'grid-align-right'},
+        {field: 'K', width: 35, cellClass: 'grid-align-right'}, {field: 'AVG', width: 60, cellFilter: 'number:3'},
+        {field: 'OBP', width: 60, cellFilter: 'number:3'}, {field: 'QABP', displayName: 'QAB%', width: 60, cellFilter: 'number:3'},
+        {field: 'SLG', width: 60, cellFilter: 'number:3'}, {field: 'OPS', width: 60, cellFilter: 'number:3'}];
+
+
+        $scope.gridcoedOptions = {
+            data: 'coedData',
+            sortInfo: {fields: ['QABP'], directions: ['desc']},
+            columnDefs: 'columnDefsNew',
         };
     });
