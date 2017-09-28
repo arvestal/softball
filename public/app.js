@@ -102,7 +102,7 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
 
 
         $scope.ps = {wins: 6, losses: 12};
-        $scope.fall17 = {wins: 5, losses: 0, ties: 0};
+        $scope.fall17 = {wins: 6, losses: 0, ties: 0};
         $scope.summer17 = {wins: 8, losses: 6, ties: 0};
         $scope.spring17 = {wins: 7, losses: 8, ties: 1};
         $scope.winter17 = {wins: 9, losses: 5, ties: 0};
