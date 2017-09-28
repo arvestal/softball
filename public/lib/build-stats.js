@@ -18,8 +18,8 @@ function rebuild(json) {
         //   float obp = (float)(hits + walks) / (float)(atBats + walks + sac);
         //   float slg = (float)totalBases / (float)atBats;
         //   float ops = (float)obp + (float)slg;
-
-        const playerName = `${First.substring(0,1)}. ${Last}`;
+        const firstName = First === '' ? '' : `${First.substring(0, 1)}. `;
+        const playerName =  `${firstName}${Last}`;
         let qab = parseInt(QAB, 10) / + parseInt(PA);
         let sacfly = parseInt(SF, 10) + parseInt(SAC, 10);
   
