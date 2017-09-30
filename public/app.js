@@ -117,7 +117,7 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
         $scope.fall14 = {wins: 7, losses: 5, ties: 2};
         $scope.summer14 = {wins: 8, losses: 5, ties: 1};
 
-        $scope.coed = {wins: 2, losses: 0, ties: 0};
+        $scope.coed = {wins: 4, losses: 0, ties: 0};
 
         $http.get('/api/coed')
         .success(function(data) {
