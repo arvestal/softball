@@ -238,7 +238,7 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
 
         $scope.gridcoedOptions = {
             data: 'coedData',
-            sortInfo: {fields: ['QABP'], directions: ['desc']},
+            sortInfo: {fields: ['AVG'], directions: ['desc']},
             columnDefs: 'columnDefsNew',
         };
     });
