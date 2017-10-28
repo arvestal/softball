@@ -13,7 +13,7 @@ const log = new (winston.Logger)({
     }),
     new slack({
       hookUrl: 'https://hooks.slack.com/services/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',
-      username: '@jeeves',
+      username: 'jeeves',
       channel: '#softball',
       formatter: (options) => {
         let message = options.message;
