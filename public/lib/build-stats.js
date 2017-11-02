@@ -3,7 +3,7 @@ const fs = require('fs');
 const headers = ['Number','Last', 'First', 'GP', 'PA', 'AB', 'Hits'
     , 'Singles', 'Doubles', 'Triples', 'HR', 'RBI', 'Runs'
     ,,,'FC',,'BB','K','AVG','OBP','SLG','OPS'
-    ,,,,,,,,,,'XBH','TB','AB_HR','BA_RISP',,,,,,,,,'SAC','SF','LOB','TwoOUTRBI',,'QAB','QABP'];
+    ,,,,,,,,,,,'XBH','TB','AB_HR','BA_RISP',,,,,,,,,'SAC','SF','LOB','TwoOUTRBI',,'QAB','QABP'];
 
 function rebuild(json) {
     let stats = [];
