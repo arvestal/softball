@@ -32,7 +32,7 @@ router.get('/fall17', (request, response) => {
 
 router.get('/standings', (request, response) => {
   const results = {
-    coed: {wins: 12, losses: 1, ties: 1},
+    coed: {wins: 14, losses: 1, ties: 1},
     postseason: {wins: 8, losses: 12},
     fall17: {wins: 10, losses: 4, ties: 0},
     summer17: {wins: 8, losses: 6, ties: 0},
