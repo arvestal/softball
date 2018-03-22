@@ -34,7 +34,16 @@ router.get('/winter18', (request, response) => {
   const csvFile = __dirname + "/18winter.csv";
   stats.convertToJson(csvFile)
   .then((data) => {
-      //console.log(data);
+      // console.log(data);
+      response.json(data);
+  });
+});
+
+router.get('/spring18', (request, response) => {
+  const csvFile = __dirname + "/18spring.csv";
+  stats.convertToJson(csvFile)
+  .then((data) => {
+      console.log(data);
       response.json(data);
   });
 });
@@ -42,7 +51,8 @@ router.get('/winter18', (request, response) => {
 router.get('/standings', (request, response) => {
   const results = {
     coed: {wins: 14, losses: 1, ties: 1},
-    postseason: {wins: 8, losses: 12},
+    postseason: {wins: 11, losses: 12},
+    spring18: {wins: 0, losses: 0, ties: 0},
     winter18: {wins: 9, losses: 1, ties: 0},
     fall17: {wins: 10, losses: 4, ties: 0},
     summer17: {wins: 8, losses: 6, ties: 0},
