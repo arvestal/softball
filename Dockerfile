@@ -9,7 +9,7 @@ ADD . /home/app
 
 # Install dependencies
 RUN \
-    npm update
+    npm install
 
 # Tell Docker we are going to use this port
 EXPOSE 8080
