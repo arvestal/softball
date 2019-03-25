@@ -66,10 +66,20 @@ router.get('/fall18', (request, response) => {
   });
 });
 
+router.get('/spring19', (request, response) => {
+  const csvFile = __dirname + "/19spring.csv";
+  stats.convertToJson(csvFile)
+  .then((data) => {
+      //console.log(data);
+      response.json(data);
+  });
+});
+
 router.get('/standings', (request, response) => {
   const results = {
     coed: {wins: 14, losses: 1, ties: 1},
     postseason: {wins: 15, losses: 13},
+    spring19: {wins: 2, losses: 0, ties:0},
     fall18: {wins: 5, losses: 5, ties:0},
     summer18: {wins: 8, losses: 3, ties: 1},
     spring18: {wins: 8, losses: 6, ties: 0},
