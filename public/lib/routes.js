@@ -79,7 +79,7 @@ router.get('/standings', (request, response) => {
   const results = {
     coed: {wins: 14, losses: 1, ties: 1},
     postseason: {wins: 15, losses: 14},
-    spring19: {wins: 8, losses: 2, ties:0},
+    spring19: {wins: 9, losses: 3, ties:0},
     fall18: {wins: 5, losses: 5, ties:0},
     summer18: {wins: 8, losses: 3, ties: 1},
     spring18: {wins: 8, losses: 6, ties: 0},
