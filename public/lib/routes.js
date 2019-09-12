@@ -66,6 +66,15 @@ router.get("/spring19", (request, response) => {
   });
 });
 
+router.get("/fall19", (request, response) => {
+  const csvFile = __dirname + "/19fall.csv";
+  stats.convertToJson(csvFile).then(data => {
+    //console.log(data);
+    response.json(data);
+  });
+});
+
+/*
 router.get("/winter19", (request, response) => {
   const csvFile = __dirname + "/19winter.csv";
   stats.convertToJson(csvFile).then(data => {
@@ -73,12 +82,14 @@ router.get("/winter19", (request, response) => {
     response.json(data);
   });
 });
+*/
 
 router.get("/standings", (request, response) => {
   const results = {
     coed: { wins: 14, losses: 1, ties: 1 },
-    postseason: { wins: 15, losses: 14 },
-    winter19: { wins: 0, losses: 0, ties: 0 },
+    postseason: { wins: 16, losses: 15 },
+    /*winter19: { wins: 0, losses: 0, ties: 0 },*/
+    fall19: { wins: 2, losses: 0, ties: 0 },
     spring19: { wins: 10, losses: 3, ties: 1 },
     fall18: { wins: 5, losses: 5, ties: 0 },
     summer18: { wins: 8, losses: 3, ties: 1 },
