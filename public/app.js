@@ -8,11 +8,11 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
             .when('/postseason', {
                 templateUrl: 'partials/postseason.html',
                 controller: 'MyCtrl',
-            })/*
+            })
             .when('/winter20', {
                 templateUrl: 'partials/winter20.html',
                 controller: 'MyCtrl',
-            })*/
+            })
             .when('/fall19', {
                 templateUrl: 'partials/fall19.html',
                 controller: 'MyCtrl',
@@ -136,10 +136,9 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
             .success(data => $scope.fall19Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        /* 
-     $http.get('/api/winter19')
-         .success(data => $scope.winter19Data = data)
-         .error(data => console.log(`Error: ${data}`));*/
+        $http.get('/api/stats?season=20winter')
+            .success(data => $scope.winter20Data = data)
+            .error(data => console.log(`Error: ${data}`));
 
 
         $scope.summer17Data = [{ id: 1, Lastname: 'Micco', GP: 6, PA: 17, AB: 16, H: 8, QAB: '0.4117647', S: 7, D: 1, T: 0, HR: 0, RBI: 7, R: 3, FC: 1, BB: 0, K: 0, SAC: 1, AVG: '0.5', OBP: '0.4705882', SLG: '0.5625', OPS: '1.033088', TB: 9 }, { id: 2, Lastname: 'Beresford', GP: 14, PA: 50, AB: 49, H: 27, QAB: '0.54', S: 20, D: 5, T: 0, HR: 2, RBI: 15, R: 23, FC: 4, BB: 0, K: 0, SAC: 1, AVG: '0.5510204', OBP: '0.54', SLG: '0.7755102', OPS: '1.31551', TB: 38 }, { id: 3, Lastname: 'Dyer', GP: 14, PA: 48, AB: 43, H: 30, QAB: '0.7708333', S: 18, D: 7, T: 3, HR: 2, RBI: 17, R: 22, FC: 2, BB: 5, K: 0, SAC: 0, AVG: '0.6976744', OBP: '0.7291667', SLG: '1.139535', OPS: '1.868701', TB: 49 }, { id: 6, Lastname: 'Brendo', GP: 9, PA: 27, AB: 27, H: 12, QAB: '0.4444444', S: 4, D: 7, T: 1, HR: 0, RBI: 5, R: 11, FC: 0, BB: 0, K: 0, SAC: 0, AVG: '0.4444444', OBP: '0.4444444', SLG: '0.7777778', OPS: '1.222222', TB: 21 }, { id: 15, Lastname: 'Calvert', GP: 12, PA: 41, AB: 37, H: 26, QAB: '0.7560976', S: 21, D: 3, T: 2, HR: 0, RBI: 14, R: 20, FC: 0, BB: 3, K: 1, SAC: 1, AVG: '0.7027027', OBP: '0.7073171', SLG: '0.8918919', OPS: '1.599209', TB: 33 }, { id: 16, Lastname: 'Vestal', GP: 12, PA: 41, AB: 40, H: 28, QAB: '0.7317073', S: 17, D: 4, T: 6, HR: 1, RBI: 19, R: 14, FC: 3, BB: 1, K: 2, SAC: 0, AVG: '0.7', OBP: '0.7073171', SLG: '1.175', OPS: '1.882317', TB: 47 }, { id: 19, Lastname: 'DeMichele', GP: 12, PA: 41, AB: 40, H: 27, QAB: '0.6829268', S: 16, D: 7, T: 1, HR: 3, RBI: 18, R: 18, FC: 2, BB: 1, K: 0, SAC: 0, AVG: '0.675', OBP: '0.6829268', SLG: '1.125', OPS: '1.807927', TB: 45 }, { id: 23, Lastname: 'Long', GP: 14, PA: 46, AB: 44, H: 27, QAB: '0.6956522', S: 19, D: 8, T: 0, HR: 0, RBI: 18, R: 16, FC: 1, BB: 1, K: 0, SAC: 1, AVG: '0.6136364', OBP: '0.6086956', SLG: '0.7954546', OPS: '1.40415', TB: 35 }, { id: 24, Lastname: 'Ireton', GP: 14, PA: 47, AB: 42, H: 25, QAB: '0.6382979', S: 14, D: 6, T: 1, HR: 4, RBI: 29, R: 21, FC: 2, BB: 1, K: 1, SAC: 4, AVG: '0.5952381', OBP: '0.5531915', SLG: '1.071429', OPS: '1.62462', TB: 45 }, { id: 25, Lastname: 'Yuk', GP: 14, PA: 45, AB: 43, H: 16, QAB: '0.4', S: 12, D: 3, T: 1, HR: 0, RBI: 7, R: 10, FC: 5, BB: 1, K: 3, SAC: 1, AVG: '0.372093', OBP: '0.3777778', SLG: '0.4883721', OPS: '0.8661499', TB: 21 }, { id: 28, Lastname: 'Schrafel', GP: 4, PA: 12, AB: 10, H: 3, QAB: '0.5', S: 2, D: 1, T: 0, HR: 0, RBI: 4, R: 4, FC: 1, BB: 1, K: 1, SAC: 1, AVG: '0.3', OBP: '0.3333333', SLG: '0.4', OPS: '0.7333333', TB: 4 }, { id: 67, Lastname: 'Dan', GP: 2, PA: 7, AB: 5, H: 3, QAB: '0.7142857', S: 1, D: 2, T: 0, HR: 0, RBI: 5, R: 2, FC: 0, BB: 2, K: 0, SAC: 0, AVG: '0.6', OBP: '0.7142857', SLG: '1', OPS: '1.714286', TB: 5 }, { id: 80, Lastname: 'Bryce', GP: 2, PA: 6, AB: 6, H: 4, QAB: '0.6666667', S: 3, D: 0, T: 1, HR: 0, RBI: 4, R: 3, FC: 0, BB: 0, K: 0, SAC: 0, AVG: '0.6666667', OBP: '0.6666667', SLG: '1', OPS: '1.666667', TB: 6 }, { id: 83, Lastname: 'Polonec', GP: 14, PA: 48, AB: 43, H: 19, QAB: '0.5', S: 14, D: 4, T: 1, HR: 0, RBI: 18, R: 14, FC: 3, BB: 2, K: 3, SAC: 3, AVG: '0.4418605', OBP: '0.4375', SLG: '0.5813953', OPS: '1.018895', TB: 25 }, { id: 68, Lastname: 'Marcus', GP: 2, PA: 6, AB: 5, H: 2, QAB: '0.5', S: 2, D: 0, T: 0, HR: 0, RBI: 1, R: 1, FC: 0, BB: 0, K: 0, SAC: 1, AVG: '0.4', OBP: '0.3333333', SLG: '0.4', OPS: '0.7333333', TB: 2 }];
@@ -162,10 +161,10 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
                     spring17, winter17, fall16, summer16,
                     spring16, winter16, fall15, summer15,
                     spring15, winter15, fall14, summer14,
-                    coed, winter18, spring18, summer18, fall18, spring19, fall19 } = data;
+                    coed, winter18, spring18, summer18, fall18, spring19, fall19, winter20 } = data;
 
                 $scope.ps = postseason;
-                /*$scope.winter19 = winter19;*/
+                $scope.winter20 = winter20;
                 $scope.fall19 = fall19;
                 $scope.spring19 = spring19;
                 $scope.fall18 = fall18;
@@ -209,7 +208,7 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
         $scope.gridCareerOptions = gridOptionsOld('careerData');
         $scope.gridPostSeasonOptions = gridOptions('postSeasonData');
 
-        /*$scope.gridWinter19Options = gridOptions('winter19Data');*/
+        $scope.gridWinter20Options = gridOptions('winter20Data');
         $scope.gridFall19Options = gridOptions('fall19Data');
         $scope.gridSpring19Options = gridOptions('spring19Data');
         $scope.gridFall18Options = gridOptions('fall18Data');
