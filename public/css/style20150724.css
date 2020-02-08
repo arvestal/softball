@@ -57,8 +57,8 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
-    height: 910px; 
+	width: 970px;
+	height: 670px; 
     
 	}
 
@@ -66,8 +66,8 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
-	height: 880px; 
+	width: 970px;
+	height: 640px; 
     
 	}
 
@@ -75,7 +75,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 340px; 
     
 	}
@@ -84,7 +84,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 370px; 
     
 	}
@@ -93,7 +93,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 400px; 
     
 	}
@@ -102,7 +102,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 430px; 
     
 	}
@@ -111,7 +111,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 460px; 
     
 	}
@@ -120,7 +120,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 490px; 
     
 	}
@@ -129,7 +129,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 520px; 
     
 	}
@@ -138,7 +138,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 550px; 
     
 	}
@@ -147,7 +147,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 580px; 
     
 	}
@@ -156,7 +156,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 610px; 
     
 	}
@@ -165,7 +165,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 640px; 
     
 	}
@@ -174,7 +174,7 @@ h6, .h6 {
     
 	border: 1px solid rgb(212,212,212);
 
-	width: 1030px;
+	width: 970px;
 	height: 670px; 
     
 	}
@@ -185,3 +185,110 @@ h6, .h6 {
     text-align: right;
 }
 
+.corner-ribbon{
+  width: 200px;
+  background: #e43;
+  position: absolute;
+  top: 25px;
+  left: -50px;
+  text-align: center;
+  line-height: 50px;
+  letter-spacing: 1px;
+  color: #f0f0f0;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+/* Custom styles */
+
+.corner-ribbon.sticky{
+  position: fixed;
+}
+
+.corner-ribbon.shadow{
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+}
+
+/* Different positions */
+
+.corner-ribbon.top-1{
+  top: 53px;
+  right: -50px;
+  left: auto;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+}
+.corner-ribbon.top-2{
+  top: 53px;
+  right: -110px;
+  left: auto;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+}
+.corner-ribbon.top-3{
+  top: 53px;
+  right: -170px;
+  left: auto;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+}
+.corner-ribbon.top-4{
+  top: 53px;
+  right: -230px;
+  left: auto;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+}
+.corner-ribbon.top-5{
+  top: 53px;
+  right: -290px;
+  left: auto;
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+}
+
+.corner-ribbon.top-left{
+  top: 25px;
+  left: -50px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.corner-ribbon.top-right{
+  top: 25px;
+  right: -50px;
+  left: auto;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-left{
+  top: auto;
+  bottom: 25px;
+  left: -50px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.corner-ribbon.bottom-right{
+  top: auto;
+  right: -50px;
+  bottom: 25px;
+  left: auto;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+
+/* Colors */
+
+.corner-ribbon.white{background: #f0f0f0; color: #555;}
+.corner-ribbon.black{background: #333;}
+.corner-ribbon.grey{background: #999;}
+.corner-ribbon.blue{background: #39d;}
+.corner-ribbon.green{background: #2c7;}
+.corner-ribbon.turquoise{background: #1b9;}
+.corner-ribbon.purple{background: #95b;}
+.corner-ribbon.red{background: #e43;}
+.corner-ribbon.orange{background: #e82;}
+.corner-ribbon.yellow{background: #ec0;}
