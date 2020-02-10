@@ -126,7 +126,7 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
 
         $http.get('/api/stats?season=postseason')
             .success(data => {
-                const filter = data.filter(item => [1,2,3,6,12,15,16,19,23,24,25,28,63,46,47,48,53,70,80,83,110].includes(+item.id))
+                const filter = data.filter(item => [1,2,3,6,12,15,16,19,23,24,25,28,40,46,47,48,53,70,80,83,110].includes(+item.id))
                 $scope.postSeasonData = filter;
             })
             .error(data => console.log(`Error: ${data}`));
@@ -211,7 +211,7 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
             .success(data => $scope.fall14Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=14summer&old=true')
+        $http.get('/api/stats?season=14summer')
             .success(data => $scope.summer14Data = data)
             .error(data => console.log(`Error: ${data}`));
         
