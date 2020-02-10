@@ -121,12 +121,15 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
     .controller('MyCtrl', function ($scope, $http) {
         
         $http.get('/api/career')
-            .success(data => $scope.careerData = data)
+            .success(data => {
+                const filter = data.filter(item => [1,2,3,6,10,12,15,16,19,23,24,25,28,36,37,40,43,46,47,48,50,53,59,67,70,80,83,110].includes(+item.id))
+                $scope.careerData = filter;
+            })
             .error(data => console.log(`Error: ${data}`));
 
         $http.get('/api/stats?season=postseason')
             .success(data => {
-                const filter = data.filter(item => [1,2,3,6,12,15,16,19,23,24,25,28,40,46,47,48,53,70,80,83,110].includes(+item.id))
+                const filter = data.filter(item => [1,2,3,6,10,12,15,16,19,23,24,25,28,40,43,46,47,48,50,53,70,80,83,110].includes(+item.id))
                 $scope.postSeasonData = filter;
             })
             .error(data => console.log(`Error: ${data}`));
@@ -163,51 +166,51 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
             .success(data => $scope.winter20Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=17summer&old=true')
+        $http.get('/api/stats?season=17summer')
             .success(data => $scope.summer17Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=17spring&old=true')
+        $http.get('/api/stats?season=17spring')
             .success(data => $scope.spring17Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=17winter&old=true')
+        $http.get('/api/stats?season=17winter')
             .success(data => $scope.winter17Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=16fall&old=true')
+        $http.get('/api/stats?season=16fall')
             .success(data => $scope.fall16Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=16summer&old=true')
+        $http.get('/api/stats?season=16summer')
             .success(data => $scope.summer16Data = data)
             .error(data => console.log(`Error: ${data}`));
         
-        $http.get('/api/stats?season=16spring&old=true')
+        $http.get('/api/stats?season=16spring')
             .success(data => $scope.spring16Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=16winter&old=true')
+        $http.get('/api/stats?season=16winter')
             .success(data => $scope.winter16Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=15fall&old=true')
+        $http.get('/api/stats?season=15fall')
             .success(data => $scope.fall15Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=15summer&old=true')
+        $http.get('/api/stats?season=15summer')
             .success(data => $scope.summer15Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=15spring&old=true')
+        $http.get('/api/stats?season=15spring')
             .success(data => $scope.spring15Data = data)
             .error(data => console.log(`Error: ${data}`));
         
-        $http.get('/api/stats?season=15winter&old=true')
+        $http.get('/api/stats?season=15winter')
             .success(data => $scope.winter15Data = data)
             .error(data => console.log(`Error: ${data}`));
 
-        $http.get('/api/stats?season=14fall&old=true')
+        $http.get('/api/stats?season=14fall')
             .success(data => $scope.fall14Data = data)
             .error(data => console.log(`Error: ${data}`));
 
