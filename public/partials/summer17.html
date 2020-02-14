@@ -1,96 +1,33 @@
 <div class="tbl-section">
-    <p class="tbl-section-meta">Summer 2017: {{ summer17.wins }} &minus; {{ summer17.losses }} &minus; {{ summer17.ties }}</p>
+    <p class="tbl-section-meta">{{summer17.season}} {{summer17.year}}: {{ summer17.wins }} &minus; {{ summer17.losses }} &minus; {{ summer17.ties }}</p>
     <div class="gridplayers15" ng-grid="gridSummer17Options"></div>
 </div>
 
 <div class="container">
-    <div class="row ">
-        <div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-            <div>
-                <div>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tbody>
-                                <tr>
-                                    <td>Wed, June 7 @ 8:30pm</td>
-                                    <td>@ Manday</td>
-                                    <td>L 1 - 8</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 7 @ 9:30pm</td>
-                                    <td>vs Manday</td>
-                                    <td>L 7 - 12</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 14 @ 8:30pm</td>
-                                    <td>vs Outlaws</td>
-                                    <td>W 18 - 10</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 14 @ 9:30pm</td>
-                                    <td>@ Outlaws</td>
-                                    <td>W 18 - 17</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 21 @ 6:30pm</td>
-                                    <td>@ 99 Problems</td>
-                                    <td>W 14 - 3</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 21 @ 7:30pm</td>
-                                    <td>vs 99 Problems</td>
-                                    <td>L 9 - 11</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 28 @ 8:30pm</td>
-                                    <td>vs Southern Wine &amp; Spirits</td>
-                                    <td>L 12 - 13</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 28 @ 9:30pm</td>
-                                    <td>@ Southern Wine &amp; Spirits</td>
-                                    <td>W 12 - 5</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 5 @ 8:30pm</td>
-                                    <td>vs Cruisers</td>
-                                    <td>L 12 - 16/td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 5 @ 9:30pm</td>
-                                    <td>@ Cruisers</td>
-                                    <td>W 22 - 7</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 12 @ 6:30pm</td>
-                                    <td>@ Thirsty Camels</td>
-                                    <td>L 8 - 14</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 12 @ 7:30pm</td>
-                                    <td>vs Thirsty Camels</td>
-                                    <td>W 11 - 5</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 19 @ 6:30pm</td>
-                                    <td>@ Caught Looking</td>
-                                    <td>W 14 - 2</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 19 @ 7:30pm</td>
-                                    <td>vs Caught Looking</td>
-                                    <td>W 24 - 5</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 26 @ 7:30pm</td>
-                                    <td>@ Hey Cuz (B League Playoffs)</td>
-                                    <td>L 13 -14</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="row ">
+		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+				<div>
+						<div>
+								<div class="table-responsive">
+										<table class="table table-hover">
+												<tbody>
+													<tr ng-repeat="item in summer17.schedule">
+														<td>{{item.time}}</td>
+														<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+														<td>{{ 
+															item.runs > item.oppRuns ? 'W' 
+																: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+																: (item.runs === item.oppRuns) ? 'T'
+																: 'L' }} 
+												
+																{{item.runs}} - {{item.oppRuns }}
+														</td>
+													</tr>
+												</tbody>
+										</table>
+								</div>
+						</div>
+				</div>
+		</div>
+	</div>
 </div>

@@ -1,5 +1,5 @@
 <div class="tbl-section">
-	<p class="tbl-section-meta">Summer 2014: {{ summer14.wins }} &minus; {{ summer14.losses }} &minus; {{ summer14.ties }}</p>
+	<p class="tbl-section-meta">{{summer14.season}} {{summer14.year}}: {{ summer14.wins }} &minus; {{ summer14.losses }} &minus; {{ summer14.ties }}</p>
 	<div class="gridplayers20" ng-grid="gridSummer14Options"></div>
 </div>
 
@@ -7,91 +7,28 @@
 <div class="container">
 	<div class="row ">
 		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-			<div>
 				<div>
-					<div class="table-responsive">
-						<table class="table table-hover">
-							<tbody>
-								<tr>
-									<td>Wed, June 11 @ 6:30pm</td>
-									<td>vs 99 Problems</td>
-									<td>W 9 - 8</td>
-								</tr>
-								<tr>
-									<td>Wed, June 11 @ 7:30pm</td>
-									<td>@ 99 Problems</td>
-									<td>L 12 - 13</td>
-								</tr>
-								<tr>
-									<td>Wed, June 18 @ 8:30pm</td>
-									<td>vs MMLL Stars</td>
-									<td>W 15 - 13</td>
-								</tr>
-								<tr>
-									<td>Wed, June 18 @ 9:30pm</td>
-									<td>@ MMLL Stars</td>
-									<td>W 20 - 8</td>
-								</tr>
-								<tr>
-									<td>Wed, June 25 @ 8:30pm</td>
-									<td>vs Sons of Pitches</td>
-									<td>T 5 - 5</td>
-								</tr>
-								<tr>
-									<td>Wed, June 25 @ 9:30pm</td>
-									<td>@ Sons of Pitches</td>
-									<td>W 17 - 12</td>
-								</tr>
-								<tr>
-									<td>Wed, July 2 @ 6:30pm</td>
-									<td>@ Scared Hitless</td>
-									<td>W 12 - 4</td>
-								</tr>
-								<tr>
-									<td>Wed, July 2 @ 7:30pm</td>
-									<td>vs Scared Hitless</td>
-									<td>W 20 - 3</td>
-								</tr>
-								<tr>
-									<td>Wed, July 9 @ 8:30pm</td>
-									<td>vs NOTW</td>
-									<td>L 4 - 25</td>
-								</tr>
-								<tr>
-									<td>Wed, July 9 @ 9:30pm</td>
-									<td>@ NOTW</td>
-									<td>L 7 - 15</td>
-								</tr>
-								<tr>
-									<td>Wed, July 16 @ 8:30pm</td>
-									<td>@ Discount Tire</td>
-									<td>W 14 - 12</td>
-								</tr>
-								<tr>
-									<td>Wed, July 16 @ 9:30pm</td>
-									<td>vs Discount Tire</td>
-									<td>W 10 - 9</td>
-								</tr>
-								<tr>
-									<td>Wed, July 23 @ 6:30pm</td>
-									<td>@ Whiskey Tango Foxtrot</td>
-									<td>L 3 - 4</td>
-								</tr>
-								<tr>
-									<td>Wed, July 23 @ 7:30pm</td>
-									<td>vs Whiskey Tango Foxtrot</td>
-									<td>L 1 - 16</td>
-								</tr>
-								<tr>
-									<td>Wed, July 30 @ 7:30pm</td>
-									<td>@ Scared Hitless (D League Playoffs)</td>
-									<td>L 11 - 13</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+						<div>
+								<div class="table-responsive">
+										<table class="table table-hover">
+												<tbody>
+													<tr ng-repeat="item in summer14.schedule">
+														<td>{{item.time}}</td>
+														<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+														<td>{{ 
+															item.runs > item.oppRuns ? 'W' 
+																: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+																: (item.runs === item.oppRuns) ? 'T'
+																: 'L' }} 
+												
+																{{item.runs}} - {{item.oppRuns }}
+														</td>
+													</tr>
+												</tbody>
+										</table>
+								</div>
+						</div>
 				</div>
-			</div>
 		</div>
-	 </div>
+	</div>
 </div>

@@ -1,96 +1,33 @@
 <div class="tbl-section">
-	<p class="tbl-section-meta">Fall 2015: {{ fall15.wins }} &minus; {{ fall15.losses }} &minus; {{ fall15.ties }}</p>
+	<p class="tbl-section-meta">{{fall15.season}} {{fall15.year}}: {{ fall15.wins }} &minus; {{ fall15.losses }} &minus; {{ fall15.ties }}</p>
 	<div class="gridplayers14" ng-grid="gridFall15Options"></div>
 </div>
 
 <div class="container">
 	<div class="row ">
 		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-			<div>
 				<div>
-					<div class="table-responsive">
-						<table class="table table-hover">
-							<tbody>
-								<tr>
-									<td>Mon, Sept 21 @ 8:30pm</td>
-									<td>vs Pitches Be Crazy</td>
-									<td>W 10 - 4</td>
-								</tr>
-								<tr>
-									<td>Mon, Sept 21 @ 9:30pm</td>
-									<td>@ Pitches Be Crazy</td>
-									<td>W 30 - 14</td>
-								</tr>
-								<tr>
-									<td>Mon, Sept 28 @ 6:30pm</td>
-									<td>@ We'll Hit That</td>
-									<td>L 11 - 12</td>
-								</tr>
-								<tr>
-									<td>Mon, Sept 28 @ 7:30pm</td>
-									<td>vs We'll Hit That</td>
-									<td>W 18 - 6</td>
-								</tr>
-								<tr>
-									<td>Mon, Oct 5 @ 8:30pm</td>
-									<td>Zog Digital</td>
-									<td>W 12 - 7</td>
-								</tr>
-								<tr>
-									<td>Mon, Oct 5 @ 9:30pm</td>
-									<td>Zog Digital</td>
-									<td>W 20 - 9</td>
-								</tr>
-								<tr>
-									<td>Mon, Oct 12 @ 6:30pm</td>
-									<td>vs Tap House Kitchen</td>
-									<td>W 23 - 7</td>
-								</tr>
-								<tr>
-									<td>Mon, Oct 12 @ 7:30pm</td>
-									<td>@ Tap House Kitchen</td>
-									<td>W 21 - 7</td>
-								</tr>
-								<tr>
-									<td>Mon, Oct 19 @ 6:30pm</td>
-									<td>vs Team Antonio</td>
-									<td>W 11 - 7</td>
-								</tr>
-								<tr>
-									<td>Mon, Oct 19 @ 7:30pm</td>
-									<td>@ Team Antonio</td>
-									<td>W 17 - 7</td>
-								</tr>
-								<tr>
-									<td>Mon, Oct 26 @ 6:30pm</td>
-									<td>vs Son's of Pitches</td>
-									<td>W FFT</td>
-								</tr>
-								<tr>
-									<td>Mon, Oct 26 @ 7:30pm</td>
-									<td>@ Son's of Pitches</td>
-									<td>W FFT</td>
-								</tr>
-								<tr>
-									<td>Mon, Nov 2 @ 8:30pm</td>
-									<td>@ Bulleit</td>
-									<td>L 13 - 22</td>
-								</tr>
-								<tr>
-									<td>Mon, Nov 2 @ 9:30pm</td>
-									<td>vs Bulleit</td>
-									<td>W 13 - 10</td>
-								</tr>
-								<tr>
-									<td>Mon, Nov 9 @ 6:30pm</td>
-									<td>@ Kekambas (C League Playoffs)</td>
-									<td>L 9 - 14</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+						<div>
+								<div class="table-responsive">
+										<table class="table table-hover">
+												<tbody>
+													<tr ng-repeat="item in fall15.schedule">
+														<td>{{item.time}}</td>
+														<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+														<td>{{ 
+															item.runs > item.oppRuns ? 'W' 
+																: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+																: (item.runs === item.oppRuns) ? 'T'
+																: 'L' }} 
+												
+																{{item.runs}} - {{item.oppRuns }}
+														</td>
+													</tr>
+												</tbody>
+										</table>
+								</div>
+						</div>
 				</div>
-			</div>
 		</div>
-	 </div>
+	</div>
 </div>

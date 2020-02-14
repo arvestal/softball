@@ -1,77 +1,28 @@
 <div class="tbl-section">
-	<p class="tbl-section-meta">Winter 2020: {{ winter20.wins }} &minus; {{ winter20.losses }} &minus;
-		{{ winter19.ties }}</p>
+	<p class="tbl-section-meta">{{winter20.season}} {{winter20.year}}: {{ winter20.wins }} &minus; {{ winter20.losses }} &minus;
+		{{ winter20.ties }}</p>
 	<div class="gridplayers16" ng-grid="gridWinter20Options"></div>
 </div>
 
 <div class="container">
-
 	<div class="row ">
 		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 			<div>
-				<div>
+        <div>
 					<div class="table-responsive">
 						<table class="table table-hover">
 							<tbody>
-								<tr>
-									<td>Wed, Jan 15 @ 6:30pm</td>
-									<td>@ We Are Twelve</td>
-									<td>W FFT</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 15 @ 7:30pm</td>
-									<td>vs Arena Sports Grill</td>
-									<td>W 16 - 13</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 22 @ 6:30pm</td>
-									<td>@ Hey Cuz</td>
-									<td>W 11 - 5</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 22 @ 6:30pm</td>
-									<td>vs Arena Sports Grill</td>
-									<td>W 13 - 3</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 29 @ 8:30pm</td>
-									<td>vs We Are Twelve</td>
-									<td>W FFT</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 29 @ 9:30pm</td>
-									<td>@ We Are Twelve</td>
-									<td>W FFT</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 5 @ 8:30pm</td>
-									<td>@ Hey Cuz</td>
-									<td>L 15 - 16</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 5 @ 9:30pm</td>
-									<td>vs Arena Sports Grill</td>
-									<td>L 6 - 15</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 12 @ 6:30pm</td>
-									<td>@ Arena Sports Grill</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 12 @ 7:30pm</td>
-									<td>vs Hey Cuz</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 19 @ 6:30pm</td>
-									<td>vs Hey Cuz</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 19 @ 8:30pm</td>
-									<td>@ Arena Sports Grill</td>
-									<td></td>
+								<tr ng-repeat="item in winter20.schedule">
+									<td>{{item.time}}</td>
+									<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+									<td>{{ 
+											item.runs > item.oppRuns ? 'W' 
+													: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+													: (item.runs === item.oppRuns) ? 'T'
+													: 'L' }} 
+					
+													{{item.runs}} - {{item.oppRuns }}
+									</td>
 								</tr>
 							</tbody>
 						</table>

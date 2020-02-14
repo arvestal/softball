@@ -1,91 +1,27 @@
 <div class="tbl-section">
-	<p class="tbl-section-meta">Winter 2015: {{ winter15.wins }} &minus; {{ winter15.losses }} &minus; {{ winter15.ties }}</p>
+	<p class="tbl-section-meta">{{winter15.season}} {{winter15.year}}: {{ winter15.wins }} &minus; {{ winter15.losses }} &minus; {{ winter15.ties }}</p>
 	<div class="gridplayers13" ng-grid="gridWinter15Options"></div>
 </div>
 
 <div class="container">
-
 	<div class="row ">
 		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 			<div>
-				<div>
+        <div>
 					<div class="table-responsive">
 						<table class="table table-hover">
 							<tbody>
-								<tr>
-									<td>Wed, Jan 7 @ 8:30pm</td>
-									<td>vs AXP</td>
-									<td>L 9 - 10</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 7 @ 9:30pm</td>
-									<td>@ AXP</td>
-									<td>W 19 - 11</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 14 @ 8:30pm</td>
-									<td>vs Who's on First</td>
-									<td>W 8 - 7</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 14 @ 9:30pm</td>
-									<td>@ Who's on First</td>
-									<td>L 4 - 9</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 21 @ 6:30pm</td>
-									<td>@ Phoenix Ale Brewery</td>
-									<td>W 12 - 10</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 21 @ 7:30pm</td>
-									<td>vs Phoenix Ale Brewery</td>
-									<td>L 8 - 10</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 28 @ 6:30pm</td>
-									<td>vs Waternuts All Year Round</td>
-									<td>L 16 - 18</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 28 @ 7:30pm</td>
-									<td>@ Waternuts All Year Round</td>
-									<td>L 7 - 10</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 4 @ 8:30pm</td>
-									<td>vs Outlaws</td>
-									<td>L 10 - 22</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 4 @ 9:30pm</td>
-									<td>@ Outlaws</td>
-									<td>W 16 - 12</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 11 @ 6:30pm</td>
-									<td>vs NOTW</td>
-									<td>W 21 - 1</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 11 @ 7:30pm</td>
-									<td>@ NOTW</td>
-									<td>W 14 - 9</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 18 @ 6:30pm</td>
-									<td>vs Old Dogs</td>
-									<td>W 13 - 12</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 18 @ 7:30pm</td>
-									<td>@ Old Dogs</td>
-									<td>L 15 - 18</td>
-								</tr>
-								<tr>
-									<td>Wed, July 29 @ 6:30pm</td>
-									<td>@ Waternuts All Year Round (C League Playoffs)</td>
-									<td>L 3 - 13</td>
+								<tr ng-repeat="item in winter15.schedule">
+									<td>{{item.time}}</td>
+									<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+									<td>{{ 
+											item.runs > item.oppRuns ? 'W' 
+													: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+													: (item.runs === item.oppRuns) ? 'T'
+													: 'L' }} 
+					
+													{{item.runs}} - {{item.oppRuns }}
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -95,4 +31,3 @@
 		</div>
 	</div>
 </div>
-

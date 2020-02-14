@@ -143,7 +143,7 @@ router.get("/standings", (request, response) => {
       losses: 3,
       ties: 1,
       schedule: [{time: 'Wed, Mar 20 @ 6:30pm', team: 'Hey Cuz', runs: 18, oppRuns: 17, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B'}
-        , {time: 'Wed, Mar 20 @ 6:30pm', team: 'Hey Cuz', runs: 34, oppRuns: 7, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
+        , {time: 'Wed, Mar 20 @ 7:30pm', team: 'Hey Cuz', runs: 34, oppRuns: 7, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Mar 27 @ 8:30pm', team: 'Fat Elgerts', runs: 21, oppRuns: 7, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Mar 27 @ 9:30pm', team: 'Misfits', runs: 13, oppRuns: 3, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Apr 3 @ 6:30pm', team: 'Arena Sports Grill', runs: 13, oppRuns: 15, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
@@ -220,7 +220,7 @@ router.get("/standings", (request, response) => {
         , {time: 'Wed, Apr 25 @ 7:30pm', team: 'Manday', runs: 16, oppRuns: 7, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Apr 25 @ 8:30pm', team: 'Thirsty Camels', runs: 12, oppRuns: 14, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, May 2 @ 7:30pm', team: 'Arena Sports Grill', runs: 16, oppRuns: 8, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
-        , {time: 'Wed, May 2 @ 7:30pm', team: 'Hey Cuz', runs: 9, oppRuns: 15, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
+        , {time: 'Wed, May 2 @ 8:30pm', team: 'Hey Cuz', runs: 9, oppRuns: 15, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, May 9 @ 6:30pm', team: 'Manday', runs: 4, oppRuns: 3, location: 'home', park: 'Thompson Peak', gametype: 'Postseason', level: 'B' }
         , {time: 'Wed, May 9 @ 7:30pm', team: 'Arena Sports Grill', runs: 13, oppRuns: 11, location: 'away', park: 'Thompson Peak', gametype: 'Postseason', level: 'B' }
         , {time: 'Wed, May 9 @ 8:30pm', team: 'Thirsty Camels', runs: 10, oppRuns: 12, location: 'away', park: 'Thompson Peak', gametype: 'Postseason', level: 'B' }
@@ -254,7 +254,7 @@ router.get("/standings", (request, response) => {
       losses: 3, 
       ties: 0,
       schedule: [{time: 'Wed, Sept 13 @ 8:30pm', team: 'Balco Bombers', runs: 20, oppRuns: 8, location: 'away', park: 'Horizon', gametype: 'League', level: 'C'}
-        , {time: 'Wed, Sept 13 @ 8:30pm', team: 'Balco Bombers', runs: 23, oppRuns: 8, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
+        , {time: 'Wed, Sept 13 @ 9:30pm', team: 'Balco Bombers', runs: 23, oppRuns: 8, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Sept 20 @ 6:30pm', team: 'Outlaws', runs: 16, oppRuns: 15, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Sept 20 @ 7:30pm', team: 'Outlaws', runs: 18, oppRuns: 15, location: 'away', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Sept 27 @ 8:30pm', team: 'Cruisers', runs: 13, oppRuns: 3, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
@@ -340,7 +340,7 @@ router.get("/standings", (request, response) => {
         , {time: 'Wed, Mar 8 @ 8:30pm', team: 'Pitched Slapped', runs: 8, oppRuns: 12, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Mar 8 @ 9:30pm', team: 'Pitched Slapped', runs: 12, oppRuns: 14, location: 'away', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Mar 15 @ 8:30pm', team: 'Caught Looking', runs: 10, oppRuns: 5, location: 'home', park: 'Horizon', gametype: 'Postseason', level: 'C' }
-        , {time: 'Wed, Mar 15 @ 9:30pm', team: 'Henkel', runs: 21, oppRuns: 20, location: 'home', park: 'Horizon', gametype: 'Postseason', level: 'C' }
+        , {time: 'Wed, Mar 15 @ 9:30pm', team: 'Henkel', runs: 21, oppRuns: 20, location: 'home', park: 'Thompson Peak', gametype: 'Postseason', level: 'C' }
      ]
     },
     fall16: { 
@@ -372,7 +372,7 @@ router.get("/standings", (request, response) => {
       wins: 9, 
       losses: 5, 
       ties: 0,
-      schedule: [{time: 'Wed, June 8 @ 8:20pm', team: 'Southern Wine & Spirits', runs: 11, oppRuns: 9, location: 'home', park: 'Horizon', gametype: 'League', level: 'C'}
+      schedule: [{time: 'Wed, June 8 @ 8:30pm', team: 'Southern Wine & Spirits', runs: 11, oppRuns: 9, location: 'home', park: 'Horizon', gametype: 'League', level: 'C'}
         , {time: 'Wed, June 8 @ 9:30pm', team: 'Southern Wine & Spirits', runs: 11, oppRuns: 12, location: 'away', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, June 15 @ 8:30pm', team: 'Fat Elgerts', runs: 17, oppRuns: 0, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, June 15 @ 9:30pm', team: 'Fat Elgerts', runs: 19, oppRuns: 3, location: 'away', park: 'Horizon', gametype: 'League', level: 'C' }
@@ -398,8 +398,8 @@ router.get("/standings", (request, response) => {
       ties: 0,
       schedule: [{time: 'Wed, Mar 23 @ 8:30pm', team: 'Tavern Americano', runs: 5, oppRuns: 17, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B'}
         , {time: 'Wed, Mar 23 @ 9:30pm', team: 'Thirsty Camels', runs: 2, oppRuns: 17, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
-        , {time: 'Wed, Mar 23 @ 6:30pm', team: 'One More Pitcher', runs: 4, oppRuns: 10, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
-        , {time: 'Wed, Mar 23 @ 7:30pm', team: 'Arena Sport Grill', runs: 15, oppRuns: 3, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
+        , {time: 'Wed, Mar 30 @ 6:30pm', team: 'One More Pitcher', runs: 4, oppRuns: 10, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
+        , {time: 'Wed, Mar 30 @ 7:30pm', team: 'Arena Sport Grill', runs: 15, oppRuns: 3, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Apr 6 @ 8:30pm', team: 'One More Pitcher', runs: 7, oppRuns: 13, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Apr 6 @ 9:30pm', team: 'Arena Sports Grill', runs: 1, oppRuns: 17, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Apr 13 @ 6:30pm', team: 'Tavern Americano', runs: 3, oppRuns: 18, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
@@ -427,13 +427,13 @@ router.get("/standings", (request, response) => {
         , {time: 'Wed, Jan 27 @ 8:30pm', team: 'Ba Da Bing', runs: 19, oppRuns: 7, location: 'away', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Jan 27 @ 9:30pm', team: 'Irish Car Bombs', runs: 15, oppRuns: 4, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Feb 3 @ 8:30pm', team: 'Ramrod', runs: 1, oppRuns: 14, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
-        , {time: 'Wed, Feb 3 @ 8:30pm', team: 'Phoenix Ale Brewery', runs: 28, oppRuns: 6, location: 'away', park: 'Horizon', gametype: 'League', level: 'C' }
+        , {time: 'Wed, Feb 3 @ 9:30pm', team: 'Phoenix Ale Brewery', runs: 28, oppRuns: 6, location: 'away', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Feb 10 @ 8:30pm', team: 'Outlaws', runs: 15, oppRuns: 14, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Feb 10 @ 9:30pm', team: 'Cruisers', runs: 22, oppRuns: 5, location: 'away', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Feb 17 @ 6:30pm', team: 'Basically Coed', runs: 18, oppRuns: 17, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Feb 17 @ 7:30pm', team: 'Basically Coed', runs: 12, oppRuns: 5, location: 'away', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Feb 24 @ 8:30pm', team: 'Outlaws', runs: 8, oppRuns: 9, location: 'away', park: 'Horizon', gametype: 'League', level: 'C' }
-        , {time: 'Wed, Feb 24 @ 8:30pm', team: 'Cruisers', runs: 13, oppRuns: 16, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
+        , {time: 'Wed, Feb 24 @ 9:30pm', team: 'Cruisers', runs: 13, oppRuns: 16, location: 'home', park: 'Horizon', gametype: 'League', level: 'C' }
         , {time: 'Wed, Mar 2 @ 6:30pm', team: 'Thirsty Camels', runs: 9, oppRuns: 15, location: 'home', park: 'Thompson Peak', gametype: 'Postseason', level: 'B' }
       ] 
     },
@@ -559,21 +559,21 @@ router.get("/standings", (request, response) => {
       losses: 5,
       ties: 1,
       schedule: [{
-           time: 'Wed, June 11, 2014 @ 6:30pm', team: '99 Problems', runs: 9, oppRuns: 8, location: 'home', park: 'Horizon', gametype: 'League', level: 'D'}
-        , {time: 'Wed, June 11 2014 @ 7:30pm', team: '99 Problems', runs: 12, oppRuns: 13, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, June 18 2014 @ 8:30pm', team: 'MMLL Stars', runs: 15, oppRuns: 13, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, June 18 2014 @ 9:30pm', team: 'MMLL Stars', runs: 20, oppRuns: 8, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, June 25 2014 @ 8:30pm', team: 'Sons of Pitches', runs: 5, oppRuns: 5, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, June 25 2014 @ 9:30pm', team: 'Sons of Pitches', runs: 17, oppRuns: 12, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, July 2 2014 @ 6:30pm', team: 'Scared Hitless', runs: 12, oppRuns: 4, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, July 2 2014 @ 7:30pm', team: 'Scared Hitless', runs: 20, oppRuns: 3, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, July 9 2014 @ 8:30pm', team: 'NOTW', runs: 4, oppRuns: 25, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, July 9 2014 @ 9:30pm', team: 'NOTW', runs: 7, oppRuns: 15, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, July 16 2014 @ 8:30pm', team: 'Discount Tire', runs: 14, oppRuns: 12, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, July 16 2014 @ 9:30pm', team: 'Discount Tire', runs: 10, oppRuns: 9, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, July 23 2014 @ 6:30pm', team: 'Whiskey Tango Foxtrot', runs: 3, oppRuns: 4, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, July 23 2014 @ 7:30pm', team: 'Whiskey Tango Foxtrot', runs: 1, oppRuns: 16, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, July 30 2014 @ 7:30pm', team: 'Scared Hitless', runs: 11, oppRuns: 13, location: 'away', park: 'Horizon', gametype: 'Postseason', level: 'D' }
+           time: 'Wed, June 11 @ 6:30pm', team: '99 Problems', runs: 9, oppRuns: 8, location: 'home', park: 'Horizon', gametype: 'League', level: 'D'}
+        , {time: 'Wed, June 11 @ 7:30pm', team: '99 Problems', runs: 12, oppRuns: 13, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, June 18 @ 8:30pm', team: 'MMLL Stars', runs: 15, oppRuns: 13, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, June 18 @ 9:30pm', team: 'MMLL Stars', runs: 20, oppRuns: 8, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, June 25 @ 8:30pm', team: 'Sons of Pitches', runs: 5, oppRuns: 5, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, June 25 @ 9:30pm', team: 'Sons of Pitches', runs: 17, oppRuns: 12, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, July 2 @ 6:30pm', team: 'Scared Hitless', runs: 12, oppRuns: 4, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, July 2 @ 7:30pm', team: 'Scared Hitless', runs: 20, oppRuns: 3, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, July 9 @ 8:30pm', team: 'NOTW', runs: 4, oppRuns: 25, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, July 9 @ 9:30pm', team: 'NOTW', runs: 7, oppRuns: 15, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, July 16 @ 8:30pm', team: 'Discount Tire', runs: 14, oppRuns: 12, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, July 16 @ 9:30pm', team: 'Discount Tire', runs: 10, oppRuns: 9, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, July 23 @ 6:30pm', team: 'Whiskey Tango Foxtrot', runs: 3, oppRuns: 4, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, July 23 @ 7:30pm', team: 'Whiskey Tango Foxtrot', runs: 1, oppRuns: 16, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, July 30 @ 7:30pm', team: 'Scared Hitless', runs: 11, oppRuns: 13, location: 'away', park: 'Horizon', gametype: 'Postseason', level: 'D' }
       ]
     }
 

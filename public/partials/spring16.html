@@ -1,101 +1,33 @@
 <div class="tbl-section">
-	<p class="tbl-section-meta">Spring 2016: {{ spring16.wins }} &minus; {{ spring16.losses }} &minus; {{ spring16.ties }}</p>
+	<p class="tbl-section-meta">{{spring16.season}} {{spring16.year}}: {{ spring16.wins }} &minus; {{ spring16.losses }} &minus; {{ spring16.ties }}</p>
 	<div class="gridplayers21" ng-grid="gridSpring16Options"></div>
 </div>
 
 <div class="container">
 	<div class="row ">
 		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-			<div>
 				<div>
-					<div class="table-responsive">
-						<table class="table table-hover">
-							<tbody>
-								<tr>
-									<td>Wed, Mar 23 @ 8:30pm</td>
-									<td>vs Tavern Americano</td>
-									<td>L 5 - 17</td>
-								</tr>
-								<tr>
-									<td>Wed, Mar 23 @ 9:30pm</td>
-									<td>@ Thirsty Camels</td>
-									<td>L 2 - 17</td>
-								</tr>
-								<tr>
-									<td>Wed, Mar 30 @ 6:30pm</td>
-									<td>vs One More Pitcher</td>
-									<td>L 4 - 10</td>
-								</tr>
-								<tr>
-                                    <td>Wed, Mar 30 @ 7:30pm</td>
-                                    <td>@ Arena Sports Grill</td>
-                                    <td>W 15 - 3</td>
-								</tr>
-                                <tr>
-                                    <td>Wed, Apr 6 @ 8:30pm</td>
-                                    <td>@ One More Pitcher</td>
-                                    <td>L 7 - 13</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Apr 6 @ 9:30pm</td>
-                                    <td>vs Arena Sports Grill</td>
-                                    <td>L 1 - 17</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Apr 13 @ 6:30pm</td>
-                                    <td>@ Tavern Americano</td>
-                                    <td>L 3 - 18</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Apr 13 @ 7:30pm</td>
-                                    <td>vs Thirsty Camels</td>
-                                    <td>L 9 - 15</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Apr 20 @ 6:30pm</td>
-                                    <td>@ Manday</td>
-                                    <td>L 10 - 11</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Apr 20 @ 7:30pm</td>
-                                    <td>vs Hey Cuz</td>
-                                    <td>L 4 - 21</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Apr 27 @ 8:30pm</td>
-                                    <td>vs Manday</td>
-                                    <td>L 10 - 22</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Apr 27 @ 9:30pm</td>
-                                    <td>@ Hey Cuz</td>
-                                    <td>W 17 - 13</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, May 4 @ 6:30pm</td>
-                                    <td>vs Irish Car Bombs</td>
-                                    <td>W 12 - 2</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, May 4 @ 7:30pm</td>
-                                    <td>@ Irish Car Bombs</td>
-                                    <td>W 27 - 11</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, May 11 @ 6:30pm</td>
-                                    <td>vs Phoenix Ale Brewery (Super C League Playoffs)</td>
-                                    <td>W 10 - 4</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, May 11 @ 8:30pm</td>
-                                    <td>@ Cruisers (Super C League Playoffs)</td>
-                                    <td>L 10 - 11</td>
-                                </tr>
-							</tbody>
-						</table>
-					</div>
+						<div>
+								<div class="table-responsive">
+										<table class="table table-hover">
+												<tbody>
+													<tr ng-repeat="item in spring16.schedule">
+														<td>{{item.time}}</td>
+														<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+														<td>{{ 
+															item.runs > item.oppRuns ? 'W' 
+																: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+																: (item.runs === item.oppRuns) ? 'T'
+																: 'L' }} 
+												
+																{{item.runs}} - {{item.oppRuns }}
+														</td>
+													</tr>
+												</tbody>
+										</table>
+								</div>
+						</div>
 				</div>
-			</div>
 		</div>
-	 </div>
+	</div>
 </div>
