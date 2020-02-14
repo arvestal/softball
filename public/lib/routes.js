@@ -108,7 +108,7 @@ router.get("/standings", (request, response) => {
         , {time: 'Wed, Feb 19 @ 8:30pm', team: 'Arena Sports Grill', runs: 0, oppRuns: 0, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Feb 26 @ 6:30pm', team: 'Arena Sports Grill', runs: 0, oppRuns: 0, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Feb 26 @ 7:30pm', team: 'Hey Cuz', runs: 0, oppRuns: 0, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
-        , {time: 'Wed, Mar 4 @ 6:30pm', tpRuns: 0, eam: 'TBD', runs: 0, location: '', park: 'Thompson Peak', gametype: 'Postseason', level: 'B' }
+        , {time: 'Wed, Mar 4 @ 6:30pm', team: 'TBD', runs: 0, oppRuns: 0, location: 'home', park: 'Thompson Peak', gametype: 'Postseason', level: 'B' }
       ]
     },
     fall19: { 
@@ -539,8 +539,8 @@ router.get("/standings", (request, response) => {
         , {time: 'Wed, Sept 17 @ 9:30pm', team: 'Old Dogs', runs: 15, oppRuns: 8, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
         , {time: 'Wed, Sept 24 @ 8:30pm', team: 'Who\'s on First', runs: 5, oppRuns: 13, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
         , {time: 'Wed, Sept 24 @ 9:30pm', team: 'Who\'s on First', runs: 13, oppRuns: 12, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, Oct 1 @ 8:30 pm', team: 'Arena Sports Grill Sandsharks', runs: 12, oppRuns: 15, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
-        , {time: 'Wed, Oct 1 @ 9:30pm', team: 'Arena Sports Grill Sandsharks', runs: 13, oppRuns: 6, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, Oct 1 @ 8:30 pm', team: 'Arena Sports Grill - Sandsharks', runs: 12, oppRuns: 15, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
+        , {time: 'Wed, Oct 1 @ 9:30pm', team: 'Arena Sports Grill - Sandsharks', runs: 13, oppRuns: 6, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
         , {time: 'Wed, Oct 8 @ 6:30pm', team: 'Ba Da Bing', runs: 16, oppRuns: 5, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }
         , {time: 'Wed, Oct 8 @ 7:30pm', team: 'Ba Da Bing', runs: 14, oppRuns: 15, location: 'home', park: 'Horizon', gametype: 'League', level: 'D' }
         , {time: 'Wed, Oct 22 @ 6:30pm', team: 'Dead Presidents', runs: 11, oppRuns: 7, location: 'away', park: 'Horizon', gametype: 'League', level: 'D' }

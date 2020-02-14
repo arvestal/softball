@@ -1,108 +1,37 @@
+<div ng-if="fall19.schedule[fall19.schedule.length-1].gametype === 'Postseason' && fall19.schedule[fall19.schedule.length-1].runs > fall19.schedule[fall19.schedule.length-1].oppRuns" class="corner-ribbon bottom-right sticky blue shadow">
+	{{ fall19.schedule[fall19.schedule.length-1].level }} League Champs!
+</div>
 <div class="tbl-section">
-    <p class="tbl-section-meta">Fall 2019: {{ fall19.wins }} &minus; {{ fall19.losses }} &minus;
+    <p class="tbl-section-meta">{{fall19.season}} {{fall19.year}}: {{ fall19.wins }} &minus; {{ fall19.losses }} &minus;
         {{ fall19.ties }}</p>
     <div class="gridplayers17" ng-grid="gridFall19Options"></div>
 </div>
 
 <div class="container">
-
-    <div class="row ">
-        <div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-            <div>
-                <div>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tbody>
-                                <tr>
-                                    <td>Wed, Sept 11 @ 8:30pm</td>
-                                    <td>vs Balco Bombers</td>
-                                    <td>W 18 - 11</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Sept 11 @ 9:30pm</td>
-                                    <td>vs Outlaws</td>
-                                    <td>W 10 - 2</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Sept 18 @ 8:30pm</td>
-                                    <td>vs Bunt Blasters</td>
-                                    <td>W 14 - 11</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Sept 18 @ 9:30pm</td>
-                                    <td>@ 99 Problems</td>
-                                    <td>W 22 - 3</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Sept 25 @ 6:30pm</td>
-                                    <td>@ Outlaws</td>
-                                    <td>W 21 - 5</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Sept 25 @ 7:30pm</td>
-                                    <td>vs 99 Problems</td>
-                                    <td>L 7 - 25</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 2 @ 7:30pm</td>
-                                    <td>vs Los Cacahuetes</td>
-                                    <td>W 12 - 2</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 2 @ 8:30pm</td>
-                                    <td>@ Los Cacahuetes</td>
-                                    <td>W 20 - 9</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 9 @ 6:30pm</td>
-                                    <td>vs Cruisers</td>
-                                    <td>W 24 - 4</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 9 @ 7:30pm</td>
-                                    <td>@ Misfits</td>
-                                    <td>W 26 - 3</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 16 @ 6:30pm</td>
-                                    <td>@ Hey Cuz</td>
-                                    <td>W 23 - 9</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 16 @ 7:30pm</td>
-                                    <td>vs Bunt Blasters</td>
-                                    <td>W 15 - 2</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 23 @ 6:30pm</td>
-                                    <td>@ Hey Cuz</td>
-                                    <td>L 10 - 13</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 23 @ 7:30pm</td>
-                                    <td>vs Arena Sports Grill</td>
-                                    <td>W 11 - 8</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 30 @ 6:30pm</td>
-                                    <td>vs Arena Sports Grill (B League Playoffs)</td>
-                                    <td>L 4 - 7</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 23 @ 7:30pm</td>
-                                    <td>@ Arena Sports Grill (B League Playoffs)</td>
-                                    <td>W 15 - 0</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Oct 23 @ 8:30pm</td>
-                                    <td>@ Arena Sports Grill (B League Playoffs)</td>
-                                    <td>W 11 - 5</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="row ">
+		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+				<div>
+						<div>
+								<div class="table-responsive">
+										<table class="table table-hover">
+												<tbody>
+													<tr ng-repeat="item in fall19.schedule">
+														<td>{{item.time}}</td>
+														<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+														<td>{{ 
+															item.runs > item.oppRuns ? 'W' 
+																: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+																: (item.runs === item.oppRuns) ? 'T'
+																: 'L' }} 
+												
+																{{item.runs}} - {{item.oppRuns }}
+														</td>
+													</tr>
+												</tbody>
+										</table>
+								</div>
+						</div>
+				</div>
+		</div>
+	</div>
 </div>

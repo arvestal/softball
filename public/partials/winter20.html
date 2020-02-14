@@ -1,3 +1,6 @@
+<div ng-if="winter20.schedule[winter20.schedule.length-1].gametype === 'Postseason' && winter20.schedule[winter20.schedule.length-1].runs > winter20.schedule[winter20.schedule.length-1].oppRuns" class="corner-ribbon bottom-right sticky blue shadow">
+	{{ winter20.schedule[winter20.schedule.length-1].level }} League Champs!
+</div>
 <div class="tbl-section">
 	<p class="tbl-section-meta">{{winter20.season}} {{winter20.year}}: {{ winter20.wins }} &minus; {{ winter20.losses }} &minus;
 		{{ winter20.ties }}</p>

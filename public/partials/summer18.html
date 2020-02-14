@@ -1,91 +1,36 @@
+<div ng-if="summer18.schedule[summer18.schedule.length-1].gametype === 'Postseason' && summer18.schedule[summer18.schedule.length-1].runs > summer18.schedule[summer18.schedule.length-1].oppRuns" class="corner-ribbon bottom-right sticky blue shadow">
+	{{ summer18.schedule[summer18.schedule.length-1].level }} League Champs!
+</div>
 <div class="tbl-section">
-    <p class="tbl-section-meta">Summer 2018: {{ summer18.wins }} &minus; {{ summer18.losses }} &minus; {{ summer18.ties }}</p>
+    <p class="tbl-section-meta">{{summer18.season}} {{summer18.year}}: {{ summer18.wins }} &minus; {{ summer18.losses }} &minus; {{ summer18.ties }}</p>
     <div class="gridplayers17" ng-grid="gridSummer18Options"></div>
 </div>
 
 <div class="container">
-    <div class="row ">
-        <div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-            <div>
-                <div>
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <tbody>
-                                <tr>
-                                    <td>Wed, June 6 @ 8:30pm</td>
-                                    <td>vs 99 Problems</td>
-                                    <td>W 17 - 1</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 6 @ 9:30pm</td>
-                                    <td>@ 99 Problems</td>
-                                    <td>W 14 - 12</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 13 @ 8:30pm</td>
-                                    <td>vs Outlaws</td>
-                                    <td>W 11 - 9</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 13 @ 9:30pm</td>
-                                    <td>@ Outlaws</td>
-                                    <td>W 25 - 11</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 20 @ 6:30pm</td>
-                                    <td>@ Arena Sports Grill</td>
-                                    <td>L 17 - 18</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 20 @ 7:30pm</td>
-                                    <td>vs Arena Sports Grill</td>
-                                    <td>W 18 - 14</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 27 @ 6:30pm</td>
-                                    <td>vs Hey Cuz</td>
-                                    <td>W 14 - 13</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, June 27 @ 7:30pm</td>
-                                    <td>@ Hey Cuz</td>
-                                    <td>L 10 - 15</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 18 @ 8:30pm</td>
-                                    <td>vs Arena Sports Grill</td>
-                                    <td>T 8 - 8</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 18 @ 9:30pm</td>
-                                    <td>@ Thirsty Camels</td>
-                                    <td>L 8 - 14</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 25 @ 8:30pm</td>
-                                    <td>vs Thirsty Camels</td>
-                                    <td>W 13 - 7</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, July 25 @ 9:30pm</td>
-                                    <td>@ Arena Sports Grill</td>
-                                    <td>W 18 - 10</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Aug 1 @ 8:30pm</td>
-                                    <td>vs Arena Sports Grill (B League Playoffs)</td>
-                                    <td>W 18 - 17</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Aug 1 @ 9:30pm</td>
-                                    <td>vs Thirsty Camels (B League Playoffs)</td>
-                                    <td>W 15 - 6</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="row ">
+		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+				<div>
+						<div>
+								<div class="table-responsive">
+										<table class="table table-hover">
+												<tbody>
+													<tr ng-repeat="item in summer18.schedule">
+														<td>{{item.time}}</td>
+														<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+														<td>{{ 
+															item.runs > item.oppRuns ? 'W' 
+																: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+																: (item.runs === item.oppRuns) ? 'T'
+																: 'L' }} 
+												
+																{{item.runs}} - {{item.oppRuns }}
+														</td>
+													</tr>
+												</tbody>
+										</table>
+								</div>
+						</div>
+				</div>
+		</div>
+	</div>
 </div>

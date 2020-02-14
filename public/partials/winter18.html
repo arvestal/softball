@@ -1,81 +1,30 @@
+<div ng-if="winter18.schedule[winter18.schedule.length-1].gametype === 'Postseason' && winter18.schedule[winter18.schedule.length-1].runs > winter18.schedule[winter18.schedule.length-1].oppRuns" class="corner-ribbon bottom-right sticky blue shadow">
+	{{ winter18.schedule[winter18.schedule.length-1].level }} League Champs!
+</div>
 <div class="tbl-section">
-	<p class="tbl-section-meta">Winter 2018: {{ winter18.wins }} &minus; {{ winter18.losses }} &minus; {{ winter18.ties }}</p>
+	<p class="tbl-section-meta">{{winter18.season}} {{winter18.year}}: {{ winter18.wins }} &minus; {{ winter18.losses }} &minus; {{ winter18.ties }}</p>
 	<div class="gridplayers12" ng-grid="gridWinter18Options"></div>
 </div>
 
 <div class="container">
-
 	<div class="row ">
 		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 			<div>
-				<div>
+                <div>
 					<div class="table-responsive">
 						<table class="table table-hover">
 							<tbody>
-								<tr>
-									<td>Wed, Jan 17 @ 6:30pm</td>
-									<td>@ Cruisers</td>
-									<td>W 18 - 1</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 17 @ 7:30pm</td>
-									<td>vs Cruisers</td>
-									<td>W 14 - 6</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 24 @ 8:30pm</td>
-									<td>@ Balco Bombers</td>
-									<td>W 15 - 8</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 24 @ 9:30pm</td>
-									<td>vs Balco Bombers</td>
-									<td>W 16 - 3</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 31 @ 8:30pm</td>
-									<td>@ Outlaws</td>
-									<td>W 16 - 12</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 31 @ 9:30pm</td>
-									<td>vs Outlaws</td>
-									<td>W 21 - 5 (they quit LOL)</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 7 @ 6:30pm</td>
-									<td>@ Swingers</td>
-									<td>W 14 - 4</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 7 @ 7:30pm</td>
-									<td>vs Swingers</td>
-									<td>W 20 - 4</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 21 @ 6:30pm</td>
-									<td>@ Southern</td>
-									<td>W 17 - 9</td>
-								</tr>
-								<tr>
-									<td>Wed, Feb 21 @ 7:30pm</td>
-									<td>vs Southern</td>
-									<td>L 10 - 18</td>
-								</tr>
-								<tr>
-									<td>Wed, Mar 7 @ 6:30pm</td>
-									<td>vs Cruisers (Super C Playoffs)</td>
-									<td>W 16 - 1</td>
-								</tr>
-								<tr>
-									<td>Wed, Mar 7 @ 7:30pm</td>
-									<td>vs Outlaws (Super C Playoffs)</td>
-									<td>W 13 - 3</td>
-								</tr>
-								<tr>
-									<td>Wed, Mar 7 @ 8:30pm</td>
-									<td>vs Southern (Super C Playoffs)</td>
-									<td>W 11 - 4</td>
+								<tr ng-repeat="item in winter18.schedule">
+									<td>{{item.time}}</td>
+									<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+									<td>{{ 
+											item.runs > item.oppRuns ? 'W' 
+													: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+													: (item.runs === item.oppRuns) ? 'T'
+													: 'L' }} 
+					
+													{{item.runs}} - {{item.oppRuns }}
+									</td>
 								</tr>
 							</tbody>
 						</table>
@@ -85,4 +34,3 @@
 		</div>
 	</div>
 </div>
-

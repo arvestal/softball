@@ -1,101 +1,36 @@
+<div ng-if="fall17.schedule[fall17.schedule.length-1].gametype === 'Postseason' && fall17.schedule[fall17.schedule.length-1].runs > fall17.schedule[fall17.schedule.length-1].oppRuns" class="corner-ribbon bottom-right sticky blue shadow">
+	{{ fall17.schedule[fall17.schedule.length-1].level }} League Champs!
+</div>
 <div class="tbl-section">
-	<p class="tbl-section-meta">Fall 2017: {{ fall17.wins }} &minus; {{ fall17.losses }} &minus; {{ fall17.ties }}</p>
+	<p class="tbl-section-meta">{{fall17.season}} {{fall17.year}}: {{ fall17.wins }} &minus; {{ fall17.losses }} &minus; {{ fall17.ties }}</p>
 	<div class="gridplayers16" ng-grid="gridFall17Options"></div>
 </div>
 
 <div class="container">
 	<div class="row ">
 		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-			<div>
 				<div>
-					<div class="table-responsive">
-						<table class="table table-hover">
-							<tbody>
-								<tr>
-									<td>Wed, Sept 13 @ 8:30pm</td>
-									<td>@ Balco Bombers</td>
-									<td>W 20 - 8</td>
-								</tr>
-								<tr>
-									<td>Wed, Sept 13 @ 9:30pm</td>
-									<td>vs Balco Bombers</td>
-									<td>W 23 - 8</td>
-								</tr>
-								<tr>
-									<td>Wed, Sept 20 @ 6:30pm</td>
-									<td>vs Outlaws</td>
-									<td>W 16 - 15</td>
-								</tr>
-								<tr>
-									<td>Wed, Sept 20 @ 7:30pm</td>
-									<td>@ Outlaws</td>
-									<td>W 18 - 15</td>
-								</tr>
-								<tr>
-									<td>Wed, Sept 27 @ 8:30pm</td>
-									<td>vs Cruisers</td>
-									<td>W 13 - 3</td>
-								</tr>
-								<tr>
-									<td>Wed, Sept 27 @ 9:30pm</td>
-									<td>@ Cruisers</td>
-									<td>W 32 - 11</td>
-								</tr>
-								<tr>
-									<td>Wed, Oct 11 @ 8:30pm</td>
-									<td>vs 99 Problems</td>
-									<td>L 10 - 12</td>
-								</tr>
-								<tr>
-									<td>Wed, Oct 11 @ 9:30pm</td>
-									<td>@ 99 Problems</td>
-									<td>L 14 - 16</td>
-								</tr>
-								<tr>
-									<td>Wed, Oct 18 @ 6:30pm</td>
-									<td>vs Arena Sports Grill - Sandsharks</td>
-									<td>FFT</td>
-								</tr>
-								<tr>
-									<td>Wed, Oct 18 @ 7:30pm</td>
-									<td>@ Arena Sports Grill - Sandsharks</td>
-									<td>FFT</td>
-								</tr>
-								<tr>
-									<td>Wed, Oct 25 @ 6:30pm</td>
-									<td>@ Noche Noche</td>
-									<td>W 19 - 5</td>
-								</tr>
-								<tr>
-									<td>Wed, Oct 25 @ 7:30pm</td>
-									<td>vs Noche Noche </td>
-									<td>W 17 - 11</td>
-								</tr>
-								<tr>
-									<td>Wed, Nov 1 @ 6:30pm</td>
-									<td>@ Southern Glazers Wine &amp; Spirits</td>
-									<td>L 9 - 12</td>
-								</tr>
-								<tr>
-									<td>Wed, Nov 1 @ 7:30pm</td>
-									<td>vs Southern Glazers Wine &amp; Spirits</td>
-									<td>W 22 - 2</td>
-								</tr>
-								<tr>
-									<td>Wed, Nov 8 @ 8:30pm</td>
-									<td>vs Swingers (Super C Playoffs)</td>
-									<td>W 11 - 10</td>
-								</tr>
-								<tr>
-									<td>Wed, Nov 8 @ 8:30pm</td>
-									<td>v@ 99 Problems (Super C Playoffs)</td>
-									<td>W 10 - 8</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+						<div>
+								<div class="table-responsive">
+										<table class="table table-hover">
+												<tbody>
+													<tr ng-repeat="item in fall17.schedule">
+														<td>{{item.time}}</td>
+														<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+														<td>{{ 
+															item.runs > item.oppRuns ? 'W' 
+																: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+																: (item.runs === item.oppRuns) ? 'T'
+																: 'L' }} 
+												
+																{{item.runs}} - {{item.oppRuns }}
+														</td>
+													</tr>
+												</tbody>
+										</table>
+								</div>
+						</div>
 				</div>
-			</div>
 		</div>
 	</div>
 </div>

@@ -1,7 +1,8 @@
-
-
-<div class="tbl-section"></div>
-	<p class="tbl-section-meta">Winter 2017: {{ winter17.wins }} &minus; {{ winter17.losses }} &minus; {{ winter17.ties }}</p>
+<div ng-if="winter17.schedule[winter17.schedule.length-1].gametype === 'Postseason' && winter17.schedule[winter17.schedule.length-1].runs > winter17.schedule[winter17.schedule.length-1].oppRuns" class="corner-ribbon bottom-right sticky blue shadow">
+	{{ winter17.schedule[winter17.schedule.length-1].level }} League Champs!
+</div>
+<div class="tbl-section">
+	<p class="tbl-section-meta">{{winter17.season}} {{winter17.year}}: {{ winter17.wins }} &minus; {{ winter17.losses }} &minus; {{ winter17.ties }}</p>
 	<div class="gridplayers15" ng-grid="gridWinter17Options"></div>
 </div>
 
@@ -9,95 +10,27 @@
 	<div class="row ">
 		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 			<div>
-				<div>
+        <div>
 					<div class="table-responsive">
 						<table class="table table-hover">
 							<tbody>
-								<tr>
-									<td>Wed, Jan 11 @ 6:30pm</td>
-									<td>vs Phoenix Ale Brewery</td>
-									<td>W FFT</td>
+								<tr ng-repeat="item in winter17.schedule">
+									<td>{{item.time}}</td>
+									<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+									<td>{{ 
+											item.runs > item.oppRuns ? 'W' 
+													: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+													: (item.runs === item.oppRuns) ? 'T'
+													: 'L' }} 
+					
+													{{item.runs}} - {{item.oppRuns }}
+									</td>
 								</tr>
-								<tr>
-									<td>Wed, Jan 11 @ 7:30pm</td>
-									<td>@ Phoenix Ale Brewery</td>
-									<td>W FFT</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 18 @ 8:30pm</td>
-									<td>@ Cruisers</td>
-									<td>W 14 - 7</td>
-								</tr>
-								<tr>
-									<td>Wed, Jan 18 @ 9:30pm</td>
-									<td>vs Cruisers</td>
-									<td>L 18 - 20</td>
-								</tr>
-                                <tr>
-                                    <td>Wed, Feb 1 @ 6:30pm</td>
-                                    <td>@ Henkel Thunderbunts</td>
-                                    <td>W 24 - 11</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Feb 1 @ 7:30pm</td>
-                                    <td>vs Henkel Thunderbunts</td>
-                                    <td>W 17 - 2</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Feb 8 @ 8:30pm</td>
-                                    <td>vs Outlaws</td>
-                                    <td>L 17 - 20</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Feb 8 @ 9:30pm</td>
-                                    <td>@ Outlaws</td>
-                                    <td>W 20 - 8</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Feb 15 @ 8:30pm</td>
-                                    <td>vs Caught Looking</td>
-                                    <td>W 15 - 4</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Feb 15 @ 9:30pm</td>
-                                    <td>@ Caught Looking</td>
-                                    <td>L 12 - 17</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Feb 22 @ 6:30pm</td>
-                                    <td>@ Knuckleballs Deep</td>
-                                    <td>W 9 - 7</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Feb 22 @ 7:30pm</td>
-                                    <td>vs Knuckleballs Deep</td>
-                                    <td>W 13 - 12</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Mar 8 @ 8:30pm</td>
-                                    <td>vs Pitched Slapped</td>
-                                    <td>L 8 - 12</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Mar 8 @ 9:30pm</td>
-                                    <td>@ Pitched Slapped</td>
-                                    <td>L 12 - 14</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Mar 15 8:30pm</td>
-                                    <td>vs Caught Looking (Super C League Playoffs)</td>
-                                    <td>W 10 - 5</td>
-                                </tr>
-                                <tr>
-                                    <td>Wed, Mar 15 9:30pm</td>
-                                    <td>vs Henkel Thunder Bunts (Super C League Playoffs)</td>
-                                    <td>W 21 - 20</td>
-                                </tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-	 </div>
+	</div>
 </div>
