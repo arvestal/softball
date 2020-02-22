@@ -122,7 +122,7 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
         
         $http.get('/api/career')
             .success(data => {
-                const filter = data.filter(item => [1,2,3,6,10,12,15,16,19,23,24,25,28,35,36,37,40,43,46,47,48,50,53,59,67,70,80,83,110].includes(+item.id))
+                const filter = data.filter(item => [99,2,3,6,10,12,15,16,19,23,24,25,28,35,36,37,40,43,46,47,48,50,53,59,67,70,80,83,110].includes(+item.id))
                 $scope.careerData = filter;
             })
             .error(data => console.log(`Error: ${data}`));

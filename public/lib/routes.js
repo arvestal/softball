@@ -2,21 +2,36 @@ const express = require("express");
 const router = express.Router();
 const stats = require("./build-stats");
 const axios = require('axios');
+const nodeCache = require('node-cache');
+const cache = new nodeCache();
 
 router.get("/stats", (request, response) => {
   const season = request.query['season'];
-  const csvFile = `${__dirname}/gc_files/${season}.csv`;
-  stats.convertToJson(csvFile).then(data => {
-    response.json(data);
-  });
+
+  const cacheSeasonData = cache.get(`season-data-${season}`);
+
+  if (cacheSeasonData === undefined) {
+    const csvFile = `${__dirname}/gc_files/${season}.csv`;
+    stats.convertToJson(csvFile).then(data => {
+      cache.set(`season-data-${season}`, data, 86400);
+      response.json(data);
+    });
+  } else {
+    console.log('get from cache' + season)
+      response.json(cacheSeasonData);
+  }
 });
 
 router.get("/career", (request, response) => {
 
   function getSeasonData(season) {
-    return axios.get(`http://localhost:8080/api/stats?season=${season}`);
+    return axios.get(`http://allenvestal.com/api/stats?season=${season}`);
   }
   
+  const cacheData = cache.get('careerStatsData');
+
+  if (cacheData === undefined) {
+
   axios.all([getSeasonData('17fall'), getSeasonData('18fall'), getSeasonData('19fall'), getSeasonData('18spring'), getSeasonData('19spring')
     , getSeasonData('18winter'), getSeasonData('20winter'), getSeasonData('18summer'), getSeasonData('postseason'), getSeasonData('14summer')
     , getSeasonData('15summer'), getSeasonData('16summer'), getSeasonData('17summer')
@@ -80,9 +95,13 @@ router.get("/career", (request, response) => {
         
           return statsParsed;
         })
-  
+        cache.set('careerStatsData', stats, 86400);
         response.json(stats);
     }));
+  } else {
+    console.log('get from cache career');
+    response.json(cacheData)
+  }
 });
 
 router.get("/standings", (request, response) => {
@@ -530,7 +549,9 @@ router.get("/standings", (request, response) => {
       ] 
     },
     fall14: { 
-      season: 'Fall',     wins: 8, 
+      season: 'Fall',
+      year: 2014,
+      wins: 8, 
       losses: 4, 
       ties: 2,
       schedule: [{time: 'Wed, Sept 17 @ 8:30pm', team: 'Old Dogs', runs: 10, oppRuns: 10, location: 'home', park: 'Horizon', gametype: 'League', level: 'D'}
