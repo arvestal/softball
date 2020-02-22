@@ -1,14 +1,21 @@
-<div ng-if="summer18.schedule[summer18.schedule.length-1].gametype === 'Postseason' && summer18.schedule[summer18.schedule.length-1].runs > summer18.schedule[summer18.schedule.length-1].oppRuns" class="corner-ribbon bottom-right sticky blue shadow">
+<div class="championship-banner" ng-if="summer18.schedule[summer18.schedule.length-1].gametype === 'Postseason' && summer18.schedule[summer18.schedule.length-1].runs > summer18.schedule[summer18.schedule.length-1].oppRuns" class="corner-ribbon bottom-right sticky blue shadow">
 	{{ summer18.schedule[summer18.schedule.length-1].level }} League Champs!
 </div>
+<header class="page-header header container-fluid">
+	<div class="overlay"></div>
+	<p class="tbl-section-meta">
+		{{summer18.season}} {{summer18.year}}: {{ summer18.wins }} &minus; {{ summer18.losses }} &minus; {{ summer18.ties }}
+	</p>
+
 <div class="tbl-section">
-    <p class="tbl-section-meta">{{summer18.season}} {{summer18.year}}: {{ summer18.wins }} &minus; {{ summer18.losses }} &minus; {{ summer18.ties }}</p>
-    <div class="gridplayers17" ng-grid="gridSummer18Options"></div>
+	<div class="gridplayers17" ng-grid="gridSummer18Options"></div>
 </div>
 
-<div class="container">
+</header>
+
+<div class="container features">
 	<div class="row ">
-		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+		<div class=" col-lg-10 col-sm-10 col-md-4">
 				<div>
 						<div>
 								<div class="table-responsive">

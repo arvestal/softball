@@ -1,37 +1,40 @@
-<div ng-if="winter20.schedule[winter20.schedule.length-1].gametype === 'Postseason' && winter20.schedule[winter20.schedule.length-1].runs > winter20.schedule[winter20.schedule.length-1].oppRuns" class="corner-ribbon bottom-right sticky blue shadow">
-	{{ winter20.schedule[winter20.schedule.length-1].level }} League Champs!
-</div>
+<header class="page-header header container-fluid">
+	<div class="overlay"></div>
+	<p class="tbl-section-meta">
+		{{winter20.season}} {{winter20.year}}: {{ winter20.wins }} &minus; {{ winter20.losses }} &minus; {{ winter20.ties }}
+	</p>
+
 <div class="tbl-section">
-	<p class="tbl-section-meta">{{winter20.season}} {{winter20.year}}: {{ winter20.wins }} &minus; {{ winter20.losses }} &minus;
-		{{ winter20.ties }}</p>
-	<div class="gridplayers16" ng-grid="gridWinter20Options"></div>
+	<div class="gridplayers18" ng-grid="gridWinter20Options"></div>
 </div>
 
-<div class="container">
+</header>
+
+<div class="container features">
 	<div class="row ">
-		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-			<div>
-        <div>
-					<div class="table-responsive">
-						<table class="table table-hover">
-							<tbody>
-								<tr ng-repeat="item in winter20.schedule">
-									<td>{{item.time}}</td>
-									<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
-									<td>{{ 
-											item.runs > item.oppRuns ? 'W' 
-													: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
-													: (item.runs === item.oppRuns) ? 'T'
-													: 'L' }} 
-					
-													{{item.runs}} - {{item.oppRuns }}
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+		<div class=" col-lg-10 col-sm-10 col-md-4">
+				<div>
+						<div>
+								<div class="table-responsive">
+										<table class="table table-hover">
+												<tbody>
+													<tr ng-repeat="item in winter20.schedule">
+														<td>{{item.time}}</td>
+														<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+														<td>{{ 
+															item.runs > item.oppRuns ? 'W' 
+																: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+																: (item.runs === item.oppRuns) ? 'T'
+																: 'L' }} 
+												
+																{{item.runs}} - {{item.oppRuns }}
+														</td>
+													</tr>
+												</tbody>
+										</table>
+								</div>
+						</div>
 				</div>
-			</div>
 		</div>
 	</div>
 </div>

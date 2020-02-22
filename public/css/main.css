@@ -1,0 +1,262 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: rgba(38, 255, 45, 0.075);
+
+}
+
+.championship-banner {
+	color: rgba(6, 53, 49, 0.788);
+	font-size:16px;
+	text-align: center;
+	text-decoration: double;
+	font-weight: bolder;
+}
+
+.navbar {
+  background: linear-gradient(to bottom, rgba(1, 6, 102), rgba(204, 229, 255, 0.4));
+}
+
+.navbar a {
+  font-size: 16px;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdown-menu a {
+	color: rgb(27, 39, 71);
+}
+
+.dropdown-menu a:hover {
+	color: rgb(27, 39, 71);
+	text-decoration: underline;
+}
+
+.nav-link,
+.navbar-brand {
+  color: #fff;
+  cursor: pointer;
+}
+
+.navbar-brand > img {
+  height: 60px;
+  width: 60px;
+}
+
+.last-updated {
+	text-align: right;
+	justify-content: flex-end;
+}
+
+.header {
+  background-image: url('https://www.emmelephotography.com/img/s/v-10/p206895911-5.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.8;
+}
+
+.overlay {
+  position: relative;
+  min-height: 100%;
+  min-width: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.blog-main {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.tbl-section-meta {
+  padding: 25px 0 0 250px;
+  margin-bottom: 20px;
+	color: #fff;
+	font-size: 20px;
+}
+
+.tbl-section {
+  font-size: 12px;
+  padding: 20px 0 75px 0;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+}
+  
+.grid-align-right {
+  text-align: right;
+}
+
+.description {
+	left: 50%;
+	position: absolute;
+	top: 45%;
+	transform: translate(-50%, -55%);
+	text-align: center;
+}
+
+.description h1 {
+	color: #6ab446;
+}
+
+.description p {
+	color: #fff;
+	font-size: 1.3rem;
+	line-height: 1.5;
+}
+
+.description button {
+	border: 1px solid #6ab446;
+	background: #6ab446;
+	border-radius: 0;
+	color: #fff;
+}
+
+.description button:hover {
+	border: 1px solid #fff;
+	background: #fff;
+	color: #000;
+}
+
+/*--- feature section ---*/
+
+.features {
+	margin: 4em auto;
+	padding: 1em;
+	position: relative;
+}
+
+.feature-title {
+	color: #333;
+	font-size: 1.3rem;
+	font-weight: 700;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+}
+
+.features img {
+	-webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+	margin-bottom: 16px;
+}
+
+.features .form-control,
+.features input {
+	border-radius: 0;
+}
+
+.features .btn {
+	background-color: #589b37;
+	border: 1px solid #589b37;
+	color: #fff;
+	margin-top: 20px;
+}
+
+.features .btn:hover {
+	background-color: #333;
+	border: 1px solid #333;
+}
+
+.gridcareer {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+  height: 910px; 
+}
+
+.gridpostseason {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 730px; 
+}
+
+.gridplayers10 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 340px; 
+}
+
+.gridplayers11 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 370px; 
+}
+
+.gridplayers12 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 400px;  
+}
+
+.gridplayers13 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 430px; 
+}
+
+.gridplayers14 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 460px; 
+}
+
+.gridplayers15 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 490px; 
+}
+
+.gridplayers16 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 520px; 
+}
+
+.gridplayers17 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 550px; 
+}
+
+.gridplayers18 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 580px; 
+}
+
+.gridplayers19 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 610px; 
+}
+
+.gridplayers20 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 640px; 
+}
+
+.gridplayers21 {
+	border: 1px solid rgb(212,212,212);
+	width: 970px;
+	height: 670px; 
+}
+
+.page-footer {
+  background-color: #222;
+  color: #ccc;
+  padding: 60px 0 30px;
+}
+
+.footer-copyright {
+  color: #666;
+  padding: 40px 0;
+}
+
+@media (max-width: 575.98px) {
+
+
+}

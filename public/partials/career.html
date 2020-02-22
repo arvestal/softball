@@ -1,18 +1,22 @@
+<header class="page-header header container-fluid">
+	<div class="overlay"></div>
+	<p class="tbl-section-meta">
+		Career: {{ fall19.wins + spring19.wins + fall18.wins + summer18.wins + spring18.wins + winter18.wins + fall17.wins + summer17.wins + spring17.wins + winter17.wins + fall16.wins + summer16.wins + spring16.wins + winter16.wins + fall15.wins 
+		+ summer15.wins + spring15.wins + winter15.wins + fall14.wins + summer14.wins + ps.wins }} &minus; {{ fall19.losses + spring19.losses + fall18.losses + summer18.losses + spring18.losses + winter18.losses + fall17.losses + summer17.losses + spring17.losses 
+		+ winter17.losses + fall16.losses + summer16.losses + spring16.losses + winter16.losses + fall15.losses + summer15.losses 
+		+ spring15.losses + winter15.losses + fall14.losses + summer14.losses + ps.losses }} &minus; {{ fall19.ties + spring19.ties + fall18.ties + summer18.ties + spring18.ties + winter18.ties + fall17.ties + summer17.ties + spring17.ties 
+		+ winter17.ties + fall16.ties + summer16.ties + spring16.ties + winter16.ties + fall15.ties + summer15.ties + spring15.ties 
+		+ winter15.ties + fall14.ties + summer14.ties }}
+</p>
+
 <div class="tbl-section">
-    <p class="tbl-section-meta">
-        Career: {{ fall19.wins + spring19.wins + fall18.wins + summer18.wins + spring18.wins + winter18.wins + fall17.wins + summer17.wins + spring17.wins + winter17.wins + fall16.wins + summer16.wins + spring16.wins + winter16.wins + fall15.wins 
-        + summer15.wins + spring15.wins + winter15.wins + fall14.wins + summer14.wins + ps.wins }} &minus; {{ fall19.losses + spring19.losses + fall18.losses + summer18.losses + spring18.losses + winter18.losses + fall17.losses + summer17.losses + spring17.losses 
-        + winter17.losses + fall16.losses + summer16.losses + spring16.losses + winter16.losses + fall15.losses + summer15.losses 
-        + spring15.losses + winter15.losses + fall14.losses + summer14.losses + ps.losses }} &minus; {{ fall19.ties + spring19.ties + fall18.ties + summer18.ties + spring18.ties + winter18.ties + fall17.ties + summer17.ties + spring17.ties 
-        + winter17.ties + fall16.ties + summer16.ties + spring16.ties + winter16.ties + fall15.ties + summer15.ties + spring15.ties 
-        + winter15.ties + fall14.ties + summer14.ties }}
-    </p>
-    <div class="gridcareer" ng-grid="gridCareerOptions"></div>
+	<div class="gridcareer" ng-grid="gridCareerOptions"></div>
 </div>
 
-<div class="container">
+</header>	
+<div class="container features">
     <div class="row ">
-        <div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+        <div class="col-lg-10 col-sm-10 col-md-4">
             <div>
                 <div>
                     <div class="table-responsive">

@@ -4,14 +4,21 @@
 <div class="corner-ribbon blue top-4">2017 Fall Champs!</div>
 <div class="corner-ribbon blue top-5">2017 Winter Champs!</div>
 <p style="padding-bottom: 100px"/>
-<div class="tbl-section">
-	<p class="tbl-section-meta">PostSeason: {{ ps.wins }} &minus; {{ ps.losses }}</p>
-	<div class="gridpostseason" ng-grid="gridPostSeasonOptions"></div>
-</div>
 
-<div class="container">
+<header class="page-header header container-fluid">
+	<div class="overlay"></div>
+	<p class="tbl-section-meta">
+		PostSeason: {{ ps.wins }} &minus; {{ ps.losses }}
+	</p>
+	<div class="tbl-section">
+		<div class="gridpostseason" ng-grid="gridPostSeasonOptions"></div>
+	</div>
+</header>
+
+
+<div class="container features">
 	<div class="row ">
-		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+		<div class="col-lg-10 col-sm-10 col-md-4">
 			<div>
 				<div>
 					<div class="table-responsive">
@@ -234,12 +241,12 @@
 		<td>L 4 - 7</td>
 </tr>
 <tr>
-		<td>Wed, Oct 23 @ 7:30pm</td>
+		<td>Wed, Oct 30 @ 7:30pm</td>
 		<td>@ Arena Sports Grill (B League Playoffs)</td>
 		<td>W 15 - 0</td>
 </tr>
 <tr>
-		<td>Wed, Oct 23 @ 8:30pm</td>
+		<td>Wed, Oct 30 @ 8:30pm</td>
 		<td>@ Arena Sports Grill (B League Playoffs)</td>
 		<td>W 11 - 5</td>
 </tr>

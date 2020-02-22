@@ -1,11 +1,18 @@
+<header class="page-header header container-fluid">
+	<div class="overlay"></div>
+	<p class="tbl-section-meta">
+		{{fall18.season}} {{fall18.year}}: {{ fall18.wins }} &minus; {{ fall18.losses }} &minus; {{ fall18.ties }}
+	</p>
+
 <div class="tbl-section">
-	<p class="tbl-section-meta">{{fall18.season}} {{fall18.year}}: {{ fall18.wins }} &minus; {{ fall18.losses }} &minus; {{ fall18.ties }}</p>
 	<div class="gridplayers20" ng-grid="gridFall18Options"></div>
 </div>
 
-<div class="container">
+</header>
+
+<div class="container features">
 	<div class="row ">
-		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+		<div class=" col-lg-10 col-sm-10 col-md-4">
 				<div>
 						<div>
 								<div class="table-responsive">

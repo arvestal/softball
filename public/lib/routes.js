@@ -58,8 +58,6 @@ router.get("/career", (request, response) => {
             acc[acc.indexOf(filtered[0])].SAC += +row.SAC;
             acc[acc.indexOf(filtered[0])].TB += +row.TB;
           } else {
-            // only include these players for season stats
-            //if ([1,2,3,6,12,15,16,19,23,24,25,28,40,46,47,48,53,70,80,83,110].includes(+row.id)) {
               acc.push(row);
             //}
           }
@@ -93,8 +91,8 @@ router.get("/standings", (request, response) => {
     winter20: {
       season: 'Winter',
       year: 2020, 
-      wins: 6, 
-      losses: 2, 
+      wins: 7, 
+      losses: 3, 
       ties: 0,
       schedule: [{time: 'Wed, Jan 15 @ 6:30pm', team: 'We Are Twelve', runs: 0, oppRuns: 0, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B'}
         , {time: 'Wed, Jan 15 @ 7:30pm', team: 'Arena Sports Grill', runs: 16, oppRuns: 13, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
@@ -104,8 +102,8 @@ router.get("/standings", (request, response) => {
         , {time: 'Wed, Jan 29 @ 9:30pm', team: 'We Are Twelve', runs: 0, oppRuns: 0, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Feb 5 @ 8:30pm', team: 'Hey Cuz', runs: 15, oppRuns: 16, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Feb 5 @ 9:30pm', team: 'Arena Sports Grill', runs: 6, oppRuns: 15, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
-        , {time: 'Wed, Feb 19 @ 6:30pm', team: 'Hey Cuz', runs: 0, oppRuns: 0, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
-        , {time: 'Wed, Feb 19 @ 8:30pm', team: 'Arena Sports Grill', runs: 0, oppRuns: 0, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
+        , {time: 'Wed, Feb 19 @ 6:30pm', team: 'Hey Cuz', runs: 6, oppRuns: 9, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
+        , {time: 'Wed, Feb 19 @ 8:30pm', team: 'Arena Sports Grill', runs: 17, oppRuns: 9, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Feb 26 @ 6:30pm', team: 'Arena Sports Grill', runs: 0, oppRuns: 0, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Feb 26 @ 7:30pm', team: 'Hey Cuz', runs: 0, oppRuns: 0, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Mar 4 @ 6:30pm', team: 'TBD', runs: 0, oppRuns: 0, location: 'home', park: 'Thompson Peak', gametype: 'Postseason', level: 'B' }

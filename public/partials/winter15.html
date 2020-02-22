@@ -1,33 +1,40 @@
+<header class="page-header header container-fluid">
+	<div class="overlay"></div>
+	<p class="tbl-section-meta">
+		{{winter15.season}} {{winter15.year}}: {{ winter15.wins }} &minus; {{ winter15.losses }} &minus; {{ winter15.ties }}
+	</p>
+
 <div class="tbl-section">
-	<p class="tbl-section-meta">{{winter15.season}} {{winter15.year}}: {{ winter15.wins }} &minus; {{ winter15.losses }} &minus; {{ winter15.ties }}</p>
 	<div class="gridplayers13" ng-grid="gridWinter15Options"></div>
 </div>
 
-<div class="container">
+</header>
+
+<div class="container features">
 	<div class="row ">
-		<div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-			<div>
-        <div>
-					<div class="table-responsive">
-						<table class="table table-hover">
-							<tbody>
-								<tr ng-repeat="item in winter15.schedule">
-									<td>{{item.time}}</td>
-									<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
-									<td>{{ 
-											item.runs > item.oppRuns ? 'W' 
-													: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
-													: (item.runs === item.oppRuns) ? 'T'
-													: 'L' }} 
-					
-													{{item.runs}} - {{item.oppRuns }}
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+		<div class=" col-lg-10 col-sm-10 col-md-4">
+				<div>
+						<div>
+								<div class="table-responsive">
+										<table class="table table-hover">
+												<tbody>
+													<tr ng-repeat="item in winter15.schedule">
+														<td>{{item.time}}</td>
+														<td>{{item.location === 'home' ? 'vs' : '@'}} {{item.team}} {{item.gametype === 'Postseason' ? '- ' + item.level + ' League Playoffs' : ''}}</td>
+														<td>{{ 
+															item.runs > item.oppRuns ? 'W' 
+																: (item.runs === 0 && item.oppRuns === 0) ? 'FFT'
+																: (item.runs === item.oppRuns) ? 'T'
+																: 'L' }} 
+												
+																{{item.runs}} - {{item.oppRuns }}
+														</td>
+													</tr>
+												</tbody>
+										</table>
+								</div>
+						</div>
 				</div>
-			</div>
 		</div>
 	</div>
 </div>
