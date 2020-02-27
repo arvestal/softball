@@ -110,7 +110,7 @@ router.get("/standings", (request, response) => {
     winter20: {
       season: 'Winter',
       year: 2020, 
-      wins: 7, 
+      wins: 9, 
       losses: 3, 
       ties: 0,
       schedule: [{time: 'Wed, Jan 15 @ 6:30pm', team: 'We Are Twelve', runs: 0, oppRuns: 0, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B'}
@@ -123,8 +123,8 @@ router.get("/standings", (request, response) => {
         , {time: 'Wed, Feb 5 @ 9:30pm', team: 'Arena Sports Grill', runs: 6, oppRuns: 15, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Feb 19 @ 6:30pm', team: 'Hey Cuz', runs: 6, oppRuns: 9, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Feb 19 @ 8:30pm', team: 'Arena Sports Grill', runs: 17, oppRuns: 9, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
-        , {time: 'Wed, Feb 26 @ 6:30pm', team: 'Arena Sports Grill', runs: 0, oppRuns: 0, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
-        , {time: 'Wed, Feb 26 @ 7:30pm', team: 'Hey Cuz', runs: 0, oppRuns: 0, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
+        , {time: 'Wed, Feb 26 @ 6:30pm', team: 'Hey Cuz', runs: 19, oppRuns: 12, location: 'away', park: 'Thompson Peak', gametype: 'League', level: 'B' }
+        , {time: 'Wed, Feb 26 @ 7:30pm', team: 'Arena Sports Grill', runs: 14, oppRuns: 4, location: 'home', park: 'Thompson Peak', gametype: 'League', level: 'B' }
         , {time: 'Wed, Mar 4 @ 6:30pm', team: 'TBD', runs: 0, oppRuns: 0, location: 'home', park: 'Thompson Peak', gametype: 'Postseason', level: 'B' }
       ]
     },
