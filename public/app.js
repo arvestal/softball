@@ -129,7 +129,7 @@ angular.module('myApp', ['ngGrid', 'ngRoute'])
 
         $http.get('/api/stats?season=postseason')
             .success(data => {
-                const filter = data.filter(item => [1,2,3,6,10,12,15,16,19,23,24,25,28,35,40,43,46,47,48,50,53,70,80,83,110].includes(+item.id))
+                const filter = data.filter(item => [1,2,3,6,10,12,15,16,19,23,24,25,28,35,36,40,43,46,47,48,50,53,70,80,83,110].includes(+item.id))
                 $scope.postSeasonData = filter;
             })
             .error(data => console.log(`Error: ${data}`));
