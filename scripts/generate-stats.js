@@ -118,8 +118,8 @@ function aggregate(playerArrays) {
   }));
 }
 
-function main() {
-  const files = fs.readdirSync(GC_FILES_DIR).filter((f) => f.endsWith('.csv'));
+function buildSeasonData(gcFilesDir) {
+  const files = fs.readdirSync(gcFilesDir).filter((f) => f.endsWith('.csv'));
 
   const bySeasonKey = {};
   let postseason = [];
@@ -128,7 +128,7 @@ function main() {
     const stem = file.replace(/\.csv$/, '');
     if (stem === 'coed') continue; // no standings/schedule data for coed; out of scope
 
-    const rows = parseCsv(path.join(GC_FILES_DIR, file));
+    const rows = parseCsv(path.join(gcFilesDir, file));
 
     if (stem === 'postseason') {
       postseason = rows;
@@ -139,18 +139,31 @@ function main() {
 
   const career = aggregate([...Object.values(bySeasonKey), postseason]);
 
+  return { bySeasonKey, career, postseason };
+}
+
+function main(gcFilesDir = GC_FILES_DIR, outputFile = OUTPUT_FILE) {
+  const data = buildSeasonData(gcFilesDir);
+
   const banner = `/*
  * GENERATED FILE - do not edit by hand.
  * Produced by scripts/generate-stats.js from data/gc_files/*.csv.
  * Re-run that script and commit the diff if the source CSVs change.
  */\n`;
-  const body = `module.exports = ${JSON.stringify({ bySeasonKey, career, postseason }, null, 2)};\n`;
+  const body = `module.exports = ${JSON.stringify(data, null, 2)};\n`;
 
-  fs.mkdirSync(path.dirname(OUTPUT_FILE), { recursive: true });
-  fs.writeFileSync(OUTPUT_FILE, banner + body);
+  fs.mkdirSync(path.dirname(outputFile), { recursive: true });
+  fs.writeFileSync(outputFile, banner + body);
 
-  console.log(`Wrote ${OUTPUT_FILE}`);
-  console.log(`  seasons: ${Object.keys(bySeasonKey).length}, postseason players: ${postseason.length}, career players: ${career.length}`);
+  console.log(`Wrote ${outputFile}`);
+  console.log(`  seasons: ${Object.keys(data.bySeasonKey).length}, postseason players: ${data.postseason.length}, career players: ${data.career.length}`);
+
+  return data;
 }
 
-main();
+/* istanbul ignore if -- exercised by running the script, not by tests */
+if (require.main === module) {
+  main();
+}
+
+module.exports = { toSeasonKey, parseCsv, aggregate, buildSeasonData, main };

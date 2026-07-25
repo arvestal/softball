@@ -5,6 +5,7 @@ const path = require('path');
 const { engine } = require('express-handlebars');
 
 const { buildSeasonNavGroups } = require('./lib/nav');
+const helpers = require('./lib/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -14,11 +15,7 @@ app.engine('hbs', engine({
   defaultLayout: 'main',
   layoutsDir: path.join(__dirname, '../views/layouts'),
   partialsDir: path.join(__dirname, '../views/partials'),
-  helpers: {
-    number3: (n) => (typeof n === 'number' && !Number.isNaN(n) ? n.toFixed(3) : '-'),
-    eq: (a, b) => a === b,
-    gt: (a, b) => a > b,
-  },
+  helpers,
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, '../views'));
@@ -41,6 +38,11 @@ app.use((req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on http://localhost:${PORT}`);
-});
+/* istanbul ignore if -- exercised by starting the process, not by tests */
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Listening on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;

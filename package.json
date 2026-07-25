@@ -7,7 +7,31 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "build:stats": "node scripts/generate-stats.js"
+    "build:stats": "node scripts/generate-stats.js",
+    "lint": "eslint src/ scripts/ tests/",
+    "test": "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/app.js",
+      "src/lib/helpers.js",
+      "src/lib/nav.js",
+      "src/lib/schedule.js",
+      "src/lib/stats.js",
+      "src/routes/index.js",
+      "src/routes/softball.js",
+      "scripts/generate-stats.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "lines": 100,
+        "functions": 100,
+        "branches": 100,
+        "statements": 100
+      }
+    }
   },
   "dependencies": {
     "dotenv": "^16.4.1",
@@ -15,6 +39,10 @@
     "express-handlebars": "^7.1.2"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.7.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "supertest": "^7.0.0"
   }
 }
