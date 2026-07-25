@@ -159,6 +159,12 @@ tbody tr:hover { background: var(--bg2); }
 
 .error-page { text-align: center; padding: 4rem 1rem; }
 
+.content-page { max-width: 640px; margin: 0 auto; }
+.content-page h1 { font-size: 1.6rem; margin-bottom: 1rem; }
+.content-page p { color: var(--text2); margin-bottom: 1rem; }
+.contact-links { list-style: none; }
+.contact-links li { margin-bottom: 0.5rem; }
+
 .footer {
   text-align: center;
   color: var(--text2);
@@ -166,3 +172,13 @@ tbody tr:hover { background: var(--bg2); }
   border-top: 1px solid var(--border);
   font-size: 0.85rem;
 }
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.footer-nav a { color: var(--text2); }
+.footer-nav a:hover { color: var(--text); }

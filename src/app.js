@@ -36,6 +36,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   res.locals.seasonNavGroups = buildSeasonNavGroups();
   res.locals.currentYear = new Date().getFullYear();
+  res.locals.canonicalUrl = `https://allenvestal.com${req.path}`;
   next();
 });
 
@@ -46,6 +47,7 @@ app.use((req, res) => {
   res.status(404).render('error', {
     pageTitle: 'Page Not Found',
     message: "The page you're looking for doesn't exist.",
+    noIndex: true,
   });
 });
 
