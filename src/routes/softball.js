@@ -54,6 +54,7 @@ router.get('/:season', (req, res) => {
     return res.status(404).render('error', {
       pageTitle: 'Season Not Found',
       message: `No softball season found for "${key}".`,
+      noIndex: true,
     });
   }
 

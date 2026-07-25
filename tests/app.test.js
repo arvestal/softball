@@ -9,6 +9,32 @@ describe('GET /', () => {
   });
 });
 
+describe('GET /about', () => {
+  it('renders the about page', async () => {
+    const res = await request(app).get('/about');
+    expect(res.status).toBe(200);
+    expect(res.text).toContain('About');
+  });
+});
+
+describe('GET /contact', () => {
+  it('renders the contact page', async () => {
+    const res = await request(app).get('/contact');
+    expect(res.status).toBe(200);
+    expect(res.text).toContain('Contact');
+  });
+});
+
+describe('GET /sitemap.xml', () => {
+  it('lists static and per-season softball pages', async () => {
+    const res = await request(app).get('/sitemap.xml');
+    expect(res.status).toBe(200);
+    expect(res.headers['content-type']).toContain('application/xml');
+    expect(res.text).toContain('<loc>https://allenvestal.com/about</loc>');
+    expect(res.text).toContain('<loc>https://allenvestal.com/softball/fall19</loc>');
+  });
+});
+
 describe('www redirect', () => {
   it('redirects www.allenvestal.com to the bare domain', async () => {
     const res = await request(app).get('/softball').set('Host', 'www.allenvestal.com');

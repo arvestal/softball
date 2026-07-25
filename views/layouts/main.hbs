@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{#if pageTitle}}{{pageTitle}} — {{/if}}Allen Vestal</title>
-  <meta name="description" content="Allen Vestal — softball stats and other hobbies.">
+  <meta name="description" content="{{#if metaDescription}}{{metaDescription}}{{else}}Allen Vestal — softball stats and other hobbies.{{/if}}">
+  <meta name="robots" content="{{#if noIndex}}noindex, nofollow{{else}}index, follow{{/if}}">
+  <link rel="canonical" href="{{canonicalUrl}}">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
 </head>
@@ -38,6 +40,13 @@
   </main>
 
   <footer class="footer">
+    <nav class="footer-nav">
+      <a href="/">Home</a>
+      <a href="/softball">Softball</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="https://playoffrally.com">Playoff Rally</a>
+    </nav>
     <p>&copy; {{currentYear}} <a href="/">allenvestal.com</a>. All rights reserved.</p>
     <p><a href="https://twitter.com/arvestal">@arvestal</a></p>
   </footer>
