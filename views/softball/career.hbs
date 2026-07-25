@@ -1,0 +1,10 @@
+<header class="section-header">
+  <p class="section-meta">
+    Career: {{totals.wins}} &minus; {{totals.losses}} &minus; {{totals.ties}}
+  </p>
+  {{> stats-table columns=columns players=careerPlayers}}
+</header>
+
+<section class="section-body">
+  {{> schedule-table games=games}}
+</section>

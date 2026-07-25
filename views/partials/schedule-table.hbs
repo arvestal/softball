@@ -1,0 +1,15 @@
+<div class="table-wrap">
+  <table class="schedule-table">
+    <tbody>
+      {{#each games}}
+        <tr>
+          <td>{{time}}</td>
+          <td>{{opponentLabel}} {{playoffNote}}</td>
+          <td>{{result}} {{runs}} - {{oppRuns}}</td>
+        </tr>
+      {{else}}
+        <tr><td>No games recorded.</td></tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

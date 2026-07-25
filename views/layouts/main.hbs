@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{#if pageTitle}}{{pageTitle}} — {{/if}}Allen Vestal</title>
+  <meta name="description" content="Allen Vestal — softball stats and other hobbies.">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚾</text></svg>">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">Allen Vestal</a>
+      <ul class="nav-links">
+        <li><a href="/softball">Softball</a>
+          <ul class="nav-dropdown">
+            <li><a href="/softball">Career</a></li>
+            <li><a href="/softball/postseason">Postseason</a></li>
+            {{#each seasonNavGroups}}
+              <li class="nav-dropdown-group">
+                <span class="nav-dropdown-label">{{label}}</span>
+                <ul>
+                  {{#each seasons}}
+                    <li><a href="/softball/{{key}}">{{year}}</a></li>
+                  {{/each}}
+                </ul>
+              </li>
+            {{/each}}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="main">
+    {{{body}}}
+  </main>
+
+  <footer class="footer">
+    <p>&copy; {{currentYear}} <a href="/">allenvestal.com</a>. All rights reserved.</p>
+    <p><a href="https://twitter.com/arvestal">@arvestal</a></p>
+  </footer>
+</body>
+</html>
