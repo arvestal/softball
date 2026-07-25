@@ -22,6 +22,9 @@ app.set('views', path.join(__dirname, '../views'));
 
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Railway deployment healthcheck target.
+app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
+
 app.use((req, res, next) => {
   res.locals.seasonNavGroups = buildSeasonNavGroups();
   res.locals.currentYear = new Date().getFullYear();

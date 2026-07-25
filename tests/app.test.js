@@ -9,6 +9,14 @@ describe('GET /', () => {
   });
 });
 
+describe('GET /health', () => {
+  it('reports ok for the Railway healthcheck', async () => {
+    const res = await request(app).get('/health');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ status: 'ok' });
+  });
+});
+
 describe('GET /softball', () => {
   it('renders career totals, sorted by AVG descending, plus the full game log', async () => {
     const res = await request(app).get('/softball');
