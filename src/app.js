@@ -22,6 +22,17 @@ app.set('views', path.join(__dirname, '../views'));
 
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Railway deployment healthcheck target.
+app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
+
+// www → root redirect, matching playoffrally.com.
+app.use((req, res, next) => {
+  if (req.hostname === 'www.allenvestal.com') {
+    return res.redirect(301, `https://allenvestal.com${req.originalUrl}`);
+  }
+  next();
+});
+
 app.use((req, res, next) => {
   res.locals.seasonNavGroups = buildSeasonNavGroups();
   res.locals.currentYear = new Date().getFullYear();

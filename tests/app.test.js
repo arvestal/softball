@@ -9,6 +9,27 @@ describe('GET /', () => {
   });
 });
 
+describe('www redirect', () => {
+  it('redirects www.allenvestal.com to the bare domain', async () => {
+    const res = await request(app).get('/softball').set('Host', 'www.allenvestal.com');
+    expect(res.status).toBe(301);
+    expect(res.headers.location).toBe('https://allenvestal.com/softball');
+  });
+
+  it('does not redirect other hosts', async () => {
+    const res = await request(app).get('/').set('Host', 'allenvestal.com');
+    expect(res.status).toBe(200);
+  });
+});
+
+describe('GET /health', () => {
+  it('reports ok for the Railway healthcheck', async () => {
+    const res = await request(app).get('/health');
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ status: 'ok' });
+  });
+});
+
 describe('GET /softball', () => {
   it('renders career totals, sorted by AVG descending, plus the full game log', async () => {
     const res = await request(app).get('/softball');
