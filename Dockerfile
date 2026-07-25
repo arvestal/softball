@@ -15,4 +15,4 @@ RUN \
 EXPOSE 8080
 
 # The command to run our app when the container is run
-CMD ["node", "server.js"]
+CMD ["node", "src/app.js"]

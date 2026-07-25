@@ -1,0 +1,14 @@
+{{#if championshipLevel}}
+<div class="championship-banner">{{championshipLevel}} League Champs!</div>
+{{/if}}
+
+<header class="section-header">
+  <p class="section-meta">
+    {{label}}{{#if year}} {{year}}{{/if}}: {{record.wins}} &minus; {{record.losses}}{{#if record.ties}} &minus; {{record.ties}}{{/if}}
+  </p>
+  {{> stats-table columns=columns players=players}}
+</header>
+
+<section class="section-body">
+  {{> schedule-table games=games}}
+</section>
