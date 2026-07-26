@@ -22,15 +22,12 @@ a { color: var(--green); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* ─── Retro banner ──────────────────────────────────────────────────── */
-/* seahawks-header.png is the official Seahawks logo/wordmark, recovered from the
-   allenvestal.com 2011 Wayback Machine capture (originally a Yahoo Fantasy Football
-   team-header widget asset, not an original graphic) — NFL-trademarked, used here
-   as a personal, non-commercial nostalgia nod per the site owner's request. */
 .retro-banner-inner {
   max-width: 1100px;
-  height: 115px;
+  height: 140px;
   margin: 0 auto;
-  background: #293963 url('/img/seahawks-header.png') no-repeat center center;
+  background: url('/img/seattle-skyline-header.svg') no-repeat center center;
+  background-size: cover;
 }
 
 /* ─── Nav ───────────────────────────────────────────────────────────── */
