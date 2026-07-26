@@ -4,13 +4,16 @@
       Career: {{totals.wins}} &minus; {{totals.losses}} &minus; {{totals.ties}}
     </p>
     {{#if championships}}
-    <div class="career-banners">
-      {{#each championships}}
-      <div class="career-banner">
-        <span class="career-banner-season">{{label}} {{year}}</span>
-        <span class="career-banner-record">{{wins}}&minus;{{losses}}{{#if ties}}&minus;{{ties}}{{/if}}</span>
+    <div class="career-banners-group">
+      <p class="career-banners-label">Total Championships: {{championships.length}}</p>
+      <div class="career-banners">
+        {{#each championships}}
+        <div class="career-banner">
+          <span class="career-banner-season">{{label}} {{year}}</span>
+          <span class="career-banner-record">{{wins}}&minus;{{losses}}{{#if ties}}&minus;{{ties}}{{/if}}</span>
+        </div>
+        {{/each}}
       </div>
-      {{/each}}
     </div>
     {{/if}}
   </div>

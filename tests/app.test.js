@@ -85,6 +85,7 @@ describe('GET /softball', () => {
 
   it('renders a championship banner for each season that won it all', async () => {
     const res = await request(app).get('/softball');
+    expect(res.text).toContain('Total Championships: 6');
     expect(res.text).toContain('career-banner');
     expect(res.text).toContain('Winter 2017');
     expect(res.text).toContain('Fall 2017');
