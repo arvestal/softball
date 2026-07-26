@@ -2,6 +2,14 @@
 <div class="championship-banner">{{championshipLevel}} League Champs!</div>
 {{/if}}
 
+{{#if yearTabs}}
+<nav class="season-tabs">
+  {{#each yearTabs}}
+    <a href="/softball/{{key}}" class="season-tab{{#if active}} active{{/if}}">{{year}}</a>
+  {{/each}}
+</nav>
+{{/if}}
+
 <header class="section-header">
   <p class="section-meta">
     {{label}}{{#if year}} {{year}}{{/if}}: {{record.wins}} &minus; {{record.losses}}{{#if record.ties}} &minus; {{record.ties}}{{/if}}
