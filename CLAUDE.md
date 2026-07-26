@@ -91,6 +91,16 @@ omits HBP, a pre-existing simplification from the original app that's preserved 
   arvestal/allenvestal.com --branch main --service softball` (forces a fresh pull + build). Always
   confirm the deployed commit hash via `railway deployment list --json` rather than assuming a
   redeploy picked up the latest push.
+  - **As of 2026-07-26 this footgun no longer applies day-to-day**: the `softball` service now has
+    a GitHub push-to-`main` deploy trigger (Railway's `Service.repoTriggers`, added via the
+    `deploymentTriggerCreate` GraphQL mutation — there's no CLI/dashboard shortcut for it), so
+    ordinary pushes auto-deploy on their own, matching `playoff-fantasy`. The manual
+    `source connect` trick above is now only needed if the trigger itself ever gets removed or
+    stops firing. The trigger had been missing since the repo rename (`softball` →
+    `allenvestal.com`) because Railway's GitHub App wasn't authorized on the renamed repo —
+    `Service.repoTriggers` returned `[]` and `deploymentTriggerCreate` failed with "no one in the
+    project has access to it" until repo access was re-granted at
+    `github.com/settings/installations`.
 - The custom domain's Railway-issued certificate got stuck in
   `CERTIFICATE_STATUS_TYPE_VALIDATING_OWNERSHIP` for an extended period even with verified-correct
   DNS (likely from repeated delete/recreate churn tripping a Let's Encrypt rate limit). Fix used:
