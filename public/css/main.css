@@ -58,6 +58,7 @@ a:hover { text-decoration: underline; }
 
 .nav-dropdown {
   display: none;
+  flex-direction: column;
   list-style: none;
   position: absolute;
   top: 100%;
@@ -66,26 +67,17 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 0.5rem;
-  min-width: 480px;
-  gap: 0.5rem;
-  flex-wrap: wrap;
+  min-width: 160px;
 }
 .nav-links > li:hover .nav-dropdown { display: flex; }
 
-.nav-dropdown > li { padding: 0.25rem 0.5rem; }
-.nav-dropdown > li > a { display: block; padding: 0.25rem 0; }
-
-.nav-dropdown-group { min-width: 90px; }
-.nav-dropdown-label {
+.nav-dropdown > li { white-space: nowrap; }
+.nav-dropdown > li > a {
   display: block;
-  color: var(--text2);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
 }
-.nav-dropdown-group ul { list-style: none; }
-.nav-dropdown-group a { display: block; padding: 0.15rem 0; }
+.nav-dropdown > li > a:hover { background: var(--bg); text-decoration: none; }
 
 /* ─── Main content ──────────────────────────────────────────────────── */
 .main {
@@ -115,6 +107,25 @@ a:hover { text-decoration: underline; }
   padding: 0.5rem;
   border-radius: 6px;
   margin-bottom: 1rem;
+}
+
+.season-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.season-tab {
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text2);
+}
+.season-tab:hover { color: var(--text); text-decoration: none; }
+.season-tab.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
 }
 
 .section-header { margin-bottom: 2rem; }
@@ -154,6 +165,14 @@ thead th {
   font-size: 0.75rem;
   text-transform: uppercase;
 }
+
+.stats-table thead th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+.stats-table thead th.sortable:hover { color: var(--text); }
+.stats-table thead th.sortable[data-sort-dir="asc"]::after { content: ' \25B2'; }
+.stats-table thead th.sortable[data-sort-dir="desc"]::after { content: ' \25BC'; }
 
 tbody tr:hover { background: var(--bg2); }
 

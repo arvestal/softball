@@ -69,6 +69,7 @@ describe('GET /softball/postseason', () => {
     const res = await request(app).get('/softball/postseason');
     expect(res.status).toBe(200);
     expect(res.text).toContain('PostSeason:');
+    expect(res.text).not.toContain('season-tabs');
   });
 });
 
@@ -78,6 +79,12 @@ describe('GET /softball/:season', () => {
     expect(res.status).toBe(200);
     expect(res.text).toContain('Fall 2019');
     expect(res.text).toContain('League Champs!');
+  });
+
+  it('shows a year tab per Fall season, with the current year active', async () => {
+    const res = await request(app).get('/softball/fall19');
+    expect(res.text).toContain('href="/softball/fall14"');
+    expect(res.text).toMatch(/href="\/softball\/fall19" class="season-tab active"/);
   });
 
   it('does not show a championship banner for a season that did not win it all', async () => {

@@ -20,14 +20,7 @@
             <li><a href="/softball">Career</a></li>
             <li><a href="/softball/postseason">Postseason</a></li>
             {{#each seasonNavGroups}}
-              <li class="nav-dropdown-group">
-                <span class="nav-dropdown-label">{{label}}</span>
-                <ul>
-                  {{#each seasons}}
-                    <li><a href="/softball/{{key}}">{{year}}</a></li>
-                  {{/each}}
-                </ul>
-              </li>
+              <li><a href="/softball/{{latestKey}}">{{label}}</a></li>
             {{/each}}
           </ul>
         </li>
@@ -50,5 +43,7 @@
     <p>&copy; {{currentYear}} <a href="/">allenvestal.com</a>. All rights reserved.</p>
     <p><a href="https://twitter.com/arvestal">@arvestal</a></p>
   </footer>
+
+  <script src="/js/sortable-table.js" defer></script>
 </body>
 </html>
