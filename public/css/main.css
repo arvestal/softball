@@ -316,6 +316,82 @@ tbody tr:hover { background: var(--bg2); }
 .lightbox-prev { left: 0.5rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; }
 .lightbox-next { right: 0.5rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; }
 
+.admin-page h1 { font-size: 1.6rem; margin-bottom: 0.5rem; }
+.admin-page .section-meta { margin-bottom: 1rem; }
+
+.admin-error {
+  background: rgba(248, 81, 73, 0.15);
+  border: 1px solid #f85149;
+  color: #f85149;
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.admin-upload {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.admin-upload input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.admin-photo {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.admin-alt-form { display: flex; gap: 0.4rem; }
+.admin-alt-form input { flex: 1; }
+
+input[type="text"] {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+.admin-delete {
+  background: transparent;
+  border: 1px solid #f85149;
+  color: #f85149;
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+.admin-delete:hover { background: rgba(248, 81, 73, 0.15); }
+
+.admin-alt-form button,
+.admin-upload button { cursor: pointer; }
+
 .footer {
   text-align: center;
   color: var(--text2);

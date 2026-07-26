@@ -22,9 +22,13 @@
       "src/lib/schedule.js",
       "src/lib/stats.js",
       "src/lib/gallery.js",
+      "src/lib/gallery-store.js",
+      "src/lib/gallery-upload.js",
+      "src/lib/admin-auth.js",
       "src/routes/index.js",
       "src/routes/softball.js",
       "src/routes/gallery.js",
+      "src/routes/admin.js",
       "scripts/generate-stats.js"
     ],
     "coverageThreshold": {
@@ -37,16 +41,20 @@
     }
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.1",
     "express": "^4.19.2",
-    "express-handlebars": "^9.0.1"
+    "express-handlebars": "^9.0.1",
+    "google-auth-library": "^10.9.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.2.0",
+    "sharp": "^0.35.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.7.0",
     "jest": "^29.7.0",
     "nodemon": "^3.1.0",
-    "sharp": "^0.35.3",
     "supertest": "^7.0.0"
   }
 }

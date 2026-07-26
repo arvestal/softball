@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const manifest = require('../../data/gallery/manifest.json');
-const photos = require('../../data/gallery/photos');
+const { resolveDataDir, listPhotos } = require('../lib/gallery-store');
 const { buildGalleryPhotos } = require('../lib/gallery');
 
 router.get('/', (req, res) => {
-  const galleryPhotos = buildGalleryPhotos(manifest, photos);
+  const galleryPhotos = buildGalleryPhotos(listPhotos(resolveDataDir()));
 
   res.render('gallery', {
     pageTitle: 'Gallery',

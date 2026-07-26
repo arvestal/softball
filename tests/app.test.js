@@ -1,5 +1,24 @@
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
 const request = require('supertest');
 const app = require('../src/app');
+const { writePhotos } = require('../src/lib/gallery-store');
+
+const originalGalleryDataDir = process.env.GALLERY_DATA_DIR;
+
+beforeAll(() => {
+  const dataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'gallery-fixture-'));
+  writePhotos(dataDir, [
+    { slug: 'tacoma-001', source: 'IMG_0001.jpeg', alt: 'A test photo', date: '2020-01-01T00:00:00.000Z' },
+  ]);
+  process.env.GALLERY_DATA_DIR = dataDir;
+});
+
+afterAll(() => {
+  if (originalGalleryDataDir === undefined) delete process.env.GALLERY_DATA_DIR;
+  else process.env.GALLERY_DATA_DIR = originalGalleryDataDir;
+});
 
 describe('GET /', () => {
   it('renders the landing page', async () => {

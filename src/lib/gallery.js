@@ -1,14 +1,12 @@
-// Merges the generated manifest (slug, source filename, capture date — see
-// scripts/generate-gallery-images.js) with the hand-authored alt text (data/gallery/photos.js)
-// into the shape the gallery view needs.
-function buildGalleryPhotos(manifest, photos) {
-  const altBySlug = new Map(photos.map((p) => [p.slug, p.alt]));
-
-  return manifest.map((entry) => ({
-    slug: entry.slug,
-    thumb: `/img/gallery/thumb/${entry.slug}.webp`,
-    full: `/img/gallery/full/${entry.slug}.webp`,
-    alt: altBySlug.get(entry.slug) || '',
+// Maps the volume-backed photos.json entries (see src/lib/gallery-store.js) into the shape the
+// gallery view needs. photos.json is the single source of truth (slug, source, alt, date) —
+// there's no separate manifest to join against once the admin panel owns this data.
+function buildGalleryPhotos(photos) {
+  return photos.map((p) => ({
+    slug: p.slug,
+    thumb: `/img/gallery/thumb/${p.slug}.webp`,
+    full: `/img/gallery/full/${p.slug}.webp`,
+    alt: p.alt || '',
   }));
 }
 

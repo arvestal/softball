@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const { engine } = require('express-handlebars');
 
 const { buildSeasonNavGroups } = require('./lib/nav');
@@ -10,6 +11,10 @@ const helpers = require('./lib/helpers');
 const app = express();
 const PORT = process.env.PORT || 8080;
 const ASSET_VERSION = process.env.RAILWAY_GIT_COMMIT_SHA || 'dev';
+
+// Railway terminates TLS in front of the app; trust its X-Forwarded-* headers so
+// req.protocol/req.secure reflect the real client-facing connection.
+app.set('trust proxy', 1);
 
 app.engine('hbs', engine({
   extname: '.hbs',
@@ -22,6 +27,13 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, '../views'));
 
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
+
+// Serves gallery images from the persistent volume (GALLERY_DATA_DIR) instead of public/, so
+// admin uploads/deletes take effect without a redeploy.
+const { resolveDataDir } = require('./lib/gallery-store');
+app.use('/img/gallery', express.static(resolveDataDir()));
 
 // Railway deployment healthcheck target.
 app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
@@ -45,6 +57,7 @@ app.use((req, res, next) => {
 app.use('/', require('./routes/index'));
 app.use('/softball', require('./routes/softball'));
 app.use('/gallery', require('./routes/gallery'));
+app.use('/admin', require('./routes/admin'));
 
 app.use((req, res) => {
   res.status(404).render('error', {

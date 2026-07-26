@@ -39,22 +39,33 @@ npm run build:gallery  # regenerate public/img/gallery/* + data/gallery/manifest
 - `src/lib/stats.js` — stat table column config, AVG-desc sort, id-whitelist filter
 - `src/routes/index.js` — `/`, `/about`, `/contact`, `/sitemap.xml`
 - `src/routes/softball.js` — `/softball` (career), `/softball/postseason`, `/softball/:season`
-- `src/routes/gallery.js` — `/gallery`; joins `data/gallery/manifest.json` with
-  `data/gallery/photos.js` via `src/lib/gallery.js`'s `buildGalleryPhotos`
-- `views/*.hbs` — Handlebars templates; `views/layouts/main.hbs` is the shared layout
+- `src/routes/gallery.js` — public `/gallery`; reads live photo metadata via
+  `src/lib/gallery-store.js` and maps it to view data via `src/lib/gallery.js`'s
+  `buildGalleryPhotos`
+- `src/routes/admin.js` — Google-OAuth-gated admin at `/admin` (login/callback/logout plus photo
+  upload/edit/delete); see **Admin & auth** below
+- `src/lib/gallery-store.js` — reads/writes `photos.json` on the Railway volume
+  (`GALLERY_DATA_DIR`); the single source of truth for gallery photos at runtime
+- `src/lib/gallery-upload.js` — sharp-only resize/WebP-convert for admin-uploaded photos (no
+  `sips`/`mdls` — those are macOS-only, this runs on Railway's Linux container)
+- `src/lib/admin-auth.js` — signs/verifies the admin session JWT
+- `views/*.hbs` — Handlebars templates; `views/layouts/main.hbs` is the shared layout;
+  `views/admin/*.hbs` is the admin login/dashboard UI
 - `data/gc_files/*.csv` — raw GameChanger season exports (source of truth for stats)
 - `data/softball/seasons.js` — **generated**, committed. Per-season + career + postseason player
   stats. Produced by `scripts/generate-stats.js`; never hand-edited.
 - `data/softball/standings.js` — **hand-authored**, committed. Win/loss/schedule data (not
   derivable from the CSVs) plus the two curated roster-id whitelists (`CAREER_PLAYER_IDS`,
   `POSTSEASON_PLAYER_IDS`) that limit which players show on the career/postseason tables.
-- `data/gallery/manifest.json` — **generated**, committed. `{slug, source, date}` per photo, in
-  chronological order. Produced by `scripts/generate-gallery-images.js`; never hand-edited.
-- `data/gallery/photos.js` — **hand-authored**, committed. `{slug, alt}` pairs — alt text needs
-  human/model judgment about image content, so it can't be generated. Must stay in sync 1:1 with
-  `manifest.json`'s slugs (add/remove an entry here whenever the manifest gains or drops a photo).
-- `public/img/gallery/{full,thumb}/*.webp` — **generated**, committed (~108MB total for 250
-  photos as of 2026-07-26). Full images capped at 2000px on the long edge; thumbs at 480px wide.
+- `/data/gallery/photos.json` (on the Railway volume, **not** in git) — `[{slug, source, alt,
+  date}]`, the live gallery data. Read/written by `src/lib/gallery-store.js`; managed through
+  `/admin`, not by hand-editing.
+- `/data/gallery/{full,thumb}/*.webp` (on the Railway volume, **not** in git) — the actual photo
+  files. Full images capped at 2000px on the long edge; thumbs at 480px wide.
+- `data/gallery/manifest.json` + `data/gallery/photos.js` + `public/img/gallery/*` —
+  **historical only**, kept in git just long enough to migrate onto the volume (see **Gallery
+  pipeline**); once that migration is verified in production these get deleted from git entirely,
+  since `photos.json` on the volume is now the single source of truth.
 
 ## Data pipeline
 
@@ -81,26 +92,37 @@ omits HBP, a pre-existing simplification from the original app that's preserved 
 
 ## Gallery pipeline
 
-`tacoma/` at the repo root holds the raw source photos (gitignored — currently 250 phone photos,
-~110MB after dropping exact/near-duplicates, way too large to commit as-is). `npm run
-build:gallery` (`scripts/generate-gallery-images.js`) reads every photo in `tacoma/`, sorts by
-real EXIF capture date (not file mtime — mtimes only reflect when photos were copied onto this
-machine), converts each to WebP at two sizes, and writes `public/img/gallery/{full,thumb}/*.webp`
-plus `data/gallery/manifest.json`. Re-run and commit the diff whenever photos are added to or
-removed from `tacoma/`; the running server never touches `tacoma/` directly (it's not deployed —
-only the generated `public/img/gallery/*` output is).
+Gallery photos are **runtime data on a Railway volume**, not committed to git — this was the
+first thing in the app that needed persistent, writable storage, added specifically so `/admin`
+can upload/delete photos without a code deploy. `GALLERY_DATA_DIR` (env var, `/data/gallery` in
+production) holds `photos.json` (`[{slug, source, alt, date}]`) plus `full/` and `thumb/` WebP
+files. `src/lib/gallery-store.js` is the only thing that reads/writes it.
 
-**macOS-only.** The script shells out to two system tools sharp/libvips can't replace:
-`sips -s format jpeg` to normalize HEIC-in-`.jpeg`-clothing files (iPhone photos with many
-auxiliary image references exceed libvips' HEIF security limit — `sharp` throws `"Security limit
-exceeded: Number of references in iref box"` on them directly), and `mdls -name
-kMDItemContentCreationDate` for the real capture date. Don't try to run this on Linux/CI without
-swapping in cross-platform equivalents first.
+**Why a volume, not git**: Railway does a fresh git checkout on every build regardless of which
+files a push touched — committing ~250 photos (108MB+) added that weight to every single build.
+A volume is also the only Railway storage that survives a redeploy; anything written to the
+regular container filesystem at runtime is gone on the next push. Both problems disappear once
+photos live on the volume instead of in the repo.
 
-**Alt text is hand-authored, not generated** (`data/gallery/photos.js`) — writing it requires
-actually looking at each photo. When adding new photos: run `build:gallery` first, then view each
-new thumb and add a `{slug, alt}` entry. Avoid describing anything personally identifying visible
-in a shot (license plates, street addresses/house numbers) even if legible in the photo.
+**Original bulk import** (`npm run build:gallery` → `scripts/generate-gallery-images.js`, **macOS-
+only**): the initial 250 photos came from `tacoma/` (gitignored raw phone photos) via this script,
+which shells out to two system tools sharp/libvips can't replace — `sips -s format jpeg` to
+normalize HEIC-in-`.jpeg`-clothing files (iPhone photos with many auxiliary image references
+exceed libvips' HEIF security limit; `sharp` throws `"Security limit exceeded: Number of
+references in iref box"` on them directly), and `mdls -name kMDItemContentCreationDate` for the
+real capture date (file mtimes only reflect when photos were copied onto this machine, not when
+they were taken). This produced `data/gallery/manifest.json` + `data/gallery/photos.js`, which
+`scripts/migrate-gallery-to-volume.js` then merged onto the volume as the initial `photos.json`
+(one-off — see **Admin & auth** for why those git-committed files still exist / are slated for
+removal). **New photos go through `/admin`'s upload form now**, not this script — that path is
+sharp-only (`src/lib/gallery-upload.js`), works on Railway's Linux container, and writes straight
+to the volume. It rejects some HEIC variants sharp can't decode; the admin UI asks for a JPEG
+re-export in that case rather than failing silently.
+
+**Alt text**: writing it requires actually looking at each photo — there's no way to generate it.
+The admin dashboard has an inline alt-text field per photo for this. Avoid describing anything
+personally identifying visible in a shot (license plates, street addresses/house numbers) even if
+legible in the photo.
 
 **Near-duplicate photos**: a straight file-hash dedupe won't catch burst shots (same scene,
 slightly different framing/exposure) — this repo's first pass used a perceptual hash (dHash,
@@ -108,6 +130,37 @@ slightly different framing/exposure) — this repo's first pass used a perceptua
 deleted the lower-quality file from each cluster directly out of `tacoma/`. Only 8 of the original
 258 photos turned out to be true near-duplicates; most of a phone camera roll like this is
 genuinely distinct shots, not bursts — don't assume heavy duplication without checking.
+
+## Admin & auth
+
+`/admin` (photo upload/edit/delete) is gated by Google login restricted to exactly one email
+(`ADMIN_EMAIL`) — no other Google account can log in at all, not even to a lesser-privileged
+state. Deliberately **not** Passport/`express-session`, and **not** the same pattern as
+`playoff-fantasy`'s admin (which lets any Google account log in, then flags one email as admin via
+a `users` table on SQLite): this site has no database, only one possible admin, and no per-user
+data to track, so a full session/user-table layer would be pure overhead.
+
+- **Flow**: `google-auth-library`'s `OAuth2Client` directly (`src/routes/admin.js`) —
+  `/admin/auth/google` sets a short-lived signed `oauth_state` cookie and redirects to Google;
+  `/admin/auth/google/callback` checks that state, exchanges the code, verifies the ID token, and
+  rejects outright (403, no cookie issued) unless the verified email matches `ADMIN_EMAIL` exactly.
+- **Session is stateless**: on success, `src/lib/admin-auth.js` signs a JWT (email + 30-day
+  expiry) into an `httpOnly`/`secure`/`sameSite=lax` cookie. Every request re-verifies that cookie
+  — no server-side session store at all. This matters because the deploy trigger means this app's
+  process restarts on every push; a session store would need to survive that (playoff-fantasy
+  solves this with SQLite-on-a-volume), but a signed cookie doesn't need to survive anything since
+  there's no server-side state to lose.
+- **Required env vars**: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `ADMIN_EMAIL`, `ADMIN_JWT_SECRET`,
+  `BASE_URL` (builds the exact callback URL — must match what's registered in Google Cloud
+  Console), `NODE_ENV=production` (gates the `secure` cookie flag — without it, cookies aren't
+  marked secure and won't be sent correctly over HTTPS in production).
+- **Manual step, can't be automated**: creating the OAuth Client ID and registering the callback
+  URL (`{BASE_URL}/admin/auth/google/callback`) has to happen in Google Cloud Console by hand —
+  no API for this that an agent can drive.
+- **Reusable pattern**: this whole login-gate design (not the gallery-specific upload/delete code)
+  is meant to be portable to `website-starter` via a configurable `ADMIN_EMAIL`, so any future
+  personal site (Mary/Taylor/Logan's included) can gate its own admin behind exactly one Google
+  account without needing a database.
 
 ## Conventions
 
@@ -177,9 +230,11 @@ npm run build:stats   # only needed if data/softball/seasons.js is missing/stale
 npm run dev
 ```
 
-No `.env` is required for local dev — the app has no external services to configure. `.env` in
-this repo (gitignored) holds GoDaddy/Cloudflare/Railway API tokens used for *operating* the
-deployed site (DNS, hosting), not runtime app config.
+No `.env` is required for the softball/gallery-viewing side of local dev — `GALLERY_DATA_DIR`
+defaults to a gitignored local folder when unset. `/admin` needs real values to fully exercise
+locally (`GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `ADMIN_EMAIL`, `ADMIN_JWT_SECRET`; see
+**Admin & auth**). `.env` in this repo (gitignored) also holds GoDaddy/Cloudflare/Railway API
+tokens used for *operating* the deployed site (DNS, hosting), not runtime app config.
 
 ## Deployment
 
@@ -187,6 +242,10 @@ deployed site (DNS, hosting), not runtime app config.
   (repo renamed from `softball` 2026-07-26) on `main` (renamed from `master` same day). Builds
   via Railpack (no Dockerfile — the repo intentionally has none; see the redeploy footgun above
   for how to force a fresh deploy after pushing).
+- **Persistent volume** `softball-volume` mounted at `/data` (added 2026-07-26 for the gallery
+  admin — this app's first runtime-writable state). `GALLERY_DATA_DIR=/data/gallery` points the
+  app at it. Created via the `volumeCreate` GraphQL mutation — no CLI/dashboard-tool shortcut for
+  it either, same as the deploy trigger.
 - Custom domain `allenvestal.com` (apex, proxied through Cloudflare — see the stuck-cert footgun
   above for why). `www.allenvestal.com` redirects to the apex via a Cloudflare Page Rule.
 - DNS is on Cloudflare (migrated from GoDaddy 2026-07-25); GoDaddy remains the registrar only.
