@@ -9,6 +9,7 @@ const helpers = require('./lib/helpers');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const ASSET_VERSION = process.env.RAILWAY_GIT_COMMIT_SHA || 'dev';
 
 app.engine('hbs', engine({
   extname: '.hbs',
@@ -37,6 +38,7 @@ app.use((req, res, next) => {
   res.locals.seasonNavGroups = buildSeasonNavGroups();
   res.locals.currentYear = new Date().getFullYear();
   res.locals.canonicalUrl = `https://allenvestal.com${req.path}`;
+  res.locals.assetVersion = ASSET_VERSION;
   next();
 });
 

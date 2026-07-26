@@ -8,6 +8,11 @@ describe('GET /', () => {
     expect(res.text).toContain('View softball stats');
   });
 
+  it('falls back to a "dev" cache-busting version when RAILWAY_GIT_COMMIT_SHA is unset', async () => {
+    const res = await request(app).get('/');
+    expect(res.text).toContain('/css/main.css?v=dev');
+  });
+
   it('includes an og:image for link previews', async () => {
     const res = await request(app).get('/');
     expect(res.text).toContain('<meta property="og:image" content="https://allenvestal.com/img/og-preview.png">');
