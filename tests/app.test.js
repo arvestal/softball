@@ -37,6 +37,12 @@ describe('GET /contact', () => {
     expect(res.status).toBe(200);
     expect(res.text).toContain('Contact');
   });
+
+  it('lists all social links including GitHub as an icon', async () => {
+    const res = await request(app).get('/contact');
+    expect(res.text).toContain('aria-label="GitHub"');
+    expect(res.text).toContain('href="https://github.com/arvestal"');
+  });
 });
 
 describe('GET /sitemap.xml', () => {

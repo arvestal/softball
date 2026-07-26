@@ -181,8 +181,7 @@ tbody tr:hover { background: var(--bg2); }
 .content-page { max-width: 640px; margin: 0 auto; }
 .content-page h1 { font-size: 1.6rem; margin-bottom: 1rem; }
 .content-page p { color: var(--text2); margin-bottom: 1rem; }
-.contact-links { list-style: none; }
-.contact-links li { margin-bottom: 0.5rem; }
+.content-page .social-links { justify-content: flex-start; }
 
 .footer {
   text-align: center;
