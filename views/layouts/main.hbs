@@ -19,7 +19,9 @@
           <ul class="nav-dropdown">
             <li><a href="/softball">Career</a></li>
             <li><a href="/softball/postseason">Postseason</a></li>
-            <li><a href="/softball/{{defaultSeasonKey}}">Season</a></li>
+            {{#each seasonNavGroups}}
+              <li><a href="/softball/{{latestKey}}">{{label}}</a></li>
+            {{/each}}
           </ul>
         </li>
       </ul>

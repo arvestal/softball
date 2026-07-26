@@ -8,9 +8,12 @@ describe('GET /', () => {
     expect(res.text).toContain('View softball stats');
   });
 
-  it('header nav links Season to the most recent Summer', async () => {
+  it('header nav has one link per season type, pointing at its most recent year', async () => {
     const res = await request(app).get('/');
-    expect(res.text).toContain('href="/softball/summer18">Season</a>');
+    expect(res.text).toContain('href="/softball/summer18">Summer</a>');
+    expect(res.text).toContain('href="/softball/fall19">Fall</a>');
+    expect(res.text).toContain('href="/softball/winter20">Winter</a>');
+    expect(res.text).toContain('href="/softball/spring19">Spring</a>');
   });
 });
 
@@ -70,10 +73,11 @@ describe('GET /softball', () => {
 });
 
 describe('GET /softball/postseason', () => {
-  it('renders the postseason stats and derived game log, with Postseason selected in the picker', async () => {
+  it('renders the postseason stats and derived game log with no season tabs, like career', async () => {
     const res = await request(app).get('/softball/postseason');
     expect(res.status).toBe(200);
-    expect(res.text).toMatch(/<option value="\/softball\/postseason" selected>Postseason<\/option>/);
+    expect(res.text).toContain('PostSeason:');
+    expect(res.text).not.toContain('season-tabs');
   });
 });
 
@@ -85,10 +89,10 @@ describe('GET /softball/:season', () => {
     expect(res.text).toContain('League Champs!');
   });
 
-  it('shows a season picker with every Fall year, the current one selected', async () => {
+  it('shows a year tab per Fall season, with the current year active', async () => {
     const res = await request(app).get('/softball/fall19');
-    expect(res.text).toContain('<option value="/softball/fall14">Fall 2014</option>');
-    expect(res.text).toMatch(/<option value="\/softball\/fall19" selected>Fall 2019<\/option>/);
+    expect(res.text).toContain('href="/softball/fall14"');
+    expect(res.text).toMatch(/href="\/softball\/fall19" class="season-tab active"/);
   });
 
   it('does not show a championship banner for a season that did not win it all', async () => {

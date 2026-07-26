@@ -1,7 +1,5 @@
 const { SEASON_ORDER, SEASONS } = require('../../data/softball/standings');
 
-const LABEL_ORDER = ['Summer', 'Fall', 'Winter', 'Spring'];
-
 // Groups every season by its label (Winter/Spring/Summer/Fall), newest year
 // first within each group.
 function groupSeasonsByLabel() {
@@ -17,22 +15,18 @@ function groupSeasonsByLabel() {
   return groups;
 }
 
-// Every season grouped by type, newest year first — powers the season-picker
-// dropdown on season pages. The entry matching activeKey (if any) is flagged
-// so it renders as the selected option.
-function allSeasonGroups(activeKey) {
+// One nav link per season type, pointing at its most recent year.
+function buildSeasonNavGroups() {
   const groups = groupSeasonsByLabel();
-  return LABEL_ORDER
+  // Fixed order matching the old nav: Summer, Fall, Winter, Spring.
+  return ['Summer', 'Fall', 'Winter', 'Spring']
     .filter((label) => groups[label])
-    .map((label) => ({
-      label,
-      seasons: groups[label].map((s) => ({ ...s, active: s.key === activeKey })),
-    }));
+    .map((label) => ({ label, latestKey: groups[label][0].key }));
 }
 
-// Most recent Summer season — the header nav's single "Season" link target.
-function getDefaultSeasonKey() {
-  return groupSeasonsByLabel().Summer[0].key;
+// Every year for a given season label, for the in-page year tabs.
+function seasonsForLabel(label) {
+  return groupSeasonsByLabel()[label] || [];
 }
 
-module.exports = { allSeasonGroups, getDefaultSeasonKey };
+module.exports = { buildSeasonNavGroups, seasonsForLabel };

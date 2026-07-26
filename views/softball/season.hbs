@@ -2,19 +2,17 @@
 <div class="championship-banner">{{championshipLevel}} League Champs!</div>
 {{/if}}
 
+{{#if yearTabs}}
+<nav class="season-tabs">
+  {{#each yearTabs}}
+    <a href="/softball/{{key}}" class="season-tab{{#if active}} active{{/if}}">{{year}}</a>
+  {{/each}}
+</nav>
+{{/if}}
+
 <header class="section-header">
   <p class="section-meta">
-    <select class="season-picker" onchange="if (this.value) window.location.href = this.value;">
-      <option value="/softball/postseason"{{#if isPostseason}} selected{{/if}}>Postseason</option>
-      {{#each seasonGroups}}
-        <optgroup label="{{label}}">
-          {{#each seasons}}
-            <option value="/softball/{{key}}"{{#if active}} selected{{/if}}>{{../label}} {{year}}</option>
-          {{/each}}
-        </optgroup>
-      {{/each}}
-    </select>
-    : {{record.wins}} &minus; {{record.losses}}{{#if record.ties}} &minus; {{record.ties}}{{/if}}
+    {{label}}{{#if year}} {{year}}{{/if}}: {{record.wins}} &minus; {{record.losses}}{{#if record.ties}} &minus; {{record.ties}}{{/if}}
   </p>
   {{> stats-table columns=columns players=players}}
 </header>
