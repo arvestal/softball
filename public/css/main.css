@@ -109,30 +109,21 @@ a:hover { text-decoration: underline; }
   margin-bottom: 1rem;
 }
 
-.season-tabs {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-.season-tab {
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  color: var(--text2);
-}
-.season-tab:hover { color: var(--text); text-decoration: none; }
-.season-tab.active {
-  background: var(--green);
-  border-color: var(--green);
-  color: #fff;
-}
-
 .section-header { margin-bottom: 2rem; }
 .section-meta {
   font-size: 1.1rem;
   color: var(--text2);
   margin-bottom: 1rem;
+}
+
+.season-picker {
+  background: var(--bg2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  font: inherit;
+  font-weight: 600;
 }
 
 .table-wrap {
@@ -201,3 +192,12 @@ tbody tr:hover { background: var(--bg2); }
 }
 .footer-nav a { color: var(--text2); }
 .footer-nav a:hover { color: var(--text); }
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+.social-links a { color: var(--text2); display: inline-flex; }
+.social-links a:hover { color: var(--text); }

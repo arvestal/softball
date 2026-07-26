@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const { engine } = require('express-handlebars');
 
-const { buildSeasonNavGroups } = require('./lib/nav');
+const { getDefaultSeasonKey } = require('./lib/nav');
 const helpers = require('./lib/helpers');
 
 const app = express();
@@ -34,7 +34,7 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
-  res.locals.seasonNavGroups = buildSeasonNavGroups();
+  res.locals.defaultSeasonKey = getDefaultSeasonKey();
   res.locals.currentYear = new Date().getFullYear();
   res.locals.canonicalUrl = `https://allenvestal.com${req.path}`;
   next();

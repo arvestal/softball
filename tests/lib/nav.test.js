@@ -4,8 +4,8 @@ describe('nav helpers', () => {
     jest.dontMock('../../data/softball/standings');
   });
 
-  describe('buildSeasonNavGroups', () => {
-    it('returns one entry per label pointing at its most recent year, and drops labels with no seasons', () => {
+  describe('allSeasonGroups', () => {
+    it('groups seasons by label, newest year first, and drops labels with no seasons', () => {
       jest.doMock('../../data/softball/standings', () => ({
         SEASON_ORDER: ['fall1', 'fall2', 'summer1'],
         SEASONS: {
@@ -15,34 +15,38 @@ describe('nav helpers', () => {
         },
       }));
 
-      const { buildSeasonNavGroups } = require('../../src/lib/nav');
-      const groups = buildSeasonNavGroups();
+      const { allSeasonGroups } = require('../../src/lib/nav');
+      const groups = allSeasonGroups();
 
       // Fixed order: Summer, Fall, Winter, Spring — Winter/Spring absent here.
-      expect(groups).toEqual([
-        { label: 'Summer', latestKey: 'summer1' },
-        { label: 'Fall', latestKey: 'fall2' },
+      expect(groups.map((g) => g.label)).toEqual(['Summer', 'Fall']);
+
+      const fallGroup = groups.find((g) => g.label === 'Fall');
+      expect(fallGroup.seasons).toEqual([
+        { key: 'fall2', year: 2022, active: false },
+        { key: 'fall1', year: 2020, active: false },
       ]);
     });
 
+    it('flags the season matching activeKey', () => {
+      const { allSeasonGroups } = require('../../src/lib/nav');
+      const groups = allSeasonGroups('fall19');
+      const fallGroup = groups.find((g) => g.label === 'Fall');
+      expect(fallGroup.seasons.find((s) => s.key === 'fall19').active).toBe(true);
+      expect(fallGroup.seasons.find((s) => s.key === 'fall18').active).toBe(false);
+    });
+
     it('reflects the real standings data with all four season labels present', () => {
-      const { buildSeasonNavGroups } = require('../../src/lib/nav');
-      const groups = buildSeasonNavGroups();
+      const { allSeasonGroups } = require('../../src/lib/nav');
+      const groups = allSeasonGroups();
       expect(groups.map((g) => g.label)).toEqual(['Summer', 'Fall', 'Winter', 'Spring']);
     });
   });
 
-  describe('seasonsForLabel', () => {
-    it('returns every year for a label, newest first', () => {
-      const { seasonsForLabel } = require('../../src/lib/nav');
-      const fallSeasons = seasonsForLabel('Fall');
-      expect(fallSeasons[0]).toEqual({ key: 'fall19', year: 2019 });
-      expect(fallSeasons.map((s) => s.year)).toEqual([...fallSeasons.map((s) => s.year)].sort((a, b) => b - a));
-    });
-
-    it('returns an empty array for a label with no seasons', () => {
-      const { seasonsForLabel } = require('../../src/lib/nav');
-      expect(seasonsForLabel('NotASeason')).toEqual([]);
+  describe('getDefaultSeasonKey', () => {
+    it('returns the most recent Summer season key', () => {
+      const { getDefaultSeasonKey } = require('../../src/lib/nav');
+      expect(getDefaultSeasonKey()).toBe('summer18');
     });
   });
 });
