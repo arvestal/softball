@@ -278,6 +278,44 @@ tbody tr:hover { background: var(--bg2); }
 
 .gallery-item:hover img { transform: scale(1.05); }
 
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox.open { display: flex; }
+
+.lightbox-img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 4px;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  line-height: 1;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover { color: var(--green); }
+
+.lightbox-close { top: 1rem; right: 1.5rem; font-size: 2rem; }
+.lightbox-prev { left: 0.5rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; }
+.lightbox-next { right: 0.5rem; top: 50%; transform: translateY(-50%); font-size: 2.5rem; }
+
 .footer {
   text-align: center;
   color: var(--text2);
