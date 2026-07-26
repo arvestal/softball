@@ -8,6 +8,12 @@ describe('GET /', () => {
     expect(res.text).toContain('View softball stats');
   });
 
+  it('includes an og:image for link previews', async () => {
+    const res = await request(app).get('/');
+    expect(res.text).toContain('<meta property="og:image" content="https://allenvestal.com/img/og-preview.png">');
+    expect(res.text).toContain('<meta name="twitter:card" content="summary_large_image">');
+  });
+
   it('header nav has one link per season type, pointing at its most recent year', async () => {
     const res = await request(app).get('/');
     expect(res.text).toContain('href="/softball/summer18">Summer</a>');
