@@ -4,7 +4,7 @@ const router = express.Router();
 const { SEASON_ORDER, SEASONS, POSTSEASON_RECORD, CAREER_PLAYER_IDS, POSTSEASON_PLAYER_IDS } = require('../../data/softball/standings');
 const seasonStats = require('../../data/softball/seasons');
 const { STAT_COLUMNS, sortByAvgDesc, filterByIds } = require('../lib/stats');
-const { decorateSchedule, championshipLevel } = require('../lib/schedule');
+const { decorateSchedule, championshipLevel, championshipSeasons } = require('../lib/schedule');
 const { seasonsForLabel } = require('../lib/nav');
 
 router.get('/', (req, res) => {
@@ -26,6 +26,7 @@ router.get('/', (req, res) => {
     careerPlayers: sortByAvgDesc(filterByIds(seasonStats.career, CAREER_PLAYER_IDS)),
     totals,
     games: fullGameLog,
+    championships: championshipSeasons(SEASON_ORDER.map((key) => SEASONS[key])),
   });
 });
 

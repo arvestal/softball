@@ -82,6 +82,17 @@ describe('GET /softball', () => {
     expect(res.status).toBe(200);
     expect(res.text).toContain('Career:');
   });
+
+  it('renders a championship banner for each season that won it all', async () => {
+    const res = await request(app).get('/softball');
+    expect(res.text).toContain('career-banner');
+    expect(res.text).toContain('Winter 2017');
+    expect(res.text).toContain('Fall 2017');
+    expect(res.text).toContain('Winter 2018');
+    expect(res.text).toContain('Summer 2018');
+    expect(res.text).toContain('Fall 2019');
+    expect(res.text).toContain('Winter 2020');
+  });
 });
 
 describe('GET /softball/postseason', () => {

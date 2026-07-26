@@ -1,4 +1,4 @@
-const { resultFor, decorateSchedule, championshipLevel } = require('../../src/lib/schedule');
+const { resultFor, decorateSchedule, championshipLevel, championshipSeasons } = require('../../src/lib/schedule');
 
 describe('resultFor', () => {
   it('returns FFT for a forfeited game (0-0)', () => {
@@ -66,5 +66,40 @@ describe('championshipLevel', () => {
 
   it('returns null for an empty schedule', () => {
     expect(championshipLevel([])).toBeNull();
+  });
+});
+
+describe('championshipSeasons', () => {
+  it('returns banner data only for seasons that won it all, preserving order', () => {
+    const seasons = [
+      {
+        label: 'Winter', year: 2017, wins: 9, losses: 5, ties: 0,
+        schedule: [{ runs: 10, oppRuns: 5, gametype: 'Postseason', level: 'C' }],
+      },
+      {
+        label: 'Spring', year: 2017, wins: 5, losses: 9, ties: 0,
+        schedule: [{ runs: 2, oppRuns: 10, gametype: 'Postseason', level: 'B' }],
+      },
+      {
+        label: 'Summer', year: 2018, wins: 8, losses: 3, ties: 1,
+        schedule: [{ runs: 12, oppRuns: 4, gametype: 'Postseason', level: 'B' }],
+      },
+    ];
+
+    expect(championshipSeasons(seasons)).toEqual([
+      { label: 'Winter', year: 2017, wins: 9, losses: 5, ties: 0 },
+      { label: 'Summer', year: 2018, wins: 8, losses: 3, ties: 1 },
+    ]);
+  });
+
+  it('returns an empty array when no seasons won a championship', () => {
+    const seasons = [
+      {
+        label: 'Spring', year: 2017, wins: 5, losses: 9, ties: 0,
+        schedule: [{ runs: 2, oppRuns: 10, gametype: 'Postseason', level: 'B' }],
+      },
+    ];
+
+    expect(championshipSeasons(seasons)).toEqual([]);
   });
 });

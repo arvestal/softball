@@ -24,4 +24,18 @@ function championshipLevel(schedule) {
   return won ? last.level : null;
 }
 
-module.exports = { resultFor, decorateSchedule, championshipLevel };
+// Returns { label, year, wins, losses, ties } for each season that ended
+// in a postseason championship, in the order given.
+function championshipSeasons(seasons) {
+  return seasons
+    .filter((season) => championshipLevel(season.schedule))
+    .map((season) => ({
+      label: season.label,
+      year: season.year,
+      wins: season.wins,
+      losses: season.losses,
+      ties: season.ties,
+    }));
+}
+
+module.exports = { resultFor, decorateSchedule, championshipLevel, championshipSeasons };
