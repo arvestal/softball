@@ -24,8 +24,6 @@ npm run lint
 npm test               # jest with coverage (100% lines/branches/functions/statements required
                         # on src/app.js, src/lib/**, src/routes/**, scripts/generate-stats.js)
 npm run build:stats    # regenerate data/softball/seasons.js from data/gc_files/*.csv
-npm run build:gallery  # regenerate public/img/gallery/* + data/gallery/manifest.json from tacoma/
-                        # (macOS-only — see Gallery pipeline below)
 ```
 
 ## Architecture map
@@ -62,10 +60,6 @@ npm run build:gallery  # regenerate public/img/gallery/* + data/gallery/manifest
   `/admin`, not by hand-editing.
 - `/data/gallery/{full,thumb}/*.webp` (on the Railway volume, **not** in git) — the actual photo
   files. Full images capped at 2000px on the long edge; thumbs at 480px wide.
-- `data/gallery/manifest.json` + `data/gallery/photos.js` + `public/img/gallery/*` —
-  **historical only**, kept in git just long enough to migrate onto the volume (see **Gallery
-  pipeline**); once that migration is verified in production these get deleted from git entirely,
-  since `photos.json` on the volume is now the single source of truth.
 
 ## Data pipeline
 
@@ -104,20 +98,20 @@ A volume is also the only Railway storage that survives a redeploy; anything wri
 regular container filesystem at runtime is gone on the next push. Both problems disappear once
 photos live on the volume instead of in the repo.
 
-**Original bulk import** (`npm run build:gallery` → `scripts/generate-gallery-images.js`, **macOS-
-only**): the initial 250 photos came from `tacoma/` (gitignored raw phone photos) via this script,
-which shells out to two system tools sharp/libvips can't replace — `sips -s format jpeg` to
-normalize HEIC-in-`.jpeg`-clothing files (iPhone photos with many auxiliary image references
-exceed libvips' HEIF security limit; `sharp` throws `"Security limit exceeded: Number of
-references in iref box"` on them directly), and `mdls -name kMDItemContentCreationDate` for the
-real capture date (file mtimes only reflect when photos were copied onto this machine, not when
-they were taken). This produced `data/gallery/manifest.json` + `data/gallery/photos.js`, which
-`scripts/migrate-gallery-to-volume.js` then merged onto the volume as the initial `photos.json`
-(one-off — see **Admin & auth** for why those git-committed files still exist / are slated for
-removal). **New photos go through `/admin`'s upload form now**, not this script — that path is
-sharp-only (`src/lib/gallery-upload.js`), works on Railway's Linux container, and writes straight
-to the volume. It rejects some HEIC variants sharp can't decode; the admin UI asks for a JPEG
-re-export in that case rather than failing silently.
+**All photos go through `/admin`'s upload form** (`src/lib/gallery-upload.js`, sharp-only, no
+`sips`/`mdls`) — it works on Railway's Linux container and writes straight to the volume. It
+rejects some HEIC variants sharp can't decode (multi-reference "portrait"/burst containers exceed
+libvips' HEIF security limit); the admin UI asks for a JPEG re-export in that case rather than
+failing silently.
+
+The original 250-photo bulk import (2026-07-26, from a `tacoma/` folder of raw phone photos) used
+a since-deleted one-off pipeline: a macOS-only script (`sips`/`mdls` for HEIC normalization and
+real EXIF capture dates — file mtimes only reflect when photos were copied onto a machine, not
+when they were taken) produced git-committed WebP files + a manifest, and a one-off migration
+script merged that onto the volume as the initial `photos.json`, then both were deleted once the
+volume-backed version was verified working in production. There's no bulk-import path anymore —
+if a large batch of photos needs adding again, that'd be a new feature (e.g. multi-file upload) to
+build against the current volume/admin architecture, not a resurrection of that old script.
 
 **Alt text**: writing it requires actually looking at each photo — there's no way to generate it.
 The admin dashboard has an inline alt-text field per photo for this. Avoid describing anything

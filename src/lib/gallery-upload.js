@@ -5,10 +5,10 @@ const sharp = require('sharp');
 const FULL_MAX_PX = 2000;
 const THUMB_WIDTH_PX = 480;
 
-// Sharp/libvips only — unlike scripts/generate-gallery-images.js this runs on Railway's Linux
-// container at request time, so it can't shell out to macOS's sips/mdls. Some HEIC variants
-// (multi-reference "portrait"/burst containers) will fail here; that's surfaced to the admin as
-// an upload error asking them to export as JPEG instead, rather than failing silently.
+// Sharp/libvips only — this runs on Railway's Linux container at request time, so there's no
+// shelling out to macOS-only tools. Some HEIC variants (multi-reference "portrait"/burst
+// containers) will fail here; that's surfaced to the admin as an upload error asking them to
+// export as JPEG instead, rather than failing silently.
 async function processUpload(buffer, dataDir, slug) {
   const fullDir = path.join(dataDir, 'full');
   const thumbDir = path.join(dataDir, 'thumb');

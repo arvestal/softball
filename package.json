@@ -8,7 +8,6 @@
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
     "build:stats": "node scripts/generate-stats.js",
-    "build:gallery": "node scripts/generate-gallery-images.js",
     "lint": "eslint src/ scripts/ tests/",
     "test": "jest --coverage"
   },

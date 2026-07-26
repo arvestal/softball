@@ -4,3 +4,4 @@ node_modules
 coverage
 tacoma/
 .gallery-data/
+public/img/gallery/
