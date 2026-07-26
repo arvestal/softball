@@ -68,7 +68,7 @@ omits HBP, a pre-existing simplification from the original app that's preserved 
 
 ## Conventions
 
-- **Git workflow: commit straight to `master`, no feature branches or PRs.** The project owner
+- **Git workflow: commit straight to `main`, no feature branches or PRs.** The project owner
   explicitly asked for this (2026-07-25) after several PRs — "it's just text content anyways."
   This reverses the branch+PR workflow used earlier in the same refactor; if they ever want it
   back for this repo, that instruction would need to be explicit again. Still run `npm run lint`
@@ -88,7 +88,7 @@ omits HBP, a pre-existing simplification from the original app that's preserved 
   `.gitignore`) — if this ever recurs, `git rm --cached` it, don't just retry the pull.
 - `railway redeploy` re-deploys whatever commit is *already built* — it does **not** pull a new
   commit after a push. To actually deploy new code: `railway service source connect --repo
-  arvestal/softball --branch master --service softball` (forces a fresh pull + build). Always
+  arvestal/allenvestal.com --branch main --service softball` (forces a fresh pull + build). Always
   confirm the deployed commit hash via `railway deployment list --json` rather than assuming a
   redeploy picked up the latest push.
 - The custom domain's Railway-issued certificate got stuck in
@@ -122,9 +122,10 @@ deployed site (DNS, hosting), not runtime app config.
 
 ## Deployment
 
-- Railway project **allen-vestal**, service **softball**, connected to `arvestal/softball` on
-  `master`. Builds via Railpack (no Dockerfile — the repo intentionally has none; see the
-  redeploy footgun above for how to force a fresh deploy after pushing).
+- Railway project **allen-vestal**, service **softball**, connected to `arvestal/allenvestal.com`
+  (repo renamed from `softball` 2026-07-26) on `main` (renamed from `master` same day). Builds
+  via Railpack (no Dockerfile — the repo intentionally has none; see the redeploy footgun above
+  for how to force a fresh deploy after pushing).
 - Custom domain `allenvestal.com` (apex, proxied through Cloudflare — see the stuck-cert footgun
   above for why). `www.allenvestal.com` redirects to the apex via a Cloudflare Page Rule.
 - DNS is on Cloudflare (migrated from GoDaddy 2026-07-25); GoDaddy remains the registrar only.
