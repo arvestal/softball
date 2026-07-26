@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="140" viewBox="0 0 1100 140">
+  <defs>
+    <linearGradient id="ov-sky" x1="0" y1="0" x2="0" y2="140" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#161b22"/>
+      <stop offset="1" stop-color="#0d1117"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1100" height="140" fill="url(#ov-sky)"/>
+
+  <!-- topographic contour lines -->
+  <g fill="none" stroke="#30363d" stroke-width="1" opacity="0.7">
+    <path d="M -20 30 Q 120 12, 260 30 T 540 28 T 820 32 T 1120 26"/>
+    <path d="M -20 48 Q 140 26, 300 48 T 580 44 T 860 50 T 1120 42"/>
+    <path d="M -20 66 Q 160 40, 340 64 T 620 60 T 900 66 T 1120 58"/>
+    <path d="M -20 84 Q 180 56, 380 82 T 660 76 T 940 82 T 1120 74"/>
+  </g>
+
+  <!-- distant ridge -->
+  <path d="M 0 118 L 60 92 L 140 112 L 230 78 L 320 108 L 420 86 L 520 110 L 630 82 L 740 106
+           L 850 88 L 950 108 L 1040 94 L 1100 110 L 1100 140 L 0 140 Z" fill="#1c2531"/>
+
+  <!-- near ridge -->
+  <path d="M 0 140 L 0 128 L 90 96 L 190 132 L 300 90 L 400 134 L 520 100 L 640 136 L 760 104
+           L 880 138 L 980 112 L 1100 136 L 1100 140 Z" fill="#0d1117"/>
+
+  <!-- trail with waypoints -->
+  <path d="M 40 136 C 160 130, 220 116, 300 122 S 460 104, 540 96 S 700 78, 780 70 S 900 56, 960 50"
+        fill="none" stroke="#d29922" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 9"/>
+
+  <g fill="#d29922">
+    <circle cx="300" cy="122" r="4.5"/>
+    <circle cx="540" cy="96" r="4.5"/>
+    <circle cx="780" cy="70" r="4.5"/>
+    <circle cx="960" cy="50" r="4.5"/>
+  </g>
+  <g fill="#0d1117">
+    <circle cx="300" cy="122" r="1.8"/>
+    <circle cx="540" cy="96" r="1.8"/>
+    <circle cx="780" cy="70" r="1.8"/>
+    <circle cx="960" cy="50" r="1.8"/>
+  </g>
+
+  <!-- Tacoma silhouette, roof rack + cab + bed, parked on the trail -->
+  <g transform="translate(430, 88)" fill="#2ea043">
+    <rect x="0" y="-4" width="34" height="2" rx="1"/>
+    <path d="M -6 14 L -6 4 L 4 -2 L 22 -2 L 26 4 L 46 4 L 46 14 Z"/>
+    <rect x="-10" y="12" width="60" height="6" rx="1.5"/>
+    <circle cx="2" cy="19" r="6"/>
+    <circle cx="38" cy="19" r="6"/>
+  </g>
+  <g fill="#0d1117">
+    <circle cx="432" cy="107" r="2.6"/>
+    <circle cx="468" cy="107" r="2.6"/>
+  </g>
+
+  <rect x="0" y="138" width="1100" height="2" fill="#2ea043" opacity="0.5"/>
+</svg>
