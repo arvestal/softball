@@ -117,6 +117,14 @@ omits HBP, a pre-existing simplification from the original app that's preserved 
   at a dead GoDaddy-internal Artifactory instance) — delete the lockfile and reinstall fresh
   rather than debugging registry auth for a registry that shouldn't be in the resolution path
   anymore.
+- A CSS change can deploy successfully and still not show up for a returning visitor: Cloudflare
+  stamps static assets like `/css/main.css` with a long browser `Cache-Control` (observed:
+  `public, max-age=14400`, 4 hours) regardless of what Express sends, so a browser that already
+  fetched the old CSS won't even re-check the server for up to 4 hours. Fixed by cache-busting the
+  stylesheet URL with Railway's auto-injected `RAILWAY_GIT_COMMIT_SHA` (`src/app.js` sets
+  `res.locals.assetVersion`, `views/layouts/main.hbs` appends it as `?v=...`) so every deploy gets
+  a new URL. If a CSS/JS change ever looks like it "didn't take" after a successful deploy, hard
+  refresh first before assuming the deploy failed.
 
 ## Local dev
 
