@@ -22,6 +22,7 @@ router.get('/', (req, res) => {
 
   res.render('softball/career', {
     pageTitle: 'Career Stats',
+    metaDescription: `Allen Vestal's career softball stats across ${SEASON_ORDER.length} seasons of GD men's league play — ${totals.wins}-${totals.losses}-${totals.ties}, plus the full game log.`,
     columns: STAT_COLUMNS,
     careerPlayers: sortByAvgDesc(filterByIds(seasonStats.career, CAREER_PLAYER_IDS)),
     totals,
@@ -37,6 +38,7 @@ router.get('/postseason', (req, res) => {
 
   res.render('softball/season', {
     pageTitle: 'Postseason Stats',
+    metaDescription: `Allen Vestal's postseason softball stats and schedule — ${POSTSEASON_RECORD.wins}-${POSTSEASON_RECORD.losses} across every playoff appearance.`,
     label: 'PostSeason',
     year: '',
     record: POSTSEASON_RECORD,
@@ -64,6 +66,7 @@ router.get('/:season', (req, res) => {
 
   res.render('softball/season', {
     pageTitle: `${season.label} ${season.year}`,
+    metaDescription: `Allen Vestal's ${season.label} ${season.year} softball stats and schedule — ${season.wins}-${season.losses}${season.ties ? `-${season.ties}` : ''} in GD men's league play.`,
     label: season.label,
     year: season.year,
     record: season,

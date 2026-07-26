@@ -44,6 +44,7 @@ app.use((req, res, next) => {
 
 app.use('/', require('./routes/index'));
 app.use('/softball', require('./routes/softball'));
+app.use('/gallery', require('./routes/gallery'));
 
 app.use((req, res) => {
   res.status(404).render('error', {

@@ -5,8 +5,10 @@ This file provides guidance to Claude Code when working with code in this reposi
 # allenvestal.com — Project Context
 
 Allen Vestal's personal site, live at [allenvestal.com](https://allenvestal.com). Node.js +
-Express, Handlebars views, no database — currently a softball stats section, with more hobbies
-(overlanding, CNC, 3D printing) planned. Deployed on Railway, DNS on Cloudflare.
+Express, Handlebars views, no database — softball stats plus a photo gallery (`/gallery`) of the
+overlanding-build Tacoma, with more hobbies (CNC, 3D printing, woodworking) and eventually
+software/website design planned as the site grows into a portfolio for `vestal.services` LLC
+(not registered yet as of 2026-07-26). Deployed on Railway, DNS on Cloudflare.
 
 This repo was refactored (2026-07) from an AngularJS 1.x/ng-grid SPA with a runtime-CSV-parsing
 Express API into the current server-rendered form. It's also the source, alongside
@@ -22,6 +24,8 @@ npm run lint
 npm test               # jest with coverage (100% lines/branches/functions/statements required
                         # on src/app.js, src/lib/**, src/routes/**, scripts/generate-stats.js)
 npm run build:stats    # regenerate data/softball/seasons.js from data/gc_files/*.csv
+npm run build:gallery  # regenerate public/img/gallery/* + data/gallery/manifest.json from tacoma/
+                        # (macOS-only — see Gallery pipeline below)
 ```
 
 ## Architecture map
@@ -35,6 +39,8 @@ npm run build:stats    # regenerate data/softball/seasons.js from data/gc_files/
 - `src/lib/stats.js` — stat table column config, AVG-desc sort, id-whitelist filter
 - `src/routes/index.js` — `/`, `/about`, `/contact`, `/sitemap.xml`
 - `src/routes/softball.js` — `/softball` (career), `/softball/postseason`, `/softball/:season`
+- `src/routes/gallery.js` — `/gallery`; joins `data/gallery/manifest.json` with
+  `data/gallery/photos.js` via `src/lib/gallery.js`'s `buildGalleryPhotos`
 - `views/*.hbs` — Handlebars templates; `views/layouts/main.hbs` is the shared layout
 - `data/gc_files/*.csv` — raw GameChanger season exports (source of truth for stats)
 - `data/softball/seasons.js` — **generated**, committed. Per-season + career + postseason player
@@ -42,6 +48,13 @@ npm run build:stats    # regenerate data/softball/seasons.js from data/gc_files/
 - `data/softball/standings.js` — **hand-authored**, committed. Win/loss/schedule data (not
   derivable from the CSVs) plus the two curated roster-id whitelists (`CAREER_PLAYER_IDS`,
   `POSTSEASON_PLAYER_IDS`) that limit which players show on the career/postseason tables.
+- `data/gallery/manifest.json` — **generated**, committed. `{slug, source, date}` per photo, in
+  chronological order. Produced by `scripts/generate-gallery-images.js`; never hand-edited.
+- `data/gallery/photos.js` — **hand-authored**, committed. `{slug, alt}` pairs — alt text needs
+  human/model judgment about image content, so it can't be generated. Must stay in sync 1:1 with
+  `manifest.json`'s slugs (add/remove an entry here whenever the manifest gains or drops a photo).
+- `public/img/gallery/{full,thumb}/*.webp` — **generated**, committed (~108MB total for 250
+  photos as of 2026-07-26). Full images capped at 2000px on the long edge; thumbs at 480px wide.
 
 ## Data pipeline
 
@@ -65,6 +78,36 @@ single season. Career/postseason aggregation sums counting stats across seasons 
 recomputes rate stats from those sums (`H/AB`, `(H+BB)/(AB+BB+SAC)`, etc.) — this intentionally
 omits HBP, a pre-existing simplification from the original app that's preserved rather than
 "fixed," so historical career numbers don't shift.
+
+## Gallery pipeline
+
+`tacoma/` at the repo root holds the raw source photos (gitignored — currently 250 phone photos,
+~110MB after dropping exact/near-duplicates, way too large to commit as-is). `npm run
+build:gallery` (`scripts/generate-gallery-images.js`) reads every photo in `tacoma/`, sorts by
+real EXIF capture date (not file mtime — mtimes only reflect when photos were copied onto this
+machine), converts each to WebP at two sizes, and writes `public/img/gallery/{full,thumb}/*.webp`
+plus `data/gallery/manifest.json`. Re-run and commit the diff whenever photos are added to or
+removed from `tacoma/`; the running server never touches `tacoma/` directly (it's not deployed —
+only the generated `public/img/gallery/*` output is).
+
+**macOS-only.** The script shells out to two system tools sharp/libvips can't replace:
+`sips -s format jpeg` to normalize HEIC-in-`.jpeg`-clothing files (iPhone photos with many
+auxiliary image references exceed libvips' HEIF security limit — `sharp` throws `"Security limit
+exceeded: Number of references in iref box"` on them directly), and `mdls -name
+kMDItemContentCreationDate` for the real capture date. Don't try to run this on Linux/CI without
+swapping in cross-platform equivalents first.
+
+**Alt text is hand-authored, not generated** (`data/gallery/photos.js`) — writing it requires
+actually looking at each photo. When adding new photos: run `build:gallery` first, then view each
+new thumb and add a `{slug, alt}` entry. Avoid describing anything personally identifying visible
+in a shot (license plates, street addresses/house numbers) even if legible in the photo.
+
+**Near-duplicate photos**: a straight file-hash dedupe won't catch burst shots (same scene,
+slightly different framing/exposure) — this repo's first pass used a perceptual hash (dHash,
+8x8 grayscale, Hamming distance ≤8) to cluster near-duplicates before generating anything, then
+deleted the lower-quality file from each cluster directly out of `tacoma/`. Only 8 of the original
+258 photos turned out to be true near-duplicates; most of a phone camera roll like this is
+genuinely distinct shots, not bursts — don't assume heavy duplication without checking.
 
 ## Conventions
 

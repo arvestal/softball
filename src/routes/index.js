@@ -27,7 +27,7 @@ router.get('/sitemap.xml', (req, res) => {
   const base = 'https://allenvestal.com';
   const today = new Date().toISOString().split('T')[0];
   const paths = [
-    '/', '/about', '/contact', '/softball', '/softball/postseason',
+    '/', '/about', '/contact', '/gallery', '/softball', '/softball/postseason',
     ...SEASON_ORDER.map((key) => `/softball/${key}`),
   ];
   const urls = paths.map((path) => `

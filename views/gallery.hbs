@@ -1,0 +1,11 @@
+<section class="gallery-page">
+  <h1>Gallery</h1>
+  <p class="section-meta">Building out and overlanding in the Tacoma — {{photos.length}} photos</p>
+  <div class="gallery-grid">
+    {{#each photos}}
+    <a href="{{full}}" target="_blank" rel="noopener" class="gallery-item">
+      <img src="{{thumb}}" alt="{{alt}}" loading="lazy">
+    </a>
+    {{/each}}
+  </div>
+</section>

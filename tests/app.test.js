@@ -50,12 +50,28 @@ describe('GET /contact', () => {
   });
 });
 
+describe('GET /gallery', () => {
+  it('renders the gallery grid with thumb/full links and alt text for every photo', async () => {
+    const res = await request(app).get('/gallery');
+    expect(res.status).toBe(200);
+    expect(res.text).toContain('gallery-grid');
+    expect(res.text).toContain('/img/gallery/thumb/tacoma-001.webp');
+    expect(res.text).toContain('/img/gallery/full/tacoma-001.webp');
+  });
+
+  it('has a nav link to the gallery page', async () => {
+    const res = await request(app).get('/');
+    expect(res.text).toContain('href="/gallery">Gallery</a>');
+  });
+});
+
 describe('GET /sitemap.xml', () => {
   it('lists static and per-season softball pages', async () => {
     const res = await request(app).get('/sitemap.xml');
     expect(res.status).toBe(200);
     expect(res.headers['content-type']).toContain('application/xml');
     expect(res.text).toContain('<loc>https://allenvestal.com/about</loc>');
+    expect(res.text).toContain('<loc>https://allenvestal.com/gallery</loc>');
     expect(res.text).toContain('<loc>https://allenvestal.com/softball/fall19</loc>');
   });
 });
@@ -86,6 +102,11 @@ describe('GET /softball', () => {
     const res = await request(app).get('/softball');
     expect(res.status).toBe(200);
     expect(res.text).toContain('Career:');
+  });
+
+  it('has a unique meta description mentioning the career record', async () => {
+    const res = await request(app).get('/softball');
+    expect(res.text).toContain('name="description" content="Allen Vestal&#x27;s career softball stats across');
   });
 
   it('renders a championship banner for each season that won it all', async () => {
