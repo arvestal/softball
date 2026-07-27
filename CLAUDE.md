@@ -178,13 +178,15 @@ data to track, so a full session/user-table layer would be pure overhead.
   `.gitignore`) — if this ever recurs, `git rm --cached` it, don't just retry the pull.
 - `railway redeploy` re-deploys whatever commit is *already built* — it does **not** pull a new
   commit after a push. To actually deploy new code: `railway service source connect --repo
-  arvestal/allenvestal.com --branch main --service softball` (forces a fresh pull + build). Always
-  confirm the deployed commit hash via `railway deployment list --json` rather than assuming a
-  redeploy picked up the latest push.
-  - **As of 2026-07-26 this footgun no longer applies day-to-day**: the `softball` service now has
+  arvestal/allenvestal.com --branch main --service allenvestal-com` (forces a fresh pull + build).
+  Always confirm the deployed commit hash via `railway deployment list --json` rather than
+  assuming a redeploy picked up the latest push.
+  - **As of 2026-07-26 this footgun no longer applies day-to-day**: the service (named `softball`
+    until it was renamed to `allenvestal-com` on 2026-07-27 to match the naming convention used by
+    the other Vestal family sites — see mary/logan/taylor's `<name>vestal-com` service names) has
     a GitHub push-to-`main` deploy trigger (Railway's `Service.repoTriggers`, added via the
     `deploymentTriggerCreate` GraphQL mutation — there's no CLI/dashboard shortcut for it), so
-    ordinary pushes auto-deploy on their own, matching `playoff-fantasy`. The manual
+    ordinary pushes auto-deploy on their own, matching `playoff-rally`. The manual
     `source connect` trick above is now only needed if the trigger itself ever gets removed or
     stops firing. The trigger had been missing since the repo rename (`softball` →
     `allenvestal.com`) because Railway's GitHub App wasn't authorized on the renamed repo —
@@ -232,14 +234,17 @@ tokens used for *operating* the deployed site (DNS, hosting), not runtime app co
 
 ## Deployment
 
-- Railway project **allen-vestal**, service **softball**, connected to `arvestal/allenvestal.com`
-  (repo renamed from `softball` 2026-07-26) on `main` (renamed from `master` same day). Builds
-  via Railpack (no Dockerfile — the repo intentionally has none; see the redeploy footgun above
-  for how to force a fresh deploy after pushing).
-- **Persistent volume** `softball-volume` mounted at `/data` (added 2026-07-26 for the gallery
-  admin — this app's first runtime-writable state). `GALLERY_DATA_DIR=/data/gallery` points the
-  app at it. Created via the `volumeCreate` GraphQL mutation — no CLI/dashboard-tool shortcut for
-  it either, same as the deploy trigger.
+- Railway project **allen-vestal**, service **allenvestal-com** (renamed from `softball`
+  2026-07-27 to match the `<name>vestal-com` convention used by mary/logan/taylor's Railway
+  services), connected to `arvestal/allenvestal.com` (repo renamed from `softball` 2026-07-26) on
+  `main` (renamed from `master` same day). Builds via Railpack (no Dockerfile — the repo
+  intentionally has none; see the redeploy footgun above for how to force a fresh deploy after
+  pushing).
+- **Persistent volume** `allenvestal-com-volume` (renamed from `softball-volume` in the same
+  2026-07-27 pass) mounted at `/data` (added 2026-07-26 for the gallery admin — this app's first
+  runtime-writable state). `GALLERY_DATA_DIR=/data/gallery` points the app at it. Created via the
+  `volumeCreate` GraphQL mutation — no CLI/dashboard-tool shortcut for it either, same as the
+  deploy trigger.
 - Custom domain `allenvestal.com` (apex, proxied through Cloudflare — see the stuck-cert footgun
   above for why). `www.allenvestal.com` redirects to the apex via a Cloudflare Page Rule.
 - DNS is on Cloudflare (migrated from GoDaddy 2026-07-25); GoDaddy remains the registrar only.
