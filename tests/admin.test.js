@@ -178,6 +178,11 @@ describe('admin photo management', () => {
     expect(res.text).toContain('Existing photo');
   });
 
+  it('includes the full-size image URL for the admin preview modal', async () => {
+    const res = await request(app).get('/admin').set('Cookie', adminCookies());
+    expect(res.text).toContain('data-full="/img/gallery/full/tacoma-001.webp"');
+  });
+
   it('uploads a new photo, converts it, and appends it to photos.json', async () => {
     const buffer = await sharp({
       create: {

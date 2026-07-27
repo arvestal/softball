@@ -366,6 +366,8 @@ tbody tr:hover { background: var(--bg2); }
   border-radius: 6px;
 }
 
+.admin-photo-thumb { cursor: pointer; }
+
 .admin-alt-form { display: flex; gap: 0.4rem; }
 .admin-alt-form input { flex: 1; }
 

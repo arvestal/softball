@@ -114,6 +114,7 @@ router.get('/', (req, res) => {
   const photos = listPhotos(resolveDataDir()).map((p) => ({
     ...p,
     thumb: `/img/gallery/thumb/${p.slug}.webp`,
+    full: `/img/gallery/full/${p.slug}.webp`,
   }));
 
   res.render('admin/dashboard', {

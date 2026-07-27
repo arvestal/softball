@@ -12,17 +12,17 @@
     <button type="submit" class="btn">Upload photo</button>
   </form>
 
-  <p class="section-meta">{{photos.length}} photos</p>
+  <p class="section-meta admin-photo-count">{{photos.length}} photos</p>
 
   <div class="admin-grid">
     {{#each photos}}
     <div class="admin-photo">
-      <img src="{{thumb}}" alt="{{alt}}" loading="lazy">
+      <img src="{{thumb}}" data-full="{{full}}" alt="{{alt}}" loading="lazy" class="admin-photo-thumb">
       <form class="admin-alt-form" action="/admin/photos/{{slug}}" method="post">
         <input type="text" name="alt" value="{{alt}}" placeholder="Alt text">
         <button type="submit">Save</button>
       </form>
-      <form action="/admin/photos/{{slug}}/delete" method="post">
+      <form class="admin-delete-form" action="/admin/photos/{{slug}}/delete" method="post">
         <button type="submit" class="admin-delete">Delete</button>
       </form>
     </div>
