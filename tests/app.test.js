@@ -67,6 +67,12 @@ describe('GET /contact', () => {
     expect(res.text).toContain('aria-label="GitHub"');
     expect(res.text).toContain('href="https://github.com/arvestal"');
   });
+
+  it('lists LinkedIn as an icon', async () => {
+    const res = await request(app).get('/contact');
+    expect(res.text).toContain('aria-label="LinkedIn"');
+    expect(res.text).toContain('href="https://www.linkedin.com/in/arvestal/"');
+  });
 });
 
 describe('GET /gallery', () => {
